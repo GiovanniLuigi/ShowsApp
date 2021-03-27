@@ -25,6 +25,12 @@
 		11E980F9260F88A300CE876B /* SearchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 11E980F7260F88A300CE876B /* SearchViewController.xib */; };
 		11E980FD260F96B100CE876B /* TabBarCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11E980FC260F96B100CE876B /* TabBarCoordinator.swift */; };
 		11E98100260F98C300CE876B /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11E980FF260F98C300CE876B /* TabBarController.swift */; };
+		11E98103260FDB9200CE876B /* ShowsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11E98102260FDB9200CE876B /* ShowsViewModel.swift */; };
+		11E98106260FDF4400CE876B /* ShowsCollectionViewCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11E98105260FDF4400CE876B /* ShowsCollectionViewCellViewModel.swift */; };
+		11E9810A260FDFC600CE876B /* ShowsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11E98108260FDFC600CE876B /* ShowsCollectionViewCell.swift */; };
+		11E9810B260FDFC600CE876B /* ShowsCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 11E98109260FDFC600CE876B /* ShowsCollectionViewCell.xib */; };
+		11E9811E260FE08B00CE876B /* Configurable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11E9811D260FE08B00CE876B /* Configurable.swift */; };
+		11E98126260FE28300CE876B /* UICollectionView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11E98125260FE28200CE876B /* UICollectionView+Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +54,12 @@
 		11E980F7260F88A300CE876B /* SearchViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchViewController.xib; sourceTree = "<group>"; };
 		11E980FC260F96B100CE876B /* TabBarCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarCoordinator.swift; sourceTree = "<group>"; };
 		11E980FF260F98C300CE876B /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
+		11E98102260FDB9200CE876B /* ShowsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowsViewModel.swift; sourceTree = "<group>"; };
+		11E98105260FDF4400CE876B /* ShowsCollectionViewCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowsCollectionViewCellViewModel.swift; sourceTree = "<group>"; };
+		11E98108260FDFC600CE876B /* ShowsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowsCollectionViewCell.swift; sourceTree = "<group>"; };
+		11E98109260FDFC600CE876B /* ShowsCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ShowsCollectionViewCell.xib; sourceTree = "<group>"; };
+		11E9811D260FE08B00CE876B /* Configurable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Configurable.swift; sourceTree = "<group>"; };
+		11E98125260FE28200CE876B /* UICollectionView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +118,7 @@
 			children = (
 				116A88CC260F773D0062FAD7 /* Navigator.swift */,
 				116A88D3260F7A830062FAD7 /* Storyboarded.swift */,
+				11E9811D260FE08B00CE876B /* Configurable.swift */,
 				116A88C7260F76B30062FAD7 /* Coordinator */,
 				116A88D8260F7B680062FAD7 /* Extensions */,
 			);
@@ -126,6 +139,7 @@
 			children = (
 				116A88DB260F7B960062FAD7 /* UIView+Extensions.swift */,
 				116A88DE260F7BDA0062FAD7 /* UIViewController+Extensions.swift */,
+				11E98125260FE28200CE876B /* UICollectionView+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -136,6 +150,10 @@
 				116A88E3260F7ED50062FAD7 /* ShowsCoordinator.swift */,
 				116A88E6260F7F790062FAD7 /* ShowsViewController.swift */,
 				116A88E7260F7F790062FAD7 /* ShowsViewController.xib */,
+				11E98102260FDB9200CE876B /* ShowsViewModel.swift */,
+				11E98105260FDF4400CE876B /* ShowsCollectionViewCellViewModel.swift */,
+				11E98108260FDFC600CE876B /* ShowsCollectionViewCell.swift */,
+				11E98109260FDFC600CE876B /* ShowsCollectionViewCell.xib */,
 			);
 			path = Shows;
 			sourceTree = "<group>";
@@ -218,6 +236,7 @@
 			files = (
 				116A88E9260F7F790062FAD7 /* ShowsViewController.xib in Resources */,
 				116A88BB260F76100062FAD7 /* LaunchScreen.storyboard in Resources */,
+				11E9810B260FDFC600CE876B /* ShowsCollectionViewCell.xib in Resources */,
 				11E980F9260F88A300CE876B /* SearchViewController.xib in Resources */,
 				116A88B8260F76100062FAD7 /* Assets.xcassets in Resources */,
 			);
@@ -230,18 +249,23 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				11E98126260FE28300CE876B /* UICollectionView+Extensions.swift in Sources */,
 				116A88DC260F7B960062FAD7 /* UIView+Extensions.swift in Sources */,
 				116A88E8260F7F790062FAD7 /* ShowsViewController.swift in Sources */,
 				11E980F3260F884D00CE876B /* SearchCoordinator.swift in Sources */,
+				11E98106260FDF4400CE876B /* ShowsCollectionViewCellViewModel.swift in Sources */,
 				116A88AF260F760F0062FAD7 /* AppDelegate.swift in Sources */,
 				116A88E4260F7ED50062FAD7 /* ShowsCoordinator.swift in Sources */,
+				11E9811E260FE08B00CE876B /* Configurable.swift in Sources */,
 				116A88CD260F773D0062FAD7 /* Navigator.swift in Sources */,
 				11E980FD260F96B100CE876B /* TabBarCoordinator.swift in Sources */,
 				11E980F8260F88A300CE876B /* SearchViewController.swift in Sources */,
+				11E98103260FDB9200CE876B /* ShowsViewModel.swift in Sources */,
 				116A88D1260F79840062FAD7 /* AppCoordinator.swift in Sources */,
 				116A88DF260F7BDA0062FAD7 /* UIViewController+Extensions.swift in Sources */,
 				116A88B1260F760F0062FAD7 /* SceneDelegate.swift in Sources */,
 				11E98100260F98C300CE876B /* TabBarController.swift in Sources */,
+				11E9810A260FDFC600CE876B /* ShowsCollectionViewCell.swift in Sources */,
 				116A88C9260F76C80062FAD7 /* Coordinator.swift in Sources */,
 				116A88D4260F7A830062FAD7 /* Storyboarded.swift in Sources */,
 			);

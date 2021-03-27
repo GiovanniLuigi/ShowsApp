@@ -25,6 +25,7 @@ class ShowsCoordinator: ShowsCoordinatorProtocol {
     
     func start() {
         let showsViewController = ShowsViewController.instantiate()
+        showsViewController.viewModel = ShowsViewModel(coordinator: self)
         navigator.push(showsViewController, animated: true)
     }
     
