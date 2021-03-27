@@ -17,9 +17,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let window = UIWindow(windowScene: scene)
         self.window = window
         let navigationController = UINavigationController()
+        navigationController.setNavigationBarHidden(true, animated: false)
         let navigator = UIKitNavigator(navigationController: navigationController)
         
-        appCoordinator = AppCoordinator(parent: nil, navigator: navigator)
+        appCoordinator = AppCoordinator(navigator: navigator, parent: nil)
         appCoordinator?.start()
         
         window.rootViewController = navigationController

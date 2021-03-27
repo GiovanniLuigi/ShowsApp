@@ -1,5 +1,5 @@
 //
-//  ShowsViewController.swift
+//  SearchViewController.swift
 //  ShowsApp
 //
 //  Created by Giovanni Luidi Bruno on 27/03/21.
@@ -7,12 +7,12 @@
 
 import UIKit
 
-class ShowsViewController: UIViewController {
+class SearchViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        title = "Shows"
+        // Do any additional setup after loading the view.
     }
 
 

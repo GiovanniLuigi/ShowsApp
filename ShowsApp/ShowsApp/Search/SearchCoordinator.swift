@@ -1,5 +1,5 @@
 //
-//  ShowsCoordinator.swift
+//  SearchCoordinator.swift
 //  ShowsApp
 //
 //  Created by Giovanni Luidi Bruno on 27/03/21.
@@ -8,12 +8,11 @@
 import Foundation
 
 
-protocol ShowsCoordinatorProtocol: Coordinator {
+protocol SearchCoordinatorProtocol: Coordinator {
     
 }
 
-class ShowsCoordinator: ShowsCoordinatorProtocol {
-    
+final class SearchCoordinator: SearchCoordinatorProtocol {
     var childCoordinators: [Coordinator] = []
     private(set) var parent: Coordinator?
     private(set) var navigator: Navigator
@@ -24,8 +23,8 @@ class ShowsCoordinator: ShowsCoordinatorProtocol {
     }
     
     func start() {
-        let showsViewController = ShowsViewController.instantiate()
-        navigator.push(showsViewController, animated: true)
+        let searchViewController = SearchViewController.instantiate()
+        navigator.push(searchViewController, animated: true)
     }
     
 }

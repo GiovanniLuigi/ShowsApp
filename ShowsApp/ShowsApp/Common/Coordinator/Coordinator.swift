@@ -5,13 +5,12 @@
 //  Created by Giovanni Luidi Bruno on 27/03/21.
 //
 
-import Foundation
-
+import UIKit
 
 protocol Coordinator: class {
     var childCoordinators: [Coordinator] { get set }
     var parent: Coordinator? { get }
-    var navigator: Navigator? { get }
+    var navigator: Navigator { get }
     func start()
     func stop()
     func willStop()
@@ -35,7 +34,7 @@ extension Coordinator {
     }
     
     func willStop() {
-        self.navigator?.pop(animated: true)
+        self.navigator.pop(animated: true)
     }
     
     func didStop() {
@@ -43,6 +42,6 @@ extension Coordinator {
     }
     
     func dismiss() {
-        self.navigator?.dismiss(animated: true, completion: nil)
+        self.navigator.dismiss(animated: true, completion: nil)
     }
 }

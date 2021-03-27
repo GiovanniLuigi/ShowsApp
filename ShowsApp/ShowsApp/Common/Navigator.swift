@@ -17,10 +17,8 @@ protocol Navigator {
 }
 
 class UIKitNavigator: Navigator {
-    typealias View = UIViewController
-    
     private let navigationController: UINavigationController
-    
+
     init(navigationController: UINavigationController) {
         self.navigationController = navigationController
     }
