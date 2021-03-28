@@ -13,12 +13,17 @@ class ShowDetailTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        selectionStyle = .none
+        
         showAnimatedSkeleton()
     }
 }
 
 extension ShowDetailTableViewCell {
     func configure(viewModel: ShowDetailCellViewModel) {
-        
+        let _ = coverImageView.setImage(from: viewModel.coverImageURL) { [weak self] in
+            self?.titleLabel.text = viewModel.title
+            self?.hideSkeleton()
+        }
     }
 }
