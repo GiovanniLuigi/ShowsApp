@@ -15,5 +15,10 @@ class ShowDetailTableViewCell: UITableViewCell {
         super.awakeFromNib()
         showAnimatedSkeleton()
     }
-    
+}
+
+extension ShowDetailTableViewCell {
+    func configure(viewModel: ShowDetailCellViewModel) {
+        
+    }
 }

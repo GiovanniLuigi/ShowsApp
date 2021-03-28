@@ -21,13 +21,34 @@ class ShowDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        episodesTableView.dataSource = self
+        episodesTableView.delegate = self
+        episodesTableView.register(ShowDetailTableViewCell.nib, forCellReuseIdentifier: ShowDetailTableViewCell.identifier)
     }
     
     @IBAction func didPressSeasonsButton(_ sender: Any) {
+        
     }
     
 }
+
+extension ShowDetailViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return viewModel.numberOfRowsInSection()
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeue(ShowDetailTableViewCell.self, indexPath: indexPath)
+        
+        if let cell = cell as? ShowDetailTableViewCell {
+            cell.configure(viewModel: viewModel.cellViewModel(indexPath: indexPath))
+        }
+        
+        return cell
+    }
+}
+
+extension ShowDetailViewController: UITableViewDelegate {}
 
 extension ShowDetailViewController: ShowDetailViewDelegate {
     

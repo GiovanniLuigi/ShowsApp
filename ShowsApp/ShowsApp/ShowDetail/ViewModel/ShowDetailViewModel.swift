@@ -23,4 +23,12 @@ class ShowDetailViewModel {
         self.viewDelegate = viewDelegate
         self.show = show
     }
+    
+    func numberOfRowsInSection() -> Int {
+        return 10
+    }
+    
+    func cellViewModel(indexPath: IndexPath) -> ShowDetailCellViewModel {
+        return ShowDetailCellViewModel()
+    }
 }
