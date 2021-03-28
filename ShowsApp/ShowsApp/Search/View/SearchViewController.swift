@@ -16,6 +16,7 @@ class SearchViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
+        
     }
 
 }
@@ -31,6 +32,14 @@ extension SearchViewController {
 }
 
 extension SearchViewController: SearchViewDelegate {
+    func didStartLoading() {
+        searchBar.isLoading = true
+    }
+    
+    func didFinishLoading() {
+        searchBar.isLoading = false
+    }
+    
     func didQueryUpdateWithSuccess() {
         tableView.reloadData()
     }

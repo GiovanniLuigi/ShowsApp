@@ -11,6 +11,8 @@ import Foundation
 protocol SearchViewDelegate {
     func didQueryUpdateWithSuccess()
     func didQueryWithError()
+    func didStartLoading()
+    func didFinishLoading()
 }
 
 class SearchViewModel {
@@ -38,7 +40,9 @@ class SearchViewModel {
         
         let formattedString = formatQueryString()
         if isValidQueryString(formattedString) {
+            viewDelegate.didStartLoading()
             service.fetch(query: formattedString) { [weak self] (result) in
+                self?.viewDelegate.didFinishLoading()
                 switch result {
                 case .success(let queries):
                     self?.currentQueries = queries
