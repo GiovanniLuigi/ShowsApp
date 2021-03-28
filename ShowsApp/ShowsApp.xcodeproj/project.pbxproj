@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		111AF5EA2610148700159B58 /* HttpExecutor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 111AF5E92610148700159B58 /* HttpExecutor.swift */; };
+		111AF5ED2610152100159B58 /* ShowsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 111AF5EC2610152100159B58 /* ShowsService.swift */; };
+		111AF5F0261015CB00159B58 /* ShowModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 111AF5EF261015CB00159B58 /* ShowModel.swift */; };
 		116A88AF260F760F0062FAD7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 116A88AE260F760F0062FAD7 /* AppDelegate.swift */; };
 		116A88B1260F760F0062FAD7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 116A88B0260F760F0062FAD7 /* SceneDelegate.swift */; };
 		116A88B8260F76100062FAD7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 116A88B7260F76100062FAD7 /* Assets.xcassets */; };
@@ -20,6 +23,7 @@
 		116A88E4260F7ED50062FAD7 /* ShowsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 116A88E3260F7ED50062FAD7 /* ShowsCoordinator.swift */; };
 		116A88E8260F7F790062FAD7 /* ShowsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 116A88E6260F7F790062FAD7 /* ShowsViewController.swift */; };
 		116A88E9260F7F790062FAD7 /* ShowsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 116A88E7260F7F790062FAD7 /* ShowsViewController.xib */; };
+		11956C6626100C4300590B37 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11956C6526100C4300590B37 /* Service.swift */; };
 		11E980F3260F884D00CE876B /* SearchCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11E980F2260F884D00CE876B /* SearchCoordinator.swift */; };
 		11E980F8260F88A300CE876B /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11E980F6260F88A300CE876B /* SearchViewController.swift */; };
 		11E980F9260F88A300CE876B /* SearchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 11E980F7260F88A300CE876B /* SearchViewController.xib */; };
@@ -36,6 +40,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		111AF5E92610148700159B58 /* HttpExecutor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpExecutor.swift; sourceTree = "<group>"; };
+		111AF5EC2610152100159B58 /* ShowsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowsService.swift; sourceTree = "<group>"; };
+		111AF5EF261015CB00159B58 /* ShowModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowModel.swift; sourceTree = "<group>"; };
 		116A88AB260F760F0062FAD7 /* ShowsApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ShowsApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		116A88AE260F760F0062FAD7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		116A88B0260F760F0062FAD7 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -51,6 +58,7 @@
 		116A88E3260F7ED50062FAD7 /* ShowsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowsCoordinator.swift; sourceTree = "<group>"; };
 		116A88E6260F7F790062FAD7 /* ShowsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowsViewController.swift; sourceTree = "<group>"; };
 		116A88E7260F7F790062FAD7 /* ShowsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ShowsViewController.xib; sourceTree = "<group>"; };
+		11956C6526100C4300590B37 /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
 		11E980F2260F884D00CE876B /* SearchCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCoordinator.swift; sourceTree = "<group>"; };
 		11E980F6260F88A300CE876B /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		11E980F7260F88A300CE876B /* SearchViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchViewController.xib; sourceTree = "<group>"; };
@@ -99,6 +107,7 @@
 				11E980FB260F969300CE876B /* TabBar */,
 				11E980F1260F883900CE876B /* Search */,
 				116A88E2260F7EBA0062FAD7 /* Shows */,
+				11956C6426100C1300590B37 /* Network */,
 				116A88C6260F76A00062FAD7 /* Common */,
 				116A88C3260F76410062FAD7 /* SupportingFiles */,
 			);
@@ -160,8 +169,19 @@
 				11E98105260FDF4400CE876B /* ShowsCollectionViewCellViewModel.swift */,
 				11E98108260FDFC600CE876B /* ShowsCollectionViewCell.swift */,
 				11E98109260FDFC600CE876B /* ShowsCollectionViewCell.xib */,
+				111AF5EC2610152100159B58 /* ShowsService.swift */,
+				111AF5EF261015CB00159B58 /* ShowModel.swift */,
 			);
 			path = Shows;
+			sourceTree = "<group>";
+		};
+		11956C6426100C1300590B37 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				11956C6526100C4300590B37 /* Service.swift */,
+				111AF5E92610148700159B58 /* HttpExecutor.swift */,
+			);
+			path = Network;
 			sourceTree = "<group>";
 		};
 		11E980F1260F883900CE876B /* Search */ = {
@@ -272,8 +292,11 @@
 				116A88AF260F760F0062FAD7 /* AppDelegate.swift in Sources */,
 				116A88E4260F7ED50062FAD7 /* ShowsCoordinator.swift in Sources */,
 				11E9811E260FE08B00CE876B /* Configurable.swift in Sources */,
+				11956C6626100C4300590B37 /* Service.swift in Sources */,
 				116A88CD260F773D0062FAD7 /* Navigator.swift in Sources */,
+				111AF5EA2610148700159B58 /* HttpExecutor.swift in Sources */,
 				11E980FD260F96B100CE876B /* TabBarCoordinator.swift in Sources */,
+				111AF5F0261015CB00159B58 /* ShowModel.swift in Sources */,
 				11E980F8260F88A300CE876B /* SearchViewController.swift in Sources */,
 				11E98103260FDB9200CE876B /* ShowsViewModel.swift in Sources */,
 				116A88D1260F79840062FAD7 /* AppCoordinator.swift in Sources */,
@@ -281,6 +304,7 @@
 				116A88B1260F760F0062FAD7 /* SceneDelegate.swift in Sources */,
 				11E98100260F98C300CE876B /* TabBarController.swift in Sources */,
 				11E9810A260FDFC600CE876B /* ShowsCollectionViewCell.swift in Sources */,
+				111AF5ED2610152100159B58 /* ShowsService.swift in Sources */,
 				116A88C9260F76C80062FAD7 /* Coordinator.swift in Sources */,
 				11E9817D260FFC5900CE876B /* UIFont+Extensions.swift in Sources */,
 				116A88D4260F7A830062FAD7 /* Storyboarded.swift in Sources */,
