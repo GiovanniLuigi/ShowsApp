@@ -9,5 +9,6 @@ import Foundation
 
 
 struct ShowDetailCellViewModel {
-    
+    let title: String = "Invernal Soldier"
+    let coverImageURL: String = "https://static.tvmaze.com/uploads/images/original_untouched/1/4388.jpg"
 }
