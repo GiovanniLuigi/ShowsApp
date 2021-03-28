@@ -34,7 +34,6 @@ class ShowsCollectionViewCell: UICollectionViewCell {
 }
 
 extension ShowsCollectionViewCell {
-    
     func configure(viewModel: ShowsCollectionViewCellViewModel) {
         task = coverImageView.setImage(from: viewModel.coverImageURL) { [weak self] in
             self?.titleLabel.text = viewModel.title

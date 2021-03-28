@@ -126,3 +126,17 @@ extension ShowsViewController: UICollectionViewDelegateFlowLayout {
         return 24
     }
 }
+
+extension ShowsViewController {
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if viewModel.isLoading {
+            return
+        }
+        
+        let offset = -200
+        let bottomEdge = scrollView.contentOffset.y + scrollView.frame.size.height;
+        if (bottomEdge + CGFloat(offset) >= scrollView.contentSize.height) {
+            viewModel.fetchNextPage()
+        }
+    }
+}
