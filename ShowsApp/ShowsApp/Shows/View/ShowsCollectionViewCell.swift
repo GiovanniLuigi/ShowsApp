@@ -17,10 +17,11 @@ class ShowsCollectionViewCell: UICollectionViewCell {
     }
 }
 
-extension ShowsCollectionViewCell: Configurable {
-    private typealias ViewModel = ShowsCollectionViewCellViewModel
+extension ShowsCollectionViewCell {
     
-    func configure<ViewModel>(_ obj: ViewModel) {
+    func configure(viewModel: ShowsCollectionViewCellViewModel) {
         
+        coverImageView.setImage(from: viewModel.coverImageURL)
+        titleLabel.text = viewModel.title
     }
 }

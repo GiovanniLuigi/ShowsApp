@@ -18,7 +18,7 @@ protocol Target {
 }
 
 protocol Executor {
-    func fetch<Model: Codable>(_ target: Target, completion: @escaping (Result<Model, Error>) -> Void)
+    func fetch<Model: Decodable>(_ target: Target, type: Model.Type, completion: @escaping (Result<Model, Error>) -> Void)
 }
 
 

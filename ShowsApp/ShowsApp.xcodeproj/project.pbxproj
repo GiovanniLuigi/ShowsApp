@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		11147BDE261046710011CA4D /* UIImageView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11147BDD261046710011CA4D /* UIImageView+Extensions.swift */; };
+		11147BE1261046AE0011CA4D /* CacheProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11147BE0261046AE0011CA4D /* CacheProvider.swift */; };
 		111AF5EA2610148700159B58 /* HttpExecutor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 111AF5E92610148700159B58 /* HttpExecutor.swift */; };
 		111AF5ED2610152100159B58 /* ShowsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 111AF5EC2610152100159B58 /* ShowsService.swift */; };
 		111AF5F0261015CB00159B58 /* ShowModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 111AF5EF261015CB00159B58 /* ShowModel.swift */; };
@@ -33,13 +35,14 @@
 		11E98106260FDF4400CE876B /* ShowsCollectionViewCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11E98105260FDF4400CE876B /* ShowsCollectionViewCellViewModel.swift */; };
 		11E9810A260FDFC600CE876B /* ShowsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11E98108260FDFC600CE876B /* ShowsCollectionViewCell.swift */; };
 		11E9810B260FDFC600CE876B /* ShowsCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 11E98109260FDFC600CE876B /* ShowsCollectionViewCell.xib */; };
-		11E9811E260FE08B00CE876B /* Configurable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11E9811D260FE08B00CE876B /* Configurable.swift */; };
 		11E98126260FE28300CE876B /* UICollectionView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11E98125260FE28200CE876B /* UICollectionView+Extensions.swift */; };
 		11E9817D260FFC5900CE876B /* UIFont+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11E9817C260FFC5900CE876B /* UIFont+Extensions.swift */; };
 		11E98184261004EE00CE876B /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 11E98183261004EE00CE876B /* Roboto-Regular.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		11147BDD261046710011CA4D /* UIImageView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extensions.swift"; sourceTree = "<group>"; };
+		11147BE0261046AE0011CA4D /* CacheProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheProvider.swift; sourceTree = "<group>"; };
 		111AF5E92610148700159B58 /* HttpExecutor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpExecutor.swift; sourceTree = "<group>"; };
 		111AF5EC2610152100159B58 /* ShowsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowsService.swift; sourceTree = "<group>"; };
 		111AF5EF261015CB00159B58 /* ShowModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowModel.swift; sourceTree = "<group>"; };
@@ -68,7 +71,6 @@
 		11E98105260FDF4400CE876B /* ShowsCollectionViewCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowsCollectionViewCellViewModel.swift; sourceTree = "<group>"; };
 		11E98108260FDFC600CE876B /* ShowsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowsCollectionViewCell.swift; sourceTree = "<group>"; };
 		11E98109260FDFC600CE876B /* ShowsCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ShowsCollectionViewCell.xib; sourceTree = "<group>"; };
-		11E9811D260FE08B00CE876B /* Configurable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Configurable.swift; sourceTree = "<group>"; };
 		11E98125260FE28200CE876B /* UICollectionView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Extensions.swift"; sourceTree = "<group>"; };
 		11E9817C260FFC5900CE876B /* UIFont+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Extensions.swift"; sourceTree = "<group>"; };
 		11E98183261004EE00CE876B /* Roboto-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Regular.ttf"; sourceTree = "<group>"; };
@@ -85,11 +87,49 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		111AF5F226101DB300159B58 /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				116A88E3260F7ED50062FAD7 /* ShowsCoordinator.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		111AF5F326101DBD00159B58 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				116A88E6260F7F790062FAD7 /* ShowsViewController.swift */,
+				116A88E7260F7F790062FAD7 /* ShowsViewController.xib */,
+				11E98108260FDFC600CE876B /* ShowsCollectionViewCell.swift */,
+				11E98109260FDFC600CE876B /* ShowsCollectionViewCell.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		111AF5F426101DDF00159B58 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				11E98102260FDB9200CE876B /* ShowsViewModel.swift */,
+				11E98105260FDF4400CE876B /* ShowsCollectionViewCellViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		111AF5F526101DE800159B58 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				111AF5EC2610152100159B58 /* ShowsService.swift */,
+				111AF5EF261015CB00159B58 /* ShowModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		116A88A2260F760F0062FAD7 = {
 			isa = PBXGroup;
 			children = (
 				116A88AD260F760F0062FAD7 /* ShowsApp */,
 				116A88AC260F760F0062FAD7 /* Products */,
+				1853ADB057B1405F78049CA6 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -130,9 +170,9 @@
 		116A88C6260F76A00062FAD7 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				11147BE0261046AE0011CA4D /* CacheProvider.swift */,
 				116A88CC260F773D0062FAD7 /* Navigator.swift */,
 				116A88D3260F7A830062FAD7 /* Storyboarded.swift */,
-				11E9811D260FE08B00CE876B /* Configurable.swift */,
 				116A88C7260F76B30062FAD7 /* Coordinator */,
 				116A88D8260F7B680062FAD7 /* Extensions */,
 			);
@@ -155,6 +195,7 @@
 				116A88DE260F7BDA0062FAD7 /* UIViewController+Extensions.swift */,
 				11E98125260FE28200CE876B /* UICollectionView+Extensions.swift */,
 				11E9817C260FFC5900CE876B /* UIFont+Extensions.swift */,
+				11147BDD261046710011CA4D /* UIImageView+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -162,15 +203,10 @@
 		116A88E2260F7EBA0062FAD7 /* Shows */ = {
 			isa = PBXGroup;
 			children = (
-				116A88E3260F7ED50062FAD7 /* ShowsCoordinator.swift */,
-				116A88E6260F7F790062FAD7 /* ShowsViewController.swift */,
-				116A88E7260F7F790062FAD7 /* ShowsViewController.xib */,
-				11E98102260FDB9200CE876B /* ShowsViewModel.swift */,
-				11E98105260FDF4400CE876B /* ShowsCollectionViewCellViewModel.swift */,
-				11E98108260FDFC600CE876B /* ShowsCollectionViewCell.swift */,
-				11E98109260FDFC600CE876B /* ShowsCollectionViewCell.xib */,
-				111AF5EC2610152100159B58 /* ShowsService.swift */,
-				111AF5EF261015CB00159B58 /* ShowModel.swift */,
+				111AF5F526101DE800159B58 /* Model */,
+				111AF5F426101DDF00159B58 /* ViewModel */,
+				111AF5F326101DBD00159B58 /* View */,
+				111AF5F226101DB300159B58 /* Coordinator */,
 			);
 			path = Shows;
 			sourceTree = "<group>";
@@ -209,6 +245,13 @@
 				11E98183261004EE00CE876B /* Roboto-Regular.ttf */,
 			);
 			path = Fonts;
+			sourceTree = "<group>";
+		};
+		1853ADB057B1405F78049CA6 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -291,9 +334,10 @@
 				11E98106260FDF4400CE876B /* ShowsCollectionViewCellViewModel.swift in Sources */,
 				116A88AF260F760F0062FAD7 /* AppDelegate.swift in Sources */,
 				116A88E4260F7ED50062FAD7 /* ShowsCoordinator.swift in Sources */,
-				11E9811E260FE08B00CE876B /* Configurable.swift in Sources */,
 				11956C6626100C4300590B37 /* Service.swift in Sources */,
 				116A88CD260F773D0062FAD7 /* Navigator.swift in Sources */,
+				11147BDE261046710011CA4D /* UIImageView+Extensions.swift in Sources */,
+				11147BE1261046AE0011CA4D /* CacheProvider.swift in Sources */,
 				111AF5EA2610148700159B58 /* HttpExecutor.swift in Sources */,
 				11E980FD260F96B100CE876B /* TabBarCoordinator.swift in Sources */,
 				111AF5F0261015CB00159B58 /* ShowModel.swift in Sources */,

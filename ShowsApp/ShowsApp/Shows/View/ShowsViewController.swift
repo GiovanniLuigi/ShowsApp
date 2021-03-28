@@ -16,6 +16,7 @@ class ShowsViewController: UIViewController {
         super.viewDidLoad()
         self.setupView()
         self.setupCollectionView()
+        self.viewModel.fetchNextPage()
     }
     
 }
@@ -33,6 +34,17 @@ extension ShowsViewController {
     }
 }
 
+extension ShowsViewController: ShowsViewDelegate {
+    func didFetchShowsWithSuccess() {
+//        print(viewModel.shows)
+        collectionView.reloadData()
+    }
+    
+    func didFetchShowsWithError() {
+        print(viewModel.errorMessage)
+    }
+}
+
 extension ShowsViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return viewModel.numberOfItemsInSection()
@@ -40,7 +52,12 @@ extension ShowsViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cellViewModel = viewModel.cellViewModel(indexPath)
-        return collectionView.dequeue(ShowsCollectionViewCell.self, indexPath: indexPath, viewModel: cellViewModel)
+        let cell = collectionView.dequeue(ShowsCollectionViewCell.self, indexPath: indexPath)
+        if let cell = cell as? ShowsCollectionViewCell {
+            cell.configure(viewModel: cellViewModel)
+        }
+        
+        return cell
     }
 }
 

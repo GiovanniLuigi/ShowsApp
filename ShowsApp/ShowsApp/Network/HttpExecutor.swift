@@ -7,6 +7,13 @@
 
 import Foundation
 
+enum HttpMethod: String {
+    case get, post
+    
+    var value: String {
+        return self.rawValue
+    }
+}
 
 class HttpExecutor: Executor {
     
@@ -28,7 +35,7 @@ class HttpExecutor: Executor {
         }
     }
     
-    private func doHttpRequest<Model: Codable>(_ request: URLRequest, modelType: Model.Type, completion: @escaping (Result<Model, Error>) -> Void) {
+    private func doHttpRequest<Model: Decodable>(_ request: URLRequest, modelType: Model.Type, completion: @escaping (Result<Model, Error>) -> Void) {
         URLSession.shared.dataTask(with: request) { (data, response, error) in
             if let _ = error {
                 DispatchQueue.main.async {
@@ -36,14 +43,14 @@ class HttpExecutor: Executor {
                 }
                 return
             }
-            
+
             guard let data = data else {
                 DispatchQueue.main.async {
                     completion(.failure(NetworkError.parsingError))
                 }
                 return
             }
-            
+
             do {
                 let obj = try JSONDecoder().decode(modelType, from: data)
                 DispatchQueue.main.async {
@@ -51,13 +58,14 @@ class HttpExecutor: Executor {
                 }
             } catch {
                 DispatchQueue.main.async {
+                    print(error)
                     completion(.failure(NetworkError.parsingError))
                 }
             }
         }.resume()
     }
     
-    func fetch<Model: Codable>(_ target: Target, completion: @escaping (Result<Model, Error>) -> Void) {
+    func fetch<Model: Decodable>(_ target: Target, type: Model.Type, completion: @escaping (Result<Model, Error>) -> Void) {
         guard let url = URL(string: target.path) else {
             DispatchQueue.main.async {
                 completion(.failure(NetworkError.genericError))
@@ -65,7 +73,8 @@ class HttpExecutor: Executor {
             return
         }
         
-        let urlRequest: URLRequest = URLRequest(url: url, cachePolicy: .returnCacheDataElseLoad, timeoutInterval: 60)
+        var urlRequest: URLRequest = URLRequest(url: url, timeoutInterval: 60)
+        urlRequest.addValue("application/json", forHTTPHeaderField: "Accept")
         doHttpRequest(urlRequest, modelType: Model.self) { (result) in
             switch result {
             case .success(let model):
