@@ -9,7 +9,7 @@ import Foundation
 
 
 protocol SearchViewDelegate {
-    func didQueryWithSuccess()
+    func didQueryUpdateWithSuccess()
     func didQueryWithError()
 }
 
@@ -20,7 +20,7 @@ class SearchViewModel {
     
     private var currentQueries: [SearchQueryModel] = []
     private var currentError: Error?
-    var queryString: String = ""
+    private var queryString: String = ""
     
     init(coordinator: SearchCoordinatorProtocol, service: SearchService, viewDelegate: SearchViewDelegate) {
         self.coordinator = coordinator
@@ -28,20 +28,36 @@ class SearchViewModel {
         self.viewDelegate = viewDelegate
     }
     
+    func updateQuery(text: String) {
+        queryString = text
+    }
+    
     func query() {
+        currentQueries = []
+        viewDelegate.didQueryUpdateWithSuccess()
+        
         let formattedString = formatQueryString()
         if isValidQueryString(formattedString) {
             service.fetch(query: formattedString) { [weak self] (result) in
                 switch result {
                 case .success(let queries):
                     self?.currentQueries = queries
-                    self?.viewDelegate.didQueryWithSuccess()
+                    self?.viewDelegate.didQueryUpdateWithSuccess()
                 case .failure(let error):
                     self?.currentError = error
                     self?.viewDelegate.didQueryWithError()
                 }
             }
         }
+    }
+    
+    func numberOfRowsInSection(section: Int = 0) -> Int {
+        return currentQueries.count
+    }
+    
+    func cellViewModel(indexPath: IndexPath) -> SearchTableViewCellViewModel {
+        let queryModel = currentQueries[indexPath.row]
+        return SearchTableViewCellViewModel(title: queryModel.show?.name ?? "")
     }
     
 }

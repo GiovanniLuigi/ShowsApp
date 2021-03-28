@@ -24,12 +24,15 @@ extension SearchViewController {
     private func setupView() {
         title = viewModel.title
         searchBar.delegate = self
+        tableView.dataSource = self
+        tableView.delegate = self
+        tableView.register(SearchTableViewCell.nib, forCellReuseIdentifier: SearchTableViewCell.identifier)
     }
 }
 
 extension SearchViewController: SearchViewDelegate {
-    func didQueryWithSuccess() {
-        
+    func didQueryUpdateWithSuccess() {
+        tableView.reloadData()
     }
     
     func didQueryWithError() {
@@ -39,7 +42,7 @@ extension SearchViewController: SearchViewDelegate {
 
 extension SearchViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        viewModel.queryString = searchText
+        viewModel.updateQuery(text: searchText)
         
         NSObject.cancelPreviousPerformRequests(withTarget: self, selector: #selector(self.reload(_:)), object: searchBar)
         perform(#selector(self.reload(_:)), with: searchBar, afterDelay: 0.5)
@@ -50,3 +53,22 @@ extension SearchViewController: UISearchBarDelegate {
     }
 }
 
+extension SearchViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return viewModel.numberOfRowsInSection()
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeue(SearchTableViewCell.self, indexPath: indexPath)
+        
+        if let cell = cell as? SearchTableViewCell {
+            cell.configure(viewModel: viewModel.cellViewModel(indexPath: indexPath))
+        }
+        
+        return cell
+    }
+}
+
+extension SearchViewController: UITableViewDelegate {
+    
+}
