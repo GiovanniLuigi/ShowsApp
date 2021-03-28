@@ -27,6 +27,9 @@ class ShowDetailCoordinator: ShowDetailCoordinatorProtocol {
     
     func start() {
         let showDetailViewController = ShowDetailViewController.instantiate()
+        let service = ShowDetailService(executor: HttpExecutor.shared)
+        showDetailViewController.viewModel = ShowDetailViewModel(coordinator: self, service: service, viewDelegate: showDetailViewController)
+        
         navigator.push(showDetailViewController, animated: true)
     }
 }
