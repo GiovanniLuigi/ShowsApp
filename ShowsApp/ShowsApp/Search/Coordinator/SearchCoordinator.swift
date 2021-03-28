@@ -24,6 +24,9 @@ final class SearchCoordinator: SearchCoordinatorProtocol {
     
     func start() {
         let searchViewController = SearchViewController.instantiate()
+        let service = SearchService(executor: HttpExecutor.shared)
+        let viewModel = SearchViewModel(coordinator: self, service: service, viewDelegate: searchViewController)
+        searchViewController.viewModel = viewModel
         navigator.push(searchViewController, animated: true)
     }
     
