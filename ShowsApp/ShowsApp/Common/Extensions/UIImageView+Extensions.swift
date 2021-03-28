@@ -9,31 +9,39 @@ import UIKit
 
 extension UIImageView {
     
-    
-    func setImage(from url: String, placeholder: UIImage? = nil) {
+    func setImage(from urlString: String, placeholder: UIImage? = nil) -> URLSessionDataTask? {
         if let placeholder = placeholder {
             image = placeholder
         }
-        
+
         let imageCache = CacheProvider.shared.imageCache
-        
-        if let cachedImage = imageCache.object(forKey: url as NSString) {
+
+        if let cachedImage = imageCache.object(forKey: urlString as NSString) {
             image = cachedImage
-            return
+            return nil
         }
         
-        guard let url = URL(string: url) else {
-            return
+        guard let url = URL(string: urlString) else {
+            return nil
         }
         
-        DispatchQueue.global(qos: .background).async { [weak self] in
-            guard let data = NSData(contentsOf: url) else {
+        let task = URLSession.shared.dataTask(with: url) { [weak self] (data, response, error) in
+            guard let data = data else {
                 return
             }
+            
             DispatchQueue.main.async {
-                self?.image = UIImage(data: Data(referencing: data))
+                if let newImage = UIImage(data: data),
+                   let compressedImageData = newImage.jpegData(compressionQuality: 0.25),
+                   let compressedImage = UIImage(data: compressedImageData) {
+                    
+                    self?.image = compressedImage
+                    imageCache.setObject(compressedImage, forKey: urlString as NSString)
+                }
             }
         }
+        task.resume()
+        return task
     }
     
 }

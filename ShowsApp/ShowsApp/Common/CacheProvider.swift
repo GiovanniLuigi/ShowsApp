@@ -12,4 +12,8 @@ final class CacheProvider {
     let imageCache = NSCache<NSString, UIImage>()
     
     private init() {}
+    
+    func clear() {
+        imageCache.removeAllObjects()
+    }
 }

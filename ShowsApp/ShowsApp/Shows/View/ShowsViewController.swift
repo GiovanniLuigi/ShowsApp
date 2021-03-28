@@ -30,6 +30,7 @@ extension ShowsViewController {
     private func setupCollectionView() {
         collectionView.dataSource = self
         collectionView.delegate = self
+        collectionView.prefetchDataSource = self
         collectionView.register(ShowsCollectionViewCell.nib, forCellWithReuseIdentifier: ShowsCollectionViewCell.identifier)
     }
 }
@@ -51,10 +52,11 @@ extension ShowsViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cellViewModel = viewModel.cellViewModel(indexPath)
+        
         let cell = collectionView.dequeue(ShowsCollectionViewCell.self, indexPath: indexPath)
         if let cell = cell as? ShowsCollectionViewCell {
-            cell.configure(viewModel: cellViewModel)
+//            cell.configure(viewModel: cellViewModel)
+            cell.clear()
         }
         
         return cell
@@ -63,7 +65,39 @@ extension ShowsViewController: UICollectionViewDataSource {
 
 extension ShowsViewController: UICollectionViewDelegate {
 
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        let cellViewModel = viewModel.cellViewModel(indexPath)
+        if let cell = cell as? ShowsCollectionViewCell {
+            cell.configure(viewModel: cellViewModel)
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didEndDisplaying cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        if let cell = cell as? ShowsCollectionViewCell {
+            cell.clear()
+        }
+    }
+}
 
+extension ShowsViewController: UICollectionViewDataSourcePrefetching {
+  func collectionView(_ collectionView: UICollectionView, prefetchItemsAt indexPaths: [IndexPath]) {
+    for indexPath in indexPaths {
+        let cellViewModel = viewModel.cellViewModel(indexPath)
+        let cell = collectionView.dequeue(ShowsCollectionViewCell.self, indexPath: indexPath)
+        if let cell = cell as? ShowsCollectionViewCell {
+            cell.configure(viewModel: cellViewModel)
+        }
+    }
+  }
+  
+  func collectionView(_ collectionView: UICollectionView, cancelPrefetchingForItemsAt indexPaths: [IndexPath]) {
+    for indexPath in indexPaths {
+        let cell = collectionView.dequeue(ShowsCollectionViewCell.self, indexPath: indexPath)
+        if let cell = cell as? ShowsCollectionViewCell {
+            cell.clear()
+        }
+    }
+  }
 }
 
 extension ShowsViewController: UICollectionViewDelegateFlowLayout {
