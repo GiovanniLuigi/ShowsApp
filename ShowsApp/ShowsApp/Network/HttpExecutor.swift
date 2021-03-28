@@ -7,6 +7,10 @@
 
 import Foundation
 
+struct Endpoints {
+    static let basePath: String = "http://api.tvmaze.com"
+}
+
 enum HttpMethod: String {
     case get, post
     

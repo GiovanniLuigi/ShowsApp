@@ -21,6 +21,9 @@ class SearchViewModel {
         self.coordinator = coordinator
         self.service = service
         self.viewDelegate = viewDelegate
+        service.fetch(query: "disney") { (result) in
+            print(result)
+        }
     }
     
 }

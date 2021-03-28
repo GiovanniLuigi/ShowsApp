@@ -30,7 +30,7 @@ enum ShowsAPI{
     case shows(page:Int)
     
     private var basePath: String {
-        return "http://api.tvmaze.com"
+        return Endpoints.basePath
     }
 }
 

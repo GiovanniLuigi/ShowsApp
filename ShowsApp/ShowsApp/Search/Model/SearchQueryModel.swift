@@ -1,0 +1,23 @@
+//
+//  SearchQueryModel.swift
+//  ShowsApp
+//
+//  Created by Giovanni Luidi Bruno on 28/03/21.
+//
+
+import Foundation
+
+
+struct SearchQueryModel: Codable {
+    let score: Double
+    let show: SearchShowModel
+}
+
+struct SearchShowModel: Codable {
+    let name: String
+    let image: SearchShowImageModel
+}
+
+struct SearchShowImageModel: Codable {
+    let medium, original: String?
+}
