@@ -13,7 +13,7 @@ extension String {
     
     var htmlDecoded: String {
         guard let stringData = data(using: .utf8) else {
-            return ""
+            return String.empty
         }
         let attributedString = try? NSAttributedString(
             data: stringData,
@@ -23,6 +23,6 @@ extension String {
             ],
             documentAttributes: nil
         )
-        return attributedString?.string ?? ""
+        return attributedString?.string ?? String.empty
     }
 }

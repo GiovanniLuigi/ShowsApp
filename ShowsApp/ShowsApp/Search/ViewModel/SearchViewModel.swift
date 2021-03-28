@@ -22,7 +22,7 @@ class SearchViewModel {
     
     private var currentQueries: [SearchQueryModel] = []
     private var currentError: Error?
-    private var queryString: String = ""
+    private var queryString: String = String.empty
     
     init(coordinator: SearchCoordinatorProtocol, service: SearchService, viewDelegate: SearchViewDelegate) {
         self.coordinator = coordinator
@@ -62,8 +62,8 @@ class SearchViewModel {
     
     func cellViewModel(indexPath: IndexPath) -> SearchTableViewCellViewModel {
         let queryModel = currentQueries[indexPath.row]
-        return SearchTableViewCellViewModel(title: queryModel.show?.name ?? "",
-                                            coverImageURL: queryModel.show?.image?.medium ?? "",
+        return SearchTableViewCellViewModel(title: queryModel.show?.name ?? String.empty,
+                                            coverImageURL: queryModel.show?.image?.medium ?? String.empty,
                                             genres: queryModel.show?.genres ?? [])
     }
     
@@ -71,11 +71,11 @@ class SearchViewModel {
 
 extension SearchViewModel {
     private func formatQueryString() -> String {
-        return queryString.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed) ?? ""
+        return queryString.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed) ?? String.empty
     }
     
     private func isValidQueryString(_ queryString: String) -> Bool {
-        return queryString.trimmingCharacters(in: .whitespaces) != ""
+        return queryString.trimmingCharacters(in: .whitespaces) != String.empty
     }
 }
 

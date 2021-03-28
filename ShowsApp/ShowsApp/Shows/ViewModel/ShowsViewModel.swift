@@ -82,7 +82,7 @@ extension ShowsViewModel {
             return nil
         }
         let show = shows[indexPath.row]
-        return ShowsCollectionViewCellViewModel(coverImageURL: show.image?.medium ?? "", title: show.name ?? "")
+        return ShowsCollectionViewCellViewModel(coverImageURL: show.image?.medium ?? String.empty, title: show.name ?? String.empty)
     }
     
 }

@@ -29,7 +29,7 @@ class ShowsCollectionViewCell: UICollectionViewCell {
         task?.cancel()
         task = nil
         coverImageView.image = nil
-        titleLabel.text = ""
+        titleLabel.text = String.empty
         showAnimatedSkeleton()
     }
 }
