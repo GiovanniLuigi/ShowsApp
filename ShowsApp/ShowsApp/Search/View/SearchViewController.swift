@@ -9,22 +9,30 @@ import UIKit
 
 class SearchViewController: UIViewController {
 
-    @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var tableView: UITableView!
     var viewModel: SearchViewModel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
-        
     }
 
 }
 
 extension SearchViewController {
+    
+    
     private func setupView() {
         title = viewModel.title
-        searchBar.delegate = self
+        navigationController?.navigationBar.prefersLargeTitles = true
+    
+        let searchController = UISearchController(searchResultsController: nil)
+        searchController.searchResultsUpdater = self
+        searchController.obscuresBackgroundDuringPresentation = false
+        searchController.searchBar.placeholder = viewModel.searchBarPlaceholder
+        navigationItem.searchController = searchController
+        definesPresentationContext = true
+        
         tableView.dataSource = self
         tableView.delegate = self
         tableView.register(SearchTableViewCell.nib, forCellReuseIdentifier: SearchTableViewCell.identifier)
@@ -33,11 +41,11 @@ extension SearchViewController {
 
 extension SearchViewController: SearchViewDelegate {
     func didStartLoading() {
-        searchBar.isLoading = true
+        navigationItem.searchController?.searchBar.isLoading = true
     }
     
     func didFinishLoading() {
-        searchBar.isLoading = false
+        navigationItem.searchController?.searchBar.isLoading = false
     }
     
     func didQueryUpdateWithSuccess() {
@@ -49,22 +57,34 @@ extension SearchViewController: SearchViewDelegate {
     }
 }
 
-extension SearchViewController: UISearchBarDelegate {
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        viewModel.updateQuery(text: searchText)
+extension SearchViewController: UISearchResultsUpdating {
+    func updateSearchResults(for searchController: UISearchController) {
+        let searchBar = searchController.searchBar
+        guard let searchText = searchBar.text else {
+            return
+        }
         
+        viewModel.updateQuery(text: searchText)
         NSObject.cancelPreviousPerformRequests(withTarget: self, selector: #selector(self.reload(_:)), object: searchBar)
         perform(#selector(self.reload(_:)), with: searchBar, afterDelay: 0.5)
     }
 
-    @objc func reload(_ searchBar: UISearchBar) {
+    @objc private func reload(_ searchBar: UISearchBar) {
         viewModel.query()
     }
 }
 
 extension SearchViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.numberOfRowsInSection()
+        let count = viewModel.numberOfRowsInSection()
+        
+        if count == 0 {
+            self.tableView.setEmptyMessage(viewModel.emptyTableViewMessage)
+        } else {
+            self.tableView.restore()
+        }
+        
+        return count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

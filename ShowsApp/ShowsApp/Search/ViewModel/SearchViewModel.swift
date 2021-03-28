@@ -83,6 +83,14 @@ extension SearchViewModel {
         return "Search"
     }
     
+    var searchBarPlaceholder: String {
+        return "Title"
+    }
+    
+    var emptyTableViewMessage: String {
+        return "No search results yet"
+    }
+    
     var errorMessage: String {
         return currentError?.localizedDescription ?? "An error ocurred"
     }

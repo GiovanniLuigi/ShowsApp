@@ -10,7 +10,6 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SearchViewController" customModule="ShowsApp" customModuleProvider="target">
             <connections>
-                <outlet property="searchBar" destination="ftv-bZ-h29" id="36R-de-2yE"/>
                 <outlet property="tableView" destination="5ID-DX-UIf" id="aUg-FJ-MsR"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -21,23 +20,16 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="5ID-DX-UIf">
-                    <rect key="frame" x="0.0" y="100" width="414" height="762"/>
+                    <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                 </tableView>
-                <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="ftv-bZ-h29">
-                    <rect key="frame" x="0.0" y="44" width="414" height="56"/>
-                    <textInputTraits key="textInputTraits"/>
-                </searchBar>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
                 <constraint firstItem="5ID-DX-UIf" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="3P5-k6-sIX"/>
-                <constraint firstItem="ftv-bZ-h29" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="EDg-nY-r38"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="5ID-DX-UIf" secondAttribute="trailing" id="HTo-WD-Cpr"/>
-                <constraint firstItem="ftv-bZ-h29" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="OeK-CI-jMb"/>
-                <constraint firstItem="ftv-bZ-h29" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="VGl-WE-E2t"/>
-                <constraint firstItem="5ID-DX-UIf" firstAttribute="top" secondItem="ftv-bZ-h29" secondAttribute="bottom" id="fI6-Gh-b11"/>
+                <constraint firstItem="5ID-DX-UIf" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="he9-xn-pJJ"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="5ID-DX-UIf" secondAttribute="bottom" id="qbT-Rv-Ylm"/>
             </constraints>
             <point key="canvasLocation" x="142" y="88"/>
