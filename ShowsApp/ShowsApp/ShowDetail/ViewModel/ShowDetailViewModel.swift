@@ -32,3 +32,28 @@ class ShowDetailViewModel {
         return ShowDetailCellViewModel()
     }
 }
+
+extension ShowDetailViewModel {
+    var coverImageURL: String {
+        return show.image?.original ?? String.empty
+    }
+    
+    var title: String {
+        return show.name ?? String.empty
+    }
+    
+    var genres: String {
+        return show.genres?.joined(separator: " • ") ?? String.empty
+    }
+    
+    var schedule: String {
+        var formattedSchedule = show.schedule?.days ?? []
+        let time = show.schedule?.time ?? String.empty
+        formattedSchedule.append(time)
+        return formattedSchedule.joined(separator: " • ")
+    }
+    
+    var summary: String {
+        return show.summary?.htmlDecoded ?? String.empty
+    }
+}

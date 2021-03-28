@@ -28,8 +28,8 @@ class SearchTableViewCell: UITableViewCell {
         showAnimatedSkeleton()
         task?.cancel()
         task = nil
-        title.text = ""
-        genresLabel.text = ""
+        title.text = String.empty
+        genresLabel.text = String.empty
         coverImageView.image = nil
     }
 }

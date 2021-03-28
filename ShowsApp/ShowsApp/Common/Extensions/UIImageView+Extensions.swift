@@ -9,6 +9,7 @@ import UIKit
 
 extension UIImageView {
     
+    @discardableResult
     func setImage(from urlString: String, placeholder: UIImage? = nil, completion: (()->Void)? = nil) -> URLSessionDataTask? {
         if let placeholder = placeholder {
             image = placeholder

@@ -12,6 +12,8 @@ struct ShowModel: Codable {
     let image: ShowImageModel?
     let name: String?
     let schedule: ShowScheduleModel?
+    let genres: [String]?
+    let summary: String?
 }
 
 struct ShowImageModel: Codable {

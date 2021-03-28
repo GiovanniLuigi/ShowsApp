@@ -24,6 +24,19 @@ class ShowDetailViewController: UIViewController {
         episodesTableView.dataSource = self
         episodesTableView.delegate = self
         episodesTableView.register(ShowDetailTableViewCell.nib, forCellReuseIdentifier: ShowDetailTableViewCell.identifier)
+        
+        
+        view.startSkeletonAnimation()
+        titleLabel.text = viewModel.title
+        genresLabel.text = viewModel.genres
+        scheduleLabel.text = viewModel.schedule
+        summaryLabel.text = viewModel.summary
+        
+        coverImageView.setImage(from: viewModel.coverImageURL) { [weak self] in
+            self?.view.stopSkeletonAnimation()
+        }
+        
+        
     }
     
     @IBAction func didPressSeasonsButton(_ sender: Any) {
