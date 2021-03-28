@@ -9,13 +9,13 @@ import Foundation
 
 
 struct SearchQueryModel: Codable {
-    let score: Double
-    let show: SearchShowModel
+    let score: Double?
+    let show: SearchShowModel?
 }
 
 struct SearchShowModel: Codable {
-    let name: String
-    let image: SearchShowImageModel
+    let name: String?
+    let image: SearchShowImageModel?
 }
 
 struct SearchShowImageModel: Codable {
