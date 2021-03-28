@@ -10,4 +10,6 @@ import Foundation
 
 struct SearchTableViewCellViewModel {
     let title: String
+    let coverImageURL: String
+    let genres: [String]
 }

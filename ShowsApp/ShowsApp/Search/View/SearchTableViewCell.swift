@@ -10,23 +10,37 @@ import UIKit
 class SearchTableViewCell: UITableViewCell {
 
     @IBOutlet weak var title: UILabel!
+    @IBOutlet weak var coverImageView: UIImageView!
+    @IBOutlet weak var genresLabel: UILabel!
+    
+    private var task: URLSessionTask?
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        coverImageView.layer.cornerRadius = 8
+        title.linesCornerRadius = 8
+        genresLabel.linesCornerRadius = 8
+        selectionStyle = .none
+        showAnimatedSkeleton()
     }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+  
+    func clear() {
+        showAnimatedSkeleton()
+        task?.cancel()
+        task = nil
+        title.text = ""
+        genresLabel.text = ""
+        coverImageView.image = nil
     }
-    
 }
 
 
 extension SearchTableViewCell {
     func configure(viewModel: SearchTableViewCellViewModel) {
-        title.text = viewModel.title
+        task = coverImageView.setImage(from: viewModel.coverImageURL) { [weak self] in
+            self?.title.text = viewModel.title
+            self?.genresLabel.text = viewModel.genres.joined(separator: ", ")
+            self?.hideSkeleton()
+        }
     }
 }

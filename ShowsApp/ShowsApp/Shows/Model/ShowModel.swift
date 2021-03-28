@@ -8,6 +8,7 @@
 import Foundation
 
 struct ShowModel: Codable {
+    let id: Int?
     let image: ShowImageModel?
     let name: String?
 }

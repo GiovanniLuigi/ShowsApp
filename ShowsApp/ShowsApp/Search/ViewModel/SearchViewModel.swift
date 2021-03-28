@@ -45,6 +45,7 @@ class SearchViewModel {
                 self?.viewDelegate.didFinishLoading()
                 switch result {
                 case .success(let queries):
+                    print(queries)
                     self?.currentQueries = queries
                     self?.viewDelegate.didQueryUpdateWithSuccess()
                 case .failure(let error):
@@ -61,7 +62,9 @@ class SearchViewModel {
     
     func cellViewModel(indexPath: IndexPath) -> SearchTableViewCellViewModel {
         let queryModel = currentQueries[indexPath.row]
-        return SearchTableViewCellViewModel(title: queryModel.show?.name ?? "")
+        return SearchTableViewCellViewModel(title: queryModel.show?.name ?? "",
+                                            coverImageURL: queryModel.show?.image?.medium ?? "",
+                                            genres: queryModel.show?.genres ?? [])
     }
     
 }

@@ -16,8 +16,10 @@ struct SearchQueryModel: Codable {
 struct SearchShowModel: Codable {
     let name: String?
     let image: SearchShowImageModel?
+    let genres: [String]?
 }
 
 struct SearchShowImageModel: Codable {
     let medium, original: String?
 }
+

@@ -33,7 +33,10 @@ extension SearchViewController {
         navigationItem.searchController = searchController
         definesPresentationContext = true
         
+        tableView.contentInset =  UIEdgeInsets(top: 8, left: 0, bottom: 8, right: 0)
+
         tableView.dataSource = self
+        tableView.separatorStyle = .none
         tableView.delegate = self
         tableView.register(SearchTableViewCell.nib, forCellReuseIdentifier: SearchTableViewCell.identifier)
     }
@@ -96,8 +99,16 @@ extension SearchViewController: UITableViewDataSource {
         
         return cell
     }
+    
 }
 
 extension SearchViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 100
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: false)
+    }
     
 }

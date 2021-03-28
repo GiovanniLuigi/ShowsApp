@@ -83,6 +83,10 @@ extension ShowsViewController: UICollectionViewDelegate {
             cell.clear()
         }
     }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        viewModel.selectCell(at: indexPath)
+    }
 }
 
 extension ShowsViewController: UICollectionViewDataSourcePrefetching {
@@ -114,7 +118,7 @@ extension ShowsViewController: UICollectionViewDelegateFlowLayout {
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 24, left: 24, bottom: 24, right: 24)
+        return UIEdgeInsets(top: 16, left: 24, bottom: 24, right: 24)
     }
     
     

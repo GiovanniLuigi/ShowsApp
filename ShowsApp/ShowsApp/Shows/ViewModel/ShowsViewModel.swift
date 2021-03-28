@@ -46,6 +46,13 @@ class ShowsViewModel {
         }
     }
     
+    func selectCell(at: IndexPath) {
+        let show = shows[at.row]
+        guard let id = show.id else {
+            return
+        }
+        coordinator.startCardDetail(showID: id)
+    }
 }
 
 extension ShowsViewModel {

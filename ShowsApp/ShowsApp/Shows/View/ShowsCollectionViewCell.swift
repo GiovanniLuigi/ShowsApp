@@ -17,6 +17,7 @@ class ShowsCollectionViewCell: UICollectionViewCell {
         coverImageView.layer.cornerRadius = 8
         coverImageView.skeletonCornerRadius = 8
         titleLabel.skeletonCornerRadius = 8
+        titleLabel.linesCornerRadius = 8
     }
     
     override func prepareForReuse() {
