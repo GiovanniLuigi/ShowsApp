@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SkeletonView
 
 class ShowsViewController: UIViewController {
     
@@ -18,7 +19,6 @@ class ShowsViewController: UIViewController {
         self.setupCollectionView()
         self.viewModel.fetchNextPage()
     }
-    
 }
 
 extension ShowsViewController {
@@ -32,13 +32,15 @@ extension ShowsViewController {
         collectionView.delegate = self
         collectionView.prefetchDataSource = self
         collectionView.register(ShowsCollectionViewCell.nib, forCellWithReuseIdentifier: ShowsCollectionViewCell.identifier)
+        collectionView.isSkeletonable = true
+        collectionView.showAnimatedSkeleton()
     }
 }
 
 extension ShowsViewController: ShowsViewDelegate {
     func didFetchShowsWithSuccess() {
-//        print(viewModel.shows)
         collectionView.reloadData()
+        collectionView.hideSkeleton()
     }
     
     func didFetchShowsWithError() {
@@ -46,16 +48,22 @@ extension ShowsViewController: ShowsViewDelegate {
     }
 }
 
-extension ShowsViewController: UICollectionViewDataSource {
+extension ShowsViewController: SkeletonCollectionViewDataSource {
+    func collectionSkeletonView(_ skeletonView: UICollectionView, cellIdentifierForItemAt indexPath: IndexPath) -> ReusableCellIdentifier {
+        return ShowsCollectionViewCell.identifier
+    }
+    
+    func collectionSkeletonView(_ skeletonView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 16
+    }
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return viewModel.numberOfItemsInSection()
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
         let cell = collectionView.dequeue(ShowsCollectionViewCell.self, indexPath: indexPath)
         if let cell = cell as? ShowsCollectionViewCell {
-//            cell.configure(viewModel: cellViewModel)
             cell.clear()
         }
         
@@ -64,10 +72,8 @@ extension ShowsViewController: UICollectionViewDataSource {
 }
 
 extension ShowsViewController: UICollectionViewDelegate {
-
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        let cellViewModel = viewModel.cellViewModel(indexPath)
-        if let cell = cell as? ShowsCollectionViewCell {
+        if let cellViewModel = viewModel.cellViewModel(indexPath), let cell = cell as? ShowsCollectionViewCell {
             cell.configure(viewModel: cellViewModel)
         }
     }
@@ -82,9 +88,8 @@ extension ShowsViewController: UICollectionViewDelegate {
 extension ShowsViewController: UICollectionViewDataSourcePrefetching {
   func collectionView(_ collectionView: UICollectionView, prefetchItemsAt indexPaths: [IndexPath]) {
     for indexPath in indexPaths {
-        let cellViewModel = viewModel.cellViewModel(indexPath)
         let cell = collectionView.dequeue(ShowsCollectionViewCell.self, indexPath: indexPath)
-        if let cell = cell as? ShowsCollectionViewCell {
+        if let cellViewModel = viewModel.cellViewModel(indexPath), let cell = cell as? ShowsCollectionViewCell {
             cell.configure(viewModel: cellViewModel)
         }
     }

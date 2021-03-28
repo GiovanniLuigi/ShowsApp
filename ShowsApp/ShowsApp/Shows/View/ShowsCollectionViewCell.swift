@@ -15,26 +15,30 @@ class ShowsCollectionViewCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         coverImageView.layer.cornerRadius = 8
+        coverImageView.skeletonCornerRadius = 8
+        titleLabel.skeletonCornerRadius = 8
     }
     
     override func prepareForReuse() {
         super.prepareForReuse()
-       clear()
+        clear()
     }
     
     func clear() {
-        print(task?.state.rawValue)
         task?.cancel()
         task = nil
         coverImageView.image = nil
         titleLabel.text = ""
+        showAnimatedSkeleton()
     }
 }
 
 extension ShowsCollectionViewCell {
     
     func configure(viewModel: ShowsCollectionViewCellViewModel) {
-        task = coverImageView.setImage(from: viewModel.coverImageURL)
-        titleLabel.text = viewModel.title
+        task = coverImageView.setImage(from: viewModel.coverImageURL) { [weak self] in
+            self?.titleLabel.text = viewModel.title
+            self?.hideSkeleton()
+        }
     }
 }

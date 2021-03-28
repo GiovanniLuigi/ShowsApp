@@ -66,7 +66,10 @@ extension ShowsViewModel {
         return shows.count
     }
     
-    func cellViewModel(_ indexPath: IndexPath) -> ShowsCollectionViewCellViewModel {
+    func cellViewModel(_ indexPath: IndexPath) -> ShowsCollectionViewCellViewModel? {
+        guard let shows = currentShows, indexPath.row < shows.count, shows.count > 0 else {
+            return nil
+        }
         let show = shows[indexPath.row]
         return ShowsCollectionViewCellViewModel(coverImageURL: show.image?.medium ?? "", title: show.name ?? "")
     }

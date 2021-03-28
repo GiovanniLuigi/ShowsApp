@@ -9,7 +9,7 @@ import UIKit
 
 extension UIImageView {
     
-    func setImage(from urlString: String, placeholder: UIImage? = nil) -> URLSessionDataTask? {
+    func setImage(from urlString: String, placeholder: UIImage? = nil, completion: (()->Void)? = nil) -> URLSessionDataTask? {
         if let placeholder = placeholder {
             image = placeholder
         }
@@ -17,6 +17,7 @@ extension UIImageView {
         let imageCache = CacheProvider.shared.imageCache
 
         if let cachedImage = imageCache.object(forKey: urlString as NSString) {
+            completion?()
             image = cachedImage
             return nil
         }
@@ -31,12 +32,12 @@ extension UIImageView {
             }
             
             DispatchQueue.main.async {
-                if let newImage = UIImage(data: data),
-                   let compressedImageData = newImage.jpegData(compressionQuality: 0.25),
-                   let compressedImage = UIImage(data: compressedImageData) {
-                    
-                    self?.image = compressedImage
-                    imageCache.setObject(compressedImage, forKey: urlString as NSString)
+                if let newImage = UIImage(data: data) {
+//                   let compressedImageData = newImage.jpegData(compressionQuality: 0.25),
+//                   let compressedImage = UIImage(data: compressedImageData) {
+                    completion?()
+                    self?.image = newImage
+                    imageCache.setObject(newImage, forKey: urlString as NSString)
                 }
             }
         }
