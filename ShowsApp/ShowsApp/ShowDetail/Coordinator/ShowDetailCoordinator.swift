@@ -17,18 +17,19 @@ class ShowDetailCoordinator: ShowDetailCoordinatorProtocol {
     var childCoordinators: [Coordinator] = []
     private(set) var parent: Coordinator?
     private(set) var navigator: Navigator
-    private let showID: Int
+    private let show: ShowModel
     
-    init(navigator: Navigator, parent: Coordinator?, showID: Int) {
+    init(navigator: Navigator, parent: Coordinator?, show: ShowModel) {
         self.parent = parent
         self.navigator = navigator
-        self.showID = showID
+        self.show = show
     }
     
     func start() {
         let showDetailViewController = ShowDetailViewController.instantiate()
         let service = ShowDetailService(executor: HttpExecutor.shared)
-        showDetailViewController.viewModel = ShowDetailViewModel(coordinator: self, service: service, viewDelegate: showDetailViewController)
+        let viewModel = ShowDetailViewModel(coordinator: self, service: service, viewDelegate: showDetailViewController, show: show)
+        showDetailViewController.viewModel = viewModel
         
         navigator.push(showDetailViewController, animated: true)
     }

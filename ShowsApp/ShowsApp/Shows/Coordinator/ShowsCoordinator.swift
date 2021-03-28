@@ -9,7 +9,7 @@ import Foundation
 
 
 protocol ShowsCoordinatorProtocol: Coordinator {
-    func startCardDetail(showID: Int) 
+    func startCardDetail(show: ShowModel) 
 }
 
 class ShowsCoordinator: ShowsCoordinatorProtocol {
@@ -29,8 +29,8 @@ class ShowsCoordinator: ShowsCoordinatorProtocol {
         navigator.push(showsViewController, animated: true)
     }
     
-    func startCardDetail(showID: Int) {
-        let cardDetailCoordinator = ShowDetailCoordinator(navigator: navigator, parent: self, showID: showID)
+    func startCardDetail(show: ShowModel) {
+        let cardDetailCoordinator = ShowDetailCoordinator(navigator: navigator, parent: self, show: show)
         cardDetailCoordinator.start()
     }
     

@@ -15,10 +15,12 @@ class ShowDetailViewModel {
     private let coordinator: ShowDetailCoordinatorProtocol
     private let service: ShowDetailService
     private let viewDelegate: ShowDetailViewDelegate
+    private let show: ShowModel
     
-    init(coordinator: ShowDetailCoordinatorProtocol, service: ShowDetailService, viewDelegate: ShowDetailViewDelegate) {
+    init(coordinator: ShowDetailCoordinatorProtocol, service: ShowDetailService, viewDelegate: ShowDetailViewDelegate, show: ShowModel) {
         self.coordinator = coordinator
         self.service = service
         self.viewDelegate = viewDelegate
+        self.show = show
     }
 }

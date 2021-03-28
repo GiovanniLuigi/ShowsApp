@@ -39,7 +39,7 @@ extension SearchTableViewCell {
     func configure(viewModel: SearchTableViewCellViewModel) {
         task = coverImageView.setImage(from: viewModel.coverImageURL) { [weak self] in
             self?.title.text = viewModel.title
-            self?.genresLabel.text = viewModel.genres.joined(separator: ", ")
+            self?.genresLabel.text = viewModel.genresString
             self?.hideSkeleton()
         }
     }
