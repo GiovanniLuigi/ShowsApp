@@ -10,6 +10,14 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ShowDetailViewController" customModule="ShowsApp" customModuleProvider="target">
             <connections>
+                <outlet property="coverImageView" destination="IbJ-xH-UxW" id="aeU-E9-Bim"/>
+                <outlet property="episodesTableView" destination="ZFx-vx-eYF" id="UhO-Qh-jvB"/>
+                <outlet property="genresLabel" destination="Q48-5B-OMA" id="lXk-7m-lEC"/>
+                <outlet property="scheduleLabel" destination="0Ny-tx-NIT" id="o5Y-W2-pgu"/>
+                <outlet property="seasonsButton" destination="rvq-Nd-siw" id="c2v-1J-ekp"/>
+                <outlet property="summaryLabel" destination="BBA-Pi-gGK" id="oyE-TC-1Ge"/>
+                <outlet property="tableViewHeightConstraint" destination="eSa-9H-xdm" id="MzO-fk-F6I"/>
+                <outlet property="titleLabel" destination="z57-4Z-ne9" id="fSk-ci-Uf5"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -58,6 +66,9 @@
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rvq-Nd-siw">
                                     <rect key="frame" x="20" y="535" width="62" height="30"/>
                                     <state key="normal" title="Season 1"/>
+                                    <connections>
+                                        <action selector="didPressSeasonsButton:" destination="-1" eventType="touchUpInside" id="lOK-63-JhW"/>
+                                    </connections>
                                 </button>
                                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ZFx-vx-eYF">
                                     <rect key="frame" x="20" y="581" width="374" height="237"/>

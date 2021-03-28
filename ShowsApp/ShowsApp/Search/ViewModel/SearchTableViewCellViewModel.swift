@@ -11,7 +11,7 @@ import Foundation
 struct SearchTableViewCellViewModel {
     let title: String
     let coverImageURL: String
-    private let genres: [String]
+    let genres: [String]
     
     var genresString: String {
         return genres.joined(separator: ", ")
