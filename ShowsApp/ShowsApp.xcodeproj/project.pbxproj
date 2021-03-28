@@ -31,6 +31,8 @@
 		11E9810B260FDFC600CE876B /* ShowsCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 11E98109260FDFC600CE876B /* ShowsCollectionViewCell.xib */; };
 		11E9811E260FE08B00CE876B /* Configurable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11E9811D260FE08B00CE876B /* Configurable.swift */; };
 		11E98126260FE28300CE876B /* UICollectionView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11E98125260FE28200CE876B /* UICollectionView+Extensions.swift */; };
+		11E9817D260FFC5900CE876B /* UIFont+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11E9817C260FFC5900CE876B /* UIFont+Extensions.swift */; };
+		11E98184261004EE00CE876B /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 11E98183261004EE00CE876B /* Roboto-Regular.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -60,6 +62,8 @@
 		11E98109260FDFC600CE876B /* ShowsCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ShowsCollectionViewCell.xib; sourceTree = "<group>"; };
 		11E9811D260FE08B00CE876B /* Configurable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Configurable.swift; sourceTree = "<group>"; };
 		11E98125260FE28200CE876B /* UICollectionView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Extensions.swift"; sourceTree = "<group>"; };
+		11E9817C260FFC5900CE876B /* UIFont+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Extensions.swift"; sourceTree = "<group>"; };
+		11E98183261004EE00CE876B /* Roboto-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Regular.ttf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,6 +108,7 @@
 		116A88C3260F76410062FAD7 /* SupportingFiles */ = {
 			isa = PBXGroup;
 			children = (
+				11E9817F2610011000CE876B /* Fonts */,
 				116A88B9260F76100062FAD7 /* LaunchScreen.storyboard */,
 				116A88BC260F76100062FAD7 /* Info.plist */,
 				116A88AE260F760F0062FAD7 /* AppDelegate.swift */,
@@ -140,6 +145,7 @@
 				116A88DB260F7B960062FAD7 /* UIView+Extensions.swift */,
 				116A88DE260F7BDA0062FAD7 /* UIViewController+Extensions.swift */,
 				11E98125260FE28200CE876B /* UICollectionView+Extensions.swift */,
+				11E9817C260FFC5900CE876B /* UIFont+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -175,6 +181,14 @@
 				11E980FF260F98C300CE876B /* TabBarController.swift */,
 			);
 			path = TabBar;
+			sourceTree = "<group>";
+		};
+		11E9817F2610011000CE876B /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				11E98183261004EE00CE876B /* Roboto-Regular.ttf */,
+			);
+			path = Fonts;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -234,6 +248,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				11E98184261004EE00CE876B /* Roboto-Regular.ttf in Resources */,
 				116A88E9260F7F790062FAD7 /* ShowsViewController.xib in Resources */,
 				116A88BB260F76100062FAD7 /* LaunchScreen.storyboard in Resources */,
 				11E9810B260FDFC600CE876B /* ShowsCollectionViewCell.xib in Resources */,
@@ -267,6 +282,7 @@
 				11E98100260F98C300CE876B /* TabBarController.swift in Sources */,
 				11E9810A260FDFC600CE876B /* ShowsCollectionViewCell.swift in Sources */,
 				116A88C9260F76C80062FAD7 /* Coordinator.swift in Sources */,
+				11E9817D260FFC5900CE876B /* UIFont+Extensions.swift in Sources */,
 				116A88D4260F7A830062FAD7 /* Storyboarded.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

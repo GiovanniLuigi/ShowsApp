@@ -8,17 +8,19 @@
 import UIKit
 
 class ShowsCollectionViewCell: UICollectionViewCell {
-
+    @IBOutlet weak var coverImageView: UIImageView!
+    @IBOutlet weak var titleLabel: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
-        backgroundColor = .red
+        coverImageView.layer.cornerRadius = 8
     }
-
 }
 
 extension ShowsCollectionViewCell: Configurable {
-    func configure<String>(_ obj: String) {
+    private typealias ViewModel = ShowsCollectionViewCellViewModel
+    
+    func configure<ViewModel>(_ obj: ViewModel) {
         
     }
 }

@@ -25,6 +25,13 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         window.rootViewController = navigationController
         window.makeKeyAndVisible()
+        
+//        setupFonts()
+    }
+    
+    private func setupFonts() {
+        UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.font: UIFont.title1]
+        UINavigationBar.appearance().largeTitleTextAttributes = [NSAttributedString.Key.font: UIFont.largeTitle]
     }
     
 }
