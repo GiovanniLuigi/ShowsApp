@@ -34,7 +34,7 @@ extension EpisodeDetailViewModel {
     }
     
     var hasCoverImage: Bool {
-        return episodeModel.coverImageURL != nil
+        return !coverImageURL.isEmpty
     }
     
     var coverImageURL: String {

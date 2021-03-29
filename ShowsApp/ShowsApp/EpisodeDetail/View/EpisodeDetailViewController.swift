@@ -13,6 +13,8 @@ class EpisodeDetailViewController: UIViewController {
     @IBOutlet weak var episodeNameLabel: UILabel!
     @IBOutlet weak var detailsLabel: UILabel!
     @IBOutlet weak var summaryLabel: UILabel!
+    @IBOutlet weak var imageHeightConstraint: NSLayoutConstraint!
+    
     
     var viewModel: EpisodeDetailViewModel!
     
@@ -22,11 +24,14 @@ class EpisodeDetailViewController: UIViewController {
         title = viewModel.title
         navigationController?.navigationBar.prefersLargeTitles = viewModel.prefersLargeTitles
         
-        coverImageView.isHidden = !viewModel.hasCoverImage
+        if !viewModel.hasCoverImage {
+            imageHeightConstraint.isActive = false
+            view.layoutIfNeeded()
+        }
         coverImageView.setImage(from: viewModel.coverImageURL)
         episodeNameLabel.text = viewModel.episodeTitle
         summaryLabel.text = viewModel.summary
-        detailsLabel.text = viewModel.detailsText
+        detailsLabel.text = viewModel.detailsText        
     }
 }
 
