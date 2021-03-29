@@ -27,10 +27,10 @@ class ShowDetailViewController: UIViewController {
         episodesTableView.register(ShowDetailTableViewCell.nib, forCellReuseIdentifier: ShowDetailTableViewCell.identifier)
         episodesTableView.separatorStyle = .none
         episodesTableView.isScrollEnabled = false
-        
         seasonButtonView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(didPressSeasonsButton)))
         seasonButtonView.layer.cornerRadius = 16
-        
+        navigationController?.navigationBar.prefersLargeTitles = viewModel.prefersLargeTitles
+        title = viewModel.navTitle
         titleLabel.text = viewModel.title
         genresLabel.text = viewModel.genres
         scheduleLabel.text = viewModel.schedule

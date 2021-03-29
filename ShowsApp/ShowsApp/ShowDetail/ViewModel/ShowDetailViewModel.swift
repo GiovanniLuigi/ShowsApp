@@ -113,6 +113,14 @@ extension ShowDetailViewModel {
         return "Season \(currentSeason+1)"
     }
     
+    var navTitle: String {
+        return "Show detail"
+    }
+    
+    var prefersLargeTitles: Bool {
+        return false
+    }
+    
     func numberOfRowsInSection() -> Int {
         if seasonIndex > episodes.count-1 {
             return 0
@@ -132,6 +140,4 @@ extension ShowDetailViewModel: SeasonPickerDelegate {
     func didSelect(seasonIndex: Int) {
         fetchEpisodes(seasonIndex: seasonIndex)
     }
-    
-    
 }

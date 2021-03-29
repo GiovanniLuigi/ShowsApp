@@ -38,6 +38,7 @@ class ShowDetailCoordinator: ShowDetailCoordinatorProtocol {
         let seasonPickerController = SeasonPickerViewController.instantiate()
         let viewModel = SeasonPickerViewModel(seasons: seasons, delegate: delegate, currentSeason: currentSeason, coodinator: self)
         seasonPickerController.viewModel = viewModel
+        
         navigator.present(seasonPickerController, animated: true, completion: nil)
     }
 }
