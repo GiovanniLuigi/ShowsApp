@@ -8,7 +8,11 @@
 import Foundation
 
 protocol ShowDetailViewDelegate {
+    func didFetchSeasonsWithSuccess()
+    func didFetchSeasonsWithError()
     
+    func didFetchEpisodesWithSuccess()
+    func didFetchEpisodesWithError()
 }
 
 class ShowDetailViewModel {
@@ -17,6 +21,11 @@ class ShowDetailViewModel {
     private let viewDelegate: ShowDetailViewDelegate
     private let show: ShowModel
     
+    private var seasons: [SeasonModel] = []
+    private var episodes: [[EpisodesModel]] = []
+    private var error: Error?
+    private var currentSeason: Int = 0
+    
     init(coordinator: ShowDetailCoordinatorProtocol, service: ShowDetailService, viewDelegate: ShowDetailViewDelegate, show: ShowModel) {
         self.coordinator = coordinator
         self.service = service
@@ -24,13 +33,48 @@ class ShowDetailViewModel {
         self.show = show
     }
     
-    func numberOfRowsInSection() -> Int {
-        return 10
+    func fetchSeasons() {
+        guard let id = show.id else {
+            return
+        }
+        
+        service.fetchSeasons(showID: id) { [weak self] (result) in
+            switch result {
+            case .success(let model):
+                self?.seasons = model
+                model.forEach { _ in
+                    self?.episodes.append([])
+                }
+                self?.viewDelegate.didFetchSeasonsWithSuccess()
+            case .failure(let error):
+                self?.error = error
+                self?.viewDelegate.didFetchSeasonsWithError()
+            }
+        }
     }
     
-    func cellViewModel(indexPath: IndexPath) -> ShowDetailCellViewModel {
-        return ShowDetailCellViewModel()
+    func fetchEpisodes(seasonIndex: Int) {
+        guard seasonIndex < seasons.count,
+              seasonIndex >= 0,
+              let seasonID = seasons[seasonIndex].id else {
+            error = nil
+            viewDelegate.didFetchEpisodesWithError()
+            return
+        }
+        
+        service.fetchEpisodes(seasonID: seasonID) { [weak self] (result) in
+            self?.currentSeason = seasonIndex
+            switch result {
+            case .success(let model):
+                self?.episodes[seasonIndex] = model
+                self?.viewDelegate.didFetchEpisodesWithSuccess()
+            case .failure(let error):
+                self?.error = error
+                self?.viewDelegate.didFetchEpisodesWithError()
+            }
+        }
     }
+    
 }
 
 extension ShowDetailViewModel {
@@ -55,5 +99,22 @@ extension ShowDetailViewModel {
     
     var summary: String {
         return show.summary?.htmlDecoded ?? String.empty
+    }
+    
+    var seasonIndex: Int {
+        return currentSeason
+    }
+    
+    func numberOfRowsInSection() -> Int {
+        if seasonIndex > episodes.count-1 {
+            return 0
+        }
+        
+        return episodes[seasonIndex].count
+    }
+    
+    func cellViewModel(indexPath: IndexPath) -> ShowDetailCellViewModel {
+        let episode = episodes[currentSeason][indexPath.row]
+        return ShowDetailCellViewModel(title: episode.name ?? String.empty, number: episode.number, coverImageURL: episode.image?.medium ?? "")
     }
 }

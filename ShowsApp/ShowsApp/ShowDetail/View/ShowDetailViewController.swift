@@ -32,15 +32,12 @@ class ShowDetailViewController: UIViewController {
         scheduleLabel.text = viewModel.schedule
         summaryLabel.text = viewModel.summary
         coverImageView.setImage(from: viewModel.coverImageURL)
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-            super.viewDidAppear(animated)
-            shouldReloadTableVieSize()
+        
+        viewModel.fetchSeasons()
     }
     
     @IBAction func didPressSeasonsButton(_ sender: Any) {
-        
+        print("season")
     }
     
     private func shouldReloadTableVieSize() {
@@ -71,8 +68,31 @@ extension ShowDetailViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 100
     }
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        if let lastVisibleIndexPath = tableView.indexPathsForVisibleRows?.last {
+            if indexPath == lastVisibleIndexPath {
+                shouldReloadTableVieSize()
+            }
+        }
+    }
 }
 
 extension ShowDetailViewController: ShowDetailViewDelegate {
+    func didFetchEpisodesWithSuccess() {
+        episodesTableView.reloadData()
+    }
     
+    func didFetchEpisodesWithError() {
+        print("Did fetch espisodes error")
+    }
+    
+    func didFetchSeasonsWithSuccess() {
+        print("setup seasons button")
+        viewModel.fetchEpisodes(seasonIndex: 0)
+    }
+    
+    func didFetchSeasonsWithError() {
+        print("Did fetch season with error")
+    }
 }

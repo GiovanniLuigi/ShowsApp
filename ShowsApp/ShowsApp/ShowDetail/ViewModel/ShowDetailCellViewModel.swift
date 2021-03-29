@@ -9,11 +9,14 @@ import Foundation
 
 
 struct ShowDetailCellViewModel {
-    let title: String = "Invernal Soldier"
-    let number: Int = 1
-    let coverImageURL: String = "https://static.tvmaze.com/uploads/images/original_untouched/1/4388.jpg"
+    let title: String
+    let number: Int?
+    let coverImageURL: String
     
     var episodeTitle: String {
-        return "\(number). \(title)"
+        if let number = number {
+            return "\(number). \(title)"
+        }
+        return title
     }
 }
