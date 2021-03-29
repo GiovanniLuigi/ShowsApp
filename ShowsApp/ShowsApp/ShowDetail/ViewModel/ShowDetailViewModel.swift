@@ -13,6 +13,9 @@ protocol ShowDetailViewDelegate {
     
     func didFetchEpisodesWithSuccess()
     func didFetchEpisodesWithError()
+    
+    func didStartLoading()
+    func didFinishLoading()
 }
 
 class ShowDetailViewModel {
@@ -34,6 +37,7 @@ class ShowDetailViewModel {
     }
     
     func fetchSeasons() {
+        viewDelegate.didStartLoading()
         guard let id = show.id else {
             return
         }
@@ -54,6 +58,7 @@ class ShowDetailViewModel {
     }
     
     func fetchEpisodes(seasonIndex: Int) {
+        viewDelegate.didStartLoading()
         guard seasonIndex < seasons.count,
               seasonIndex >= 0,
               let seasonID = seasons[seasonIndex].id else {
@@ -64,6 +69,7 @@ class ShowDetailViewModel {
         
         service.fetchEpisodes(seasonID: seasonID) { [weak self] (result) in
             self?.currentSeason = seasonIndex
+            self?.viewDelegate.didFinishLoading()
             switch result {
             case .success(let model):
                 self?.episodes[seasonIndex] = model

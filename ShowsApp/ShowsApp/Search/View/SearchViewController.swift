@@ -8,7 +8,7 @@
 import UIKit
 
 class SearchViewController: UIViewController {
-
+    
     @IBOutlet weak var tableView: UITableView!
     var viewModel: SearchViewModel!
     
@@ -16,16 +16,13 @@ class SearchViewController: UIViewController {
         super.viewDidLoad()
         setupView()
     }
-
 }
 
 extension SearchViewController {
-    
-    
     private func setupView() {
         title = viewModel.title
         navigationController?.navigationBar.prefersLargeTitles = true
-    
+        
         let searchController = UISearchController(searchResultsController: nil)
         searchController.searchResultsUpdater = self
         searchController.obscuresBackgroundDuringPresentation = false
@@ -34,7 +31,7 @@ extension SearchViewController {
         definesPresentationContext = true
         
         tableView.contentInset =  UIEdgeInsets(top: 8, left: 0, bottom: 8, right: 0)
-
+        
         tableView.dataSource = self
         tableView.separatorStyle = .none
         tableView.delegate = self
@@ -71,7 +68,7 @@ extension SearchViewController: UISearchResultsUpdating {
         NSObject.cancelPreviousPerformRequests(withTarget: self, selector: #selector(self.reload(_:)), object: searchBar)
         perform(#selector(self.reload(_:)), with: searchBar, afterDelay: 0.5)
     }
-
+    
     @objc private func reload(_ searchBar: UISearchBar) {
         viewModel.query()
     }
@@ -99,7 +96,6 @@ extension SearchViewController: UITableViewDataSource {
         
         return cell
     }
-    
 }
 
 extension SearchViewController: UITableViewDelegate {
@@ -108,7 +104,6 @@ extension SearchViewController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: false)
+        viewModel.didSelectRow(at: indexPath)
     }
-    
 }

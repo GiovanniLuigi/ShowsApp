@@ -9,7 +9,7 @@ import Foundation
 
 
 protocol SearchCoordinatorProtocol: Coordinator {
-    
+    func startShowDetail(show: ShowModel)
 }
 
 final class SearchCoordinator: SearchCoordinatorProtocol {
@@ -28,6 +28,12 @@ final class SearchCoordinator: SearchCoordinatorProtocol {
         let viewModel = SearchViewModel(coordinator: self, service: service, viewDelegate: searchViewController)
         searchViewController.viewModel = viewModel
         navigator.push(searchViewController, animated: true)
+    }
+    
+    func startShowDetail(show: ShowModel) {
+        let showDetailCoordinator = ShowDetailCoordinator(navigator: navigator, parent: self, show: show)
+        childCoordinators.append(showDetailCoordinator)
+        showDetailCoordinator.start()
     }
     
 }

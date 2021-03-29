@@ -10,16 +10,16 @@ import Foundation
 
 struct SearchQueryModel: Codable {
     let score: Double?
-    let show: SearchShowModel?
+    let show: ShowModel?
 }
-
-struct SearchShowModel: Codable {
-    let name: String?
-    let image: SearchShowImageModel?
-    let genres: [String]?
-}
-
-struct SearchShowImageModel: Codable {
-    let medium, original: String?
-}
+//
+//struct SearchShowModel: Codable {
+//    let name: String?
+//    let image: SearchShowImageModel?
+//    let genres: [String]?
+//}
+//
+//struct SearchShowImageModel: Codable {
+//    let medium, original: String?
+//}
 

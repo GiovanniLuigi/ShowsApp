@@ -45,7 +45,6 @@ class SearchViewModel {
                 self?.viewDelegate.didFinishLoading()
                 switch result {
                 case .success(let queries):
-                    print(queries)
                     self?.currentQueries = queries
                     self?.viewDelegate.didQueryUpdateWithSuccess()
                 case .failure(let error):
@@ -54,6 +53,14 @@ class SearchViewModel {
                 }
             }
         }
+    }
+    
+    func didSelectRow(at indexPath: IndexPath) {
+        let query = currentQueries[indexPath.row]
+        guard let show = query.show else {
+            return
+        }
+        coordinator.startShowDetail(show: show)
     }
     
     func numberOfRowsInSection(section: Int = 0) -> Int {
@@ -79,9 +86,7 @@ extension SearchViewModel {
     }
 }
 
-
 extension SearchViewModel {
-    
     var title: String {
         return "Search"
     }
@@ -97,5 +102,4 @@ extension SearchViewModel {
     var errorMessage: String {
         return currentError?.localizedDescription ?? "An error ocurred"
     }
-    
 }

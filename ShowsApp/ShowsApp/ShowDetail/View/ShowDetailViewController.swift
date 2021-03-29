@@ -35,7 +35,10 @@ class ShowDetailViewController: UIViewController {
         genresLabel.text = viewModel.genres
         scheduleLabel.text = viewModel.schedule
         summaryLabel.text = viewModel.summary
-        coverImageView.setImage(from: viewModel.coverImageURL)
+        coverImageView.showAnimatedSkeleton()
+        coverImageView.setImage(from: viewModel.coverImageURL) { [weak self] in
+            self?.coverImageView.hideSkeleton()
+        }
         
         viewModel.fetchSeasons()
     }
@@ -53,6 +56,14 @@ class ShowDetailViewController: UIViewController {
     private func reloadView() {
         episodesTableView.reloadData()
         seasonButtonTitleLabel.text = viewModel.currentSeasonTitle
+    }
+    
+    private func startSkeleton() {
+        
+    }
+    
+    private func hideSkeleton() {
+        
     }
 }
 
@@ -87,6 +98,14 @@ extension ShowDetailViewController: UITableViewDelegate {
 }
 
 extension ShowDetailViewController: ShowDetailViewDelegate {
+    func didStartLoading() {
+        startSkeleton()
+    }
+    
+    func didFinishLoading() {
+        hideSkeleton()
+    }
+    
     func didFetchEpisodesWithSuccess() {
         reloadView()
     }
