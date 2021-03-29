@@ -76,7 +76,7 @@ class ShowDetailViewModel {
     }
     
     func showSeasonPicker() {
-        coordinator.startSeasonPicker(seasons: seasons, delegate: self)
+        coordinator.startSeasonPicker(seasons: seasons, currentSeason: currentSeason, delegate: self)
     }
     
 }
@@ -126,7 +126,7 @@ extension ShowDetailViewModel {
 
 extension ShowDetailViewModel: SeasonPickerDelegate {
     func didSelect(seasonID: Int) {
-        print("selected season")
+        print("selected season \(seasonID)")
     }
     
     

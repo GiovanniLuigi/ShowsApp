@@ -9,7 +9,7 @@ import Foundation
 
 
 protocol ShowDetailCoordinatorProtocol: Coordinator {
-    func startSeasonPicker(seasons: [SeasonModel], delegate: SeasonPickerDelegate)
+    func startSeasonPicker(seasons: [SeasonModel], currentSeason: Int, delegate: SeasonPickerDelegate)
 }
 
 
@@ -34,9 +34,9 @@ class ShowDetailCoordinator: ShowDetailCoordinatorProtocol {
         navigator.push(showDetailViewController, animated: true)
     }
     
-    func startSeasonPicker(seasons: [SeasonModel], delegate: SeasonPickerDelegate) {
+    func startSeasonPicker(seasons: [SeasonModel], currentSeason: Int, delegate: SeasonPickerDelegate) {
         let seasonPickerController = SeasonPickerViewController.instantiate()
-        let viewModel = SeasonPickerViewModel(seasons: seasons, delegate: delegate, coodinator: self)
+        let viewModel = SeasonPickerViewModel(seasons: seasons, delegate: delegate, currentSeason: currentSeason, coodinator: self)
         seasonPickerController.viewModel = viewModel
         navigator.present(seasonPickerController, animated: true, completion: nil)
     }

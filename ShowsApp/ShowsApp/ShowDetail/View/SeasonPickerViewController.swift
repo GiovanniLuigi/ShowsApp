@@ -17,6 +17,8 @@ class SeasonPickerViewController: UIViewController {
         super.viewDidLoad()
         pickerView.delegate = self
         pickerView.dataSource = self
+        
+        pickerView.selectRow(viewModel.initialRow, inComponent: 0, animated: false)
     }
 
     @IBAction func didTapDone(_ sender: Any) {

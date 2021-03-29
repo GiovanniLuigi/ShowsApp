@@ -15,11 +15,12 @@ class SeasonPickerViewModel {
     private let seasons: [PickerSeasonModel]
     private let delegate: SeasonPickerDelegate
     private let coodinator: ShowDetailCoordinatorProtocol
+    private let currentSeason: Int
     
-    init(seasons: [SeasonModel], delegate: SeasonPickerDelegate, coodinator: ShowDetailCoordinatorProtocol) {
+    init(seasons: [SeasonModel], delegate: SeasonPickerDelegate, currentSeason: Int, coodinator: ShowDetailCoordinatorProtocol) {
         self.delegate = delegate
         self.coodinator = coodinator
-        
+        self.currentSeason = currentSeason
         self.seasons = seasons.filter { $0.id != nil && $0.number != nil }.map { PickerSeasonModel(id: $0.id ?? 1, number: $0.number ?? 1) }
     }
     
@@ -39,6 +40,10 @@ extension SeasonPickerViewModel {
         return seasons.compactMap { $0.title }
     }
     
+    var initialRow: Int {
+        return currentSeason
+    }
+    
     func numberOfSeasons() -> Int {
         return seasonsTitles.count
     }
@@ -46,4 +51,6 @@ extension SeasonPickerViewModel {
     func seasonTitle(at index: Int) -> String {
         return seasonsTitles[index]
     }
+    
+    
 }
