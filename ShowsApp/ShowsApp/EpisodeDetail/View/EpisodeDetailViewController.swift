@@ -9,6 +9,11 @@ import UIKit
 
 class EpisodeDetailViewController: UIViewController {
 
+    @IBOutlet weak var coverImageView: UIImageView!
+    @IBOutlet weak var episodeNameLabel: UILabel!
+    @IBOutlet weak var detailsLabel: UILabel!
+    @IBOutlet weak var summaryLabel: UILabel!
+    
     var viewModel: EpisodeDetailViewModel!
     
     override func viewDidLoad() {
