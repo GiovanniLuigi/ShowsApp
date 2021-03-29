@@ -10,7 +10,8 @@ import UIKit
 class ShowsCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var coverImageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
-    var task: URLSessionDataTask?
+    private var task: URLSessionDataTask?
+    private var viewModel: ShowsCollectionViewCellViewModel? = nil
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -29,6 +30,7 @@ class ShowsCollectionViewCell: UICollectionViewCell {
         task?.cancel()
         task = nil
         coverImageView.image = nil
+        viewModel = nil
         titleLabel.text = String.empty
         showAnimatedSkeleton()
     }
@@ -36,9 +38,12 @@ class ShowsCollectionViewCell: UICollectionViewCell {
 
 extension ShowsCollectionViewCell {
     func configure(viewModel: ShowsCollectionViewCellViewModel) {
+        if self.viewModel == viewModel {
+            return
+        }
         task = coverImageView.setImage(from: viewModel.coverImageURL) { [weak self] in
             self?.titleLabel.text = viewModel.title
-            self?.hideSkeleton()
+            self?.hideSkeleton(transition: .crossDissolve(0.5))
         }
     }
 }

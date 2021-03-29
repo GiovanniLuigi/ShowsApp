@@ -40,6 +40,7 @@ class ShowDetailViewController: UIViewController {
             self?.coverImageView.hideSkeleton()
         }
         
+        seasonButtonView.showAnimatedSkeleton()
         viewModel.fetchSeasons()
     }
     
@@ -49,21 +50,14 @@ class ShowDetailViewController: UIViewController {
     
     private func shouldReloadTableVieSize() {
         self.view.layoutIfNeeded()
-        self.tableViewHeightConstraint.constant = self.episodesTableView.contentSize.height + 16
+        self.tableViewHeightConstraint.constant = CGFloat(viewModel.numberOfRowsInSection()*100)
         self.view.layoutIfNeeded()
     }
     
     private func reloadView() {
         episodesTableView.reloadData()
         seasonButtonTitleLabel.text = viewModel.currentSeasonTitle
-    }
-    
-    private func startSkeleton() {
-        
-    }
-    
-    private func hideSkeleton() {
-        
+        shouldReloadTableVieSize()
     }
 }
 
@@ -88,26 +82,18 @@ extension ShowDetailViewController: UITableViewDelegate {
         return 100
     }
     
-    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        if let lastVisibleIndexPath = tableView.indexPathsForVisibleRows?.last {
-            if indexPath == lastVisibleIndexPath {
-                shouldReloadTableVieSize()
-            }
-        }
-    }
-    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         viewModel.didSelectCell(at: indexPath)
     }
 }
 
 extension ShowDetailViewController: ShowDetailViewDelegate {
-    func didStartLoading() {
-        startSkeleton()
+    func didUpdateCurrentSeason() {
+        seasonButtonTitleLabel.text = viewModel.currentSeasonTitle
     }
     
-    func didFinishLoading() {
-        hideSkeleton()
+    func didStartToFetchEpisodes() {
+        reloadView()
     }
     
     func didFetchEpisodesWithSuccess() {
@@ -119,6 +105,7 @@ extension ShowDetailViewController: ShowDetailViewDelegate {
     }
     
     func didFetchSeasonsWithSuccess() {
+        seasonButtonView.hideSkeleton()
         seasonButtonTitleLabel.text = viewModel.currentSeasonTitle
         viewModel.fetchEpisodes(seasonIndex: viewModel.seasonIndex)
     }

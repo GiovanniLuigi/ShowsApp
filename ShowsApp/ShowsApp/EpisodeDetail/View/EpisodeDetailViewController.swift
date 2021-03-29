@@ -31,7 +31,7 @@ class EpisodeDetailViewController: UIViewController {
         coverImageView.setImage(from: viewModel.coverImageURL)
         episodeNameLabel.text = viewModel.episodeTitle
         summaryLabel.text = viewModel.summary
-        detailsLabel.text = viewModel.detailsText        
+        detailsLabel.text = viewModel.detailsText
     }
 }
 

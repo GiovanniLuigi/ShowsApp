@@ -10,12 +10,11 @@ import Foundation
 protocol ShowDetailViewDelegate {
     func didFetchSeasonsWithSuccess()
     func didFetchSeasonsWithError()
+    func didUpdateCurrentSeason()
     
     func didFetchEpisodesWithSuccess()
     func didFetchEpisodesWithError()
-    
-    func didStartLoading()
-    func didFinishLoading()
+    func didStartToFetchEpisodes()
 }
 
 class ShowDetailViewModel {
@@ -28,6 +27,7 @@ class ShowDetailViewModel {
     private var episodes: [[EpisodesModel]] = []
     private var error: Error?
     private var currentSeason: Int = 0
+    var isLoading: Bool = true
     
     init(coordinator: ShowDetailCoordinatorProtocol, service: ShowDetailService, viewDelegate: ShowDetailViewDelegate, show: ShowModel) {
         self.coordinator = coordinator
@@ -37,7 +37,6 @@ class ShowDetailViewModel {
     }
     
     func fetchSeasons() {
-        viewDelegate.didStartLoading()
         guard let id = show.id else {
             return
         }
@@ -58,7 +57,6 @@ class ShowDetailViewModel {
     }
     
     func fetchEpisodes(seasonIndex: Int) {
-        viewDelegate.didStartLoading()
         guard seasonIndex < seasons.count,
               seasonIndex >= 0,
               let seasonID = seasons[seasonIndex].id else {
@@ -66,10 +64,10 @@ class ShowDetailViewModel {
             viewDelegate.didFetchEpisodesWithError()
             return
         }
-        
+
         service.fetchEpisodes(seasonID: seasonID) { [weak self] (result) in
             self?.currentSeason = seasonIndex
-            self?.viewDelegate.didFinishLoading()
+            self?.viewDelegate.didUpdateCurrentSeason()
             switch result {
             case .success(let model):
                 self?.episodes[seasonIndex] = model
@@ -78,6 +76,7 @@ class ShowDetailViewModel {
                 self?.error = error
                 self?.viewDelegate.didFetchEpisodesWithError()
             }
+            self?.isLoading = false
         }
     }
     
@@ -115,7 +114,9 @@ extension ShowDetailViewModel {
     var schedule: String {
         var formattedSchedule = show.schedule?.days ?? []
         let time = show.schedule?.time ?? String.empty
-        formattedSchedule.append(time)
+        if !time.isEmpty {
+            formattedSchedule.append(time)
+        }
         return formattedSchedule.joined(separator: " • ")
     }
     
@@ -156,6 +157,9 @@ extension ShowDetailViewModel {
 
 extension ShowDetailViewModel: SeasonPickerDelegate {
     func didSelect(seasonIndex: Int) {
+        currentSeason = seasonIndex
+        viewDelegate.didStartToFetchEpisodes()
+        viewDelegate.didUpdateCurrentSeason()
         fetchEpisodes(seasonIndex: seasonIndex)
     }
 }

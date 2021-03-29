@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct ShowsCollectionViewCellViewModel {
+struct ShowsCollectionViewCellViewModel: Equatable {
     let coverImageURL: String
     let title: String
 }

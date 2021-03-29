@@ -12,9 +12,12 @@ class ShowsViewController: UIViewController {
     
     var viewModel: ShowsViewModel!
     @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var loadingIndicatorHeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var activityView: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.hideLoadingIndicator(animated: false)
         self.setupView()
         self.setupCollectionView()
         self.viewModel.fetchNextPage()
@@ -34,13 +37,18 @@ extension ShowsViewController {
         collectionView.register(ShowsCollectionViewCell.nib, forCellWithReuseIdentifier: ShowsCollectionViewCell.identifier)
         collectionView.isSkeletonable = true
         collectionView.showAnimatedSkeleton()
+        self.collectionView.isPrefetchingEnabled = true
     }
 }
 
 extension ShowsViewController: ShowsViewDelegate {
     func didFetchShowsWithSuccess() {
-        collectionView.reloadData()
-        collectionView.hideSkeleton()
+        hideLoadingIndicator( completion: {
+            
+            self.collectionView.reloadData()
+            self.collectionView.hideSkeleton()
+        })
+        
     }
     
     func didFetchShowsWithError() {
@@ -132,15 +140,49 @@ extension ShowsViewController: UICollectionViewDelegateFlowLayout {
 }
 
 extension ShowsViewController {
+    func hideLoadingIndicator(animated: Bool = true, completion: (()->Void)? = nil) {
+        self.loadingIndicatorHeightConstraint.constant = 0
+        
+        if animated {
+            UIView.animate(withDuration: 0.1) {
+                self.activityView.isHidden = true
+                self.view.layoutIfNeeded()
+            } completion: { (_) in
+                completion?()
+            }
+        } else {
+            self.view.layoutIfNeeded()
+            self.activityView.isHidden = true
+        }
+    }
+    
+    func showLoadingIndicator(animated: Bool = true, completion: (()->Void)? = nil) {
+        self.loadingIndicatorHeightConstraint.constant = 75
+        if animated {
+            UIView.animate(withDuration: 0.5) {
+                self.activityView.isHidden = false
+                self.view.layoutIfNeeded()
+            } completion: { (_) in
+                completion?()
+            }
+
+        } else {
+            self.view.layoutIfNeeded()
+            self.activityView.isHidden = false
+        }
+    }
+    
+    
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         if viewModel.isLoading {
             return
         }
         
-        let offset = -200
+        let offset = 50
         let bottomEdge = scrollView.contentOffset.y + scrollView.frame.size.height;
         if (bottomEdge + CGFloat(offset) >= scrollView.contentSize.height) {
             viewModel.fetchNextPage()
+            showLoadingIndicator()
         }
     }
 }
