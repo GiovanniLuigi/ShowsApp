@@ -40,7 +40,7 @@ class ShowDetailViewController: UIViewController {
     }
     
     @objc func didPressSeasonsButton() {
-        print("season")
+        viewModel.showSeasonPicker()
     }
     
     private func shouldReloadTableVieSize() {

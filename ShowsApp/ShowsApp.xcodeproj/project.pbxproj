@@ -31,6 +31,10 @@
 		116FF2FD26113BC7005ED874 /* ShowDetailTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 116FF2FB26113BC7005ED874 /* ShowDetailTableViewCell.xib */; };
 		116FF30026113E56005ED874 /* ShowDetailCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 116FF2FF26113E56005ED874 /* ShowDetailCellViewModel.swift */; };
 		116FF3032611452E005ED874 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 116FF3022611452E005ED874 /* String+Extensions.swift */; };
+		116FF30E26117411005ED874 /* SeasonPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 116FF30C26117411005ED874 /* SeasonPickerViewController.swift */; };
+		116FF30F26117411005ED874 /* SeasonPickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 116FF30D26117411005ED874 /* SeasonPickerViewController.xib */; };
+		116FF3122612062B005ED874 /* SeasonPickerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 116FF3112612062B005ED874 /* SeasonPickerViewModel.swift */; };
+		116FF315261208FC005ED874 /* PickerSeasonModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 116FF314261208FC005ED874 /* PickerSeasonModel.swift */; };
 		117D324B2610CBC700B6B9F0 /* SearchQueryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 117D324A2610CBC700B6B9F0 /* SearchQueryModel.swift */; };
 		117D324F2610EB8A00B6B9F0 /* SearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 117D324D2610EB8A00B6B9F0 /* SearchTableViewCell.swift */; };
 		117D32502610EB8A00B6B9F0 /* SearchTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 117D324E2610EB8A00B6B9F0 /* SearchTableViewCell.xib */; };
@@ -87,6 +91,10 @@
 		116FF2FB26113BC7005ED874 /* ShowDetailTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ShowDetailTableViewCell.xib; sourceTree = "<group>"; };
 		116FF2FF26113E56005ED874 /* ShowDetailCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowDetailCellViewModel.swift; sourceTree = "<group>"; };
 		116FF3022611452E005ED874 /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
+		116FF30C26117411005ED874 /* SeasonPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeasonPickerViewController.swift; sourceTree = "<group>"; };
+		116FF30D26117411005ED874 /* SeasonPickerViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SeasonPickerViewController.xib; sourceTree = "<group>"; };
+		116FF3112612062B005ED874 /* SeasonPickerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeasonPickerViewModel.swift; sourceTree = "<group>"; };
+		116FF314261208FC005ED874 /* PickerSeasonModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerSeasonModel.swift; sourceTree = "<group>"; };
 		117D324A2610CBC700B6B9F0 /* SearchQueryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchQueryModel.swift; sourceTree = "<group>"; };
 		117D324D2610EB8A00B6B9F0 /* SearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewCell.swift; sourceTree = "<group>"; };
 		117D324E2610EB8A00B6B9F0 /* SearchTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchTableViewCell.xib; sourceTree = "<group>"; };
@@ -277,6 +285,8 @@
 				117D3267261123AF00B6B9F0 /* ShowDetailViewController.swift */,
 				116FF2FA26113BC7005ED874 /* ShowDetailTableViewCell.swift */,
 				116FF2FB26113BC7005ED874 /* ShowDetailTableViewCell.xib */,
+				116FF30C26117411005ED874 /* SeasonPickerViewController.swift */,
+				116FF30D26117411005ED874 /* SeasonPickerViewController.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -287,6 +297,7 @@
 				117D32742611241C00B6B9F0 /* ShowDetailService.swift */,
 				116FF2F426112E63005ED874 /* SeasonModel.swift */,
 				116FF2F726112EAD005ED874 /* EpisodesModel.swift */,
+				116FF314261208FC005ED874 /* PickerSeasonModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -304,6 +315,7 @@
 			children = (
 				117D3270261123D200B6B9F0 /* ShowDetailViewModel.swift */,
 				116FF2FF26113E56005ED874 /* ShowDetailCellViewModel.swift */,
+				116FF3112612062B005ED874 /* SeasonPickerViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -459,6 +471,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				117D326A261123AF00B6B9F0 /* ShowDetailViewController.xib in Resources */,
+				116FF30F26117411005ED874 /* SeasonPickerViewController.xib in Resources */,
 				11E98184261004EE00CE876B /* Roboto-Regular.ttf in Resources */,
 				116A88E9260F7F790062FAD7 /* ShowsViewController.xib in Resources */,
 				116A88BB260F76100062FAD7 /* LaunchScreen.storyboard in Resources */,
@@ -535,6 +548,7 @@
 				11956C6626100C4300590B37 /* Service.swift in Sources */,
 				116FF3032611452E005ED874 /* String+Extensions.swift in Sources */,
 				117D32562610ECC700B6B9F0 /* UITableView+Extensions.swift in Sources */,
+				116FF30E26117411005ED874 /* SeasonPickerViewController.swift in Sources */,
 				116A88CD260F773D0062FAD7 /* Navigator.swift in Sources */,
 				116FF30026113E56005ED874 /* ShowDetailCellViewModel.swift in Sources */,
 				117D324F2610EB8A00B6B9F0 /* SearchTableViewCell.swift in Sources */,
@@ -548,10 +562,12 @@
 				116A88D1260F79840062FAD7 /* AppCoordinator.swift in Sources */,
 				117D324B2610CBC700B6B9F0 /* SearchQueryModel.swift in Sources */,
 				116A88DF260F7BDA0062FAD7 /* UIViewController+Extensions.swift in Sources */,
+				116FF315261208FC005ED874 /* PickerSeasonModel.swift in Sources */,
 				11DEFFFC2610C538000AFB07 /* SearchViewModel.swift in Sources */,
 				116A88B1260F760F0062FAD7 /* SceneDelegate.swift in Sources */,
 				11E98100260F98C300CE876B /* TabBarController.swift in Sources */,
 				11E9810A260FDFC600CE876B /* ShowsCollectionViewCell.swift in Sources */,
+				116FF3122612062B005ED874 /* SeasonPickerViewModel.swift in Sources */,
 				117D32592610F25400B6B9F0 /* UISearchBar+Extensions.swift in Sources */,
 				111AF5ED2610152100159B58 /* ShowsService.swift in Sources */,
 				116FF2F526112E63005ED874 /* SeasonModel.swift in Sources */,

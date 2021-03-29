@@ -75,6 +75,10 @@ class ShowDetailViewModel {
         }
     }
     
+    func showSeasonPicker() {
+        coordinator.startSeasonPicker(seasons: seasons, delegate: self)
+    }
+    
 }
 
 extension ShowDetailViewModel {
@@ -117,4 +121,13 @@ extension ShowDetailViewModel {
         let episode = episodes[currentSeason][indexPath.row]
         return ShowDetailCellViewModel(title: episode.name ?? String.empty, number: episode.number, coverImageURL: episode.image?.medium ?? "")
     }
+}
+
+
+extension ShowDetailViewModel: SeasonPickerDelegate {
+    func didSelect(seasonID: Int) {
+        print("selected season")
+    }
+    
+    
 }
