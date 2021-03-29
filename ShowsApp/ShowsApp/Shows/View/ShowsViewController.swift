@@ -11,6 +11,10 @@ import SkeletonView
 class ShowsViewController: UIViewController {
     
     var viewModel: ShowsViewModel!
+    var collectionViewDelegate: ShowsCollectionViewDelegate!
+    var collectionViewDataSource: ShowsCollectionViewDataSource!
+    var collectionViewPrefetcher: ShowsCollectionViewPrefetcher!
+    
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var loadingIndicatorHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var activityView: UIView!
@@ -22,33 +26,39 @@ class ShowsViewController: UIViewController {
         self.setupCollectionView()
         self.viewModel.fetchNextPage()
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.navigationBar.prefersLargeTitles = viewModel.prefersLargeTitle
+    }
 }
 
 extension ShowsViewController {
     private func setupView() {
         self.title = viewModel.title
-        self.navigationController?.navigationBar.prefersLargeTitles = viewModel.prefersLargeTitle
     }
     
     private func setupCollectionView() {
-        collectionView.dataSource = self
-        collectionView.delegate = self
-        collectionView.prefetchDataSource = self
+        collectionView.showAnimatedSkeleton()
+        collectionViewDelegate =  ShowsCollectionViewDelegate(viewModel: viewModel)
+        collectionViewDataSource = ShowsCollectionViewDataSource(viewModel: viewModel)
+        collectionViewPrefetcher = ShowsCollectionViewPrefetcher(viewModel: viewModel)
+        
+        collectionView.dataSource = collectionViewDataSource
+        collectionView.delegate = collectionViewDelegate
+        collectionView.prefetchDataSource = collectionViewPrefetcher
         collectionView.register(ShowsCollectionViewCell.nib, forCellWithReuseIdentifier: ShowsCollectionViewCell.identifier)
         collectionView.isSkeletonable = true
-        collectionView.showAnimatedSkeleton()
-        self.collectionView.isPrefetchingEnabled = true
+        collectionView.isPrefetchingEnabled = true
     }
 }
 
 extension ShowsViewController: ShowsViewDelegate {
     func didFetchShowsWithSuccess() {
-        hideLoadingIndicator( completion: {
-            
-            self.collectionView.reloadData()
-            self.collectionView.hideSkeleton()
+        hideLoadingIndicator( completion: { [weak self] in
+            self?.collectionView.reloadData()
+            self?.collectionView.hideSkeleton()
         })
-        
     }
     
     func didFetchShowsWithError() {
@@ -56,133 +66,42 @@ extension ShowsViewController: ShowsViewDelegate {
     }
 }
 
-extension ShowsViewController: SkeletonCollectionViewDataSource {
-    func collectionSkeletonView(_ skeletonView: UICollectionView, cellIdentifierForItemAt indexPath: IndexPath) -> ReusableCellIdentifier {
-        return ShowsCollectionViewCell.identifier
-    }
-    
-    func collectionSkeletonView(_ skeletonView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 16
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return viewModel.numberOfItemsInSection()
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeue(ShowsCollectionViewCell.self, indexPath: indexPath)
-        if let cell = cell as? ShowsCollectionViewCell {
-            cell.clear()
-        }
-        
-        return cell
-    }
-}
-
-extension ShowsViewController: UICollectionViewDelegate {
-    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        if let cellViewModel = viewModel.cellViewModel(indexPath), let cell = cell as? ShowsCollectionViewCell {
-            cell.configure(viewModel: cellViewModel)
-        }
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, didEndDisplaying cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        if let cell = cell as? ShowsCollectionViewCell {
-            cell.clear()
-        }
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        viewModel.selectCell(at: indexPath)
-    }
-}
-
-extension ShowsViewController: UICollectionViewDataSourcePrefetching {
-  func collectionView(_ collectionView: UICollectionView, prefetchItemsAt indexPaths: [IndexPath]) {
-    for indexPath in indexPaths {
-        let cell = collectionView.dequeue(ShowsCollectionViewCell.self, indexPath: indexPath)
-        if let cellViewModel = viewModel.cellViewModel(indexPath), let cell = cell as? ShowsCollectionViewCell {
-            cell.configure(viewModel: cellViewModel)
-        }
-    }
-  }
-  
-  func collectionView(_ collectionView: UICollectionView, cancelPrefetchingForItemsAt indexPaths: [IndexPath]) {
-    for indexPath in indexPaths {
-        let cell = collectionView.dequeue(ShowsCollectionViewCell.self, indexPath: indexPath)
-        if let cell = cell as? ShowsCollectionViewCell {
-            cell.clear()
-        }
-    }
-  }
-}
-
-extension ShowsViewController: UICollectionViewDelegateFlowLayout {
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let width = (collectionView.bounds.width/3.0) - 32
-        let height = width * 1.76
-        
-        return CGSize(width: width, height: height)
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 16, left: 24, bottom: 24, right: 24)
-    }
-    
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        return 16
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 12
-    }
-}
-
 extension ShowsViewController {
-    func hideLoadingIndicator(animated: Bool = true, completion: (()->Void)? = nil) {
-        self.loadingIndicatorHeightConstraint.constant = 0
-        
+    private func hideLoadingIndicator(animated: Bool = true, completion: (()->Void)? = nil) {
+        animateLoadingIndicator(value: 0, isHidden: true, animated: animated, completion: completion)
+    }
+    
+    private func showLoadingIndicator(animated: Bool = true, completion: (()->Void)? = nil) {
+        animateLoadingIndicator(value: 75, isHidden: false, animated: animated, completion: completion)
+    }
+    
+    private func animateLoadingIndicator(value: CGFloat, isHidden: Bool, animated: Bool, completion: (()->Void)? = nil) {
+        loadingIndicatorHeightConstraint.constant = value
         if animated {
-            UIView.animate(withDuration: 0.1) {
-                self.activityView.isHidden = true
-                self.view.layoutIfNeeded()
+            UIView.animate(withDuration: 0.5) { [weak self] in
+                self?.activityView.isHidden = isHidden
+                self?.view.layoutIfNeeded()
             } completion: { (_) in
                 completion?()
             }
+            
         } else {
-            self.view.layoutIfNeeded()
-            self.activityView.isHidden = true
+            view.layoutIfNeeded()
+            activityView.isHidden = isHidden
         }
     }
-    
-    func showLoadingIndicator(animated: Bool = true, completion: (()->Void)? = nil) {
-        self.loadingIndicatorHeightConstraint.constant = 75
-        if animated {
-            UIView.animate(withDuration: 0.5) {
-                self.activityView.isHidden = false
-                self.view.layoutIfNeeded()
-            } completion: { (_) in
-                completion?()
-            }
-
-        } else {
-            self.view.layoutIfNeeded()
-            self.activityView.isHidden = false
-        }
-    }
-    
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         if viewModel.isLoading {
             return
         }
         
-        let offset = 50
+        let offset = -100
         let bottomEdge = scrollView.contentOffset.y + scrollView.frame.size.height;
         if (bottomEdge + CGFloat(offset) >= scrollView.contentSize.height) {
-            viewModel.fetchNextPage()
-            showLoadingIndicator()
+            showLoadingIndicator { [weak self] in
+                self?.viewModel.fetchNextPage()
+            }
         }
     }
 }

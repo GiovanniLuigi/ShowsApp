@@ -9,6 +9,31 @@ import UIKit
 
 extension UIImageView {
     
+    static func preFetchImage(urlString: String) -> URLSessionDataTask? {
+        let imageCache = CacheProvider.shared.imageCache
+
+        if let _ = imageCache.object(forKey: urlString as NSString) {
+            return nil
+        }
+        
+        guard let url = URL(string: urlString) else {
+            return nil
+        }
+        
+        let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
+            guard let data = data else {
+                return
+            }
+            
+            if let newImage = UIImage(data: data) {
+                imageCache.setObject(newImage, forKey: urlString as NSString)
+            }
+        }
+        
+        task.resume()
+        return task
+    }
+    
     @discardableResult
     func setImage(from urlString: String, placeholder: UIImage? = nil, completion: (()->Void)? = nil) -> URLSessionDataTask? {
         if let placeholder = placeholder {
