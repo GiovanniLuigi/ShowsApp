@@ -32,4 +32,27 @@ extension EpisodeDetailViewModel {
     var prefersLargeTitles: Bool {
         return false
     }
+    
+    var hasCoverImage: Bool {
+        return episodeModel.coverImageURL != nil
+    }
+    
+    var coverImageURL: String {
+        return episodeModel.coverImageURL ?? ""
+    }
+    
+    var episodeTitle: String {
+        return episodeModel.title
+    }
+    
+    var summary: String {
+        return episodeModel.summary.htmlDecoded
+    }
+    
+    var detailsText: String {
+        let seasonText = "Season \(episodeModel.seasonNumber)"
+        let episodeText = "Episode \(episodeModel.episodeNumber)"
+        
+        return "\(seasonText) • \(episodeText)"
+    }
 }

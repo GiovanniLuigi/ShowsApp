@@ -21,6 +21,12 @@ class EpisodeDetailViewController: UIViewController {
         
         title = viewModel.title
         navigationController?.navigationBar.prefersLargeTitles = viewModel.prefersLargeTitles
+        
+        coverImageView.isHidden = !viewModel.hasCoverImage
+        coverImageView.setImage(from: viewModel.coverImageURL)
+        episodeNameLabel.text = viewModel.episodeTitle
+        summaryLabel.text = viewModel.summary
+        detailsLabel.text = viewModel.detailsText
     }
 }
 
