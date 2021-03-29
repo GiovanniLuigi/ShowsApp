@@ -24,23 +24,29 @@ class ShowDetailViewController: UIViewController {
         episodesTableView.dataSource = self
         episodesTableView.delegate = self
         episodesTableView.register(ShowDetailTableViewCell.nib, forCellReuseIdentifier: ShowDetailTableViewCell.identifier)
+        episodesTableView.separatorStyle = .none
+        episodesTableView.isScrollEnabled = false
         
-        
-        view.startSkeletonAnimation()
         titleLabel.text = viewModel.title
         genresLabel.text = viewModel.genres
         scheduleLabel.text = viewModel.schedule
         summaryLabel.text = viewModel.summary
-        
-        coverImageView.setImage(from: viewModel.coverImageURL) { [weak self] in
-            self?.view.stopSkeletonAnimation()
-        }
-        
-        
+        coverImageView.setImage(from: viewModel.coverImageURL)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+            super.viewDidAppear(animated)
+            shouldReloadTableVieSize()
     }
     
     @IBAction func didPressSeasonsButton(_ sender: Any) {
         
+    }
+    
+    private func shouldReloadTableVieSize() {
+        self.view.layoutIfNeeded()
+        self.tableViewHeightConstraint.constant = self.episodesTableView.contentSize.height + 16
+        self.view.layoutIfNeeded()
     }
     
 }
@@ -61,7 +67,11 @@ extension ShowDetailViewController: UITableViewDataSource {
     }
 }
 
-extension ShowDetailViewController: UITableViewDelegate {}
+extension ShowDetailViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 100
+    }
+}
 
 extension ShowDetailViewController: ShowDetailViewDelegate {
     

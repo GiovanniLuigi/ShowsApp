@@ -14,7 +14,7 @@ class ShowDetailTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         selectionStyle = .none
-        
+        coverImageView.layer.cornerRadius = 8
         showAnimatedSkeleton()
     }
 }
@@ -22,7 +22,7 @@ class ShowDetailTableViewCell: UITableViewCell {
 extension ShowDetailTableViewCell {
     func configure(viewModel: ShowDetailCellViewModel) {
         let _ = coverImageView.setImage(from: viewModel.coverImageURL) { [weak self] in
-            self?.titleLabel.text = viewModel.title
+            self?.titleLabel.text = viewModel.episodeTitle
             self?.hideSkeleton()
         }
     }
