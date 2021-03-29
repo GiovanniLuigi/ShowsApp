@@ -10,7 +10,7 @@ import Foundation
 
 protocol ShowDetailCoordinatorProtocol: Coordinator {
     func startSeasonPicker(seasons: [SeasonModel], currentSeason: Int, delegate: SeasonPickerDelegate)
-    func startEpisodeDetail()
+    func startEpisodeDetail(episodeModel: EpisodeDetailModel)
 }
 
 class ShowDetailCoordinator: ShowDetailCoordinatorProtocol {
@@ -42,8 +42,8 @@ class ShowDetailCoordinator: ShowDetailCoordinatorProtocol {
         navigator.present(seasonPickerController, animated: true, completion: nil)
     }
     
-    func startEpisodeDetail() {
-        let episodeCoordinator = EpisodeDetailCoordinator(navigator: navigator, parent: self)
+    func startEpisodeDetail(episodeModel: EpisodeDetailModel) {
+        let episodeCoordinator = EpisodeDetailCoordinator(navigator: navigator, parent: self, episodeModel: episodeModel)
         childCoordinators.append(episodeCoordinator)
         episodeCoordinator.start()
     }

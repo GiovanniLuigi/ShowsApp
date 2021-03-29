@@ -86,7 +86,15 @@ class ShowDetailViewModel {
     }
     
     func didSelectCell(at indexPath: IndexPath) {
-        coordinator.startEpisodeDetail()
+        let episode = episodes[currentSeason][indexPath.row]
+        let season = seasons[currentSeason]
+        let detailModel = EpisodeDetailModel(
+            title: episode.name ?? String.empty,
+            seasonNumber: season.number ?? 1,
+            episodeNumber: episode.number ?? 1,
+            summary: episode.summary ?? String.empty,
+            coverImageURL: episode.image?.original ?? "")
+        coordinator.startEpisodeDetail(episodeModel: detailModel)
     }
     
 }

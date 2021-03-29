@@ -13,15 +13,17 @@ class EpisodeDetailCoordinator: EpisodeDetailCoordinatorProtocol {
     var childCoordinators: [Coordinator] = []
     private(set) var parent: Coordinator?
     private(set) var navigator: Navigator
+    private let episodeModel: EpisodeDetailModel
     
-    init(navigator: Navigator, parent: Coordinator?) {
+    init(navigator: Navigator, parent: Coordinator?, episodeModel: EpisodeDetailModel) {
         self.parent = parent
         self.navigator = navigator
+        self.episodeModel = episodeModel
     }
     
     func start() {
         let episodeDetailViewController = EpisodeDetailViewController.instantiate()
-        let viewModel = EpisodeDetailViewModel(coordinator: self, viewDelegate: episodeDetailViewController)
+        let viewModel = EpisodeDetailViewModel(coordinator: self, viewDelegate: episodeDetailViewController, episodeModel: episodeModel)
         episodeDetailViewController.viewModel = viewModel
         navigator.push(episodeDetailViewController, animated: true)
     }
