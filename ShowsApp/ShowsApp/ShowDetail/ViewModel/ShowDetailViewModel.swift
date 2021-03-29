@@ -85,6 +85,10 @@ class ShowDetailViewModel {
         coordinator.startSeasonPicker(seasons: seasons, currentSeason: currentSeason, delegate: self)
     }
     
+    func didSelectCell(at indexPath: IndexPath) {
+        coordinator.startEpisodeDetail()
+    }
+    
 }
 
 extension ShowDetailViewModel {

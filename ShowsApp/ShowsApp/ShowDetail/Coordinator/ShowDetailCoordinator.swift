@@ -10,8 +10,8 @@ import Foundation
 
 protocol ShowDetailCoordinatorProtocol: Coordinator {
     func startSeasonPicker(seasons: [SeasonModel], currentSeason: Int, delegate: SeasonPickerDelegate)
+    func startEpisodeDetail()
 }
-
 
 class ShowDetailCoordinator: ShowDetailCoordinatorProtocol {
     var childCoordinators: [Coordinator] = []
@@ -40,5 +40,11 @@ class ShowDetailCoordinator: ShowDetailCoordinatorProtocol {
         seasonPickerController.viewModel = viewModel
         
         navigator.present(seasonPickerController, animated: true, completion: nil)
+    }
+    
+    func startEpisodeDetail() {
+        let episodeCoordinator = EpisodeDetailCoordinator(navigator: navigator, parent: self)
+        childCoordinators.append(episodeCoordinator)
+        episodeCoordinator.start()
     }
 }

@@ -95,6 +95,10 @@ extension ShowDetailViewController: UITableViewDelegate {
             }
         }
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        viewModel.didSelectCell(at: indexPath)
+    }
 }
 
 extension ShowDetailViewController: ShowDetailViewDelegate {
