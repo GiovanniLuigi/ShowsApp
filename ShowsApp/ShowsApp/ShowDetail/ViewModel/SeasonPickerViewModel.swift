@@ -8,7 +8,7 @@
 import Foundation
 
 protocol SeasonPickerDelegate {
-    func didSelect(seasonID: Int)
+    func didSelect(seasonIndex: Int)
 }
 
 class SeasonPickerViewModel {
@@ -29,8 +29,7 @@ class SeasonPickerViewModel {
     }
     
     func didFinish(selectedSeasonIndex: Int) {
-        let selectedID = self.seasons[selectedSeasonIndex].id
-        delegate.didSelect(seasonID: selectedID)
+        delegate.didSelect(seasonIndex: selectedSeasonIndex)
     }
 }
 

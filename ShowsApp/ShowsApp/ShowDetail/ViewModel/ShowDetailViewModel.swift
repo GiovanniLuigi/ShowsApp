@@ -109,6 +109,10 @@ extension ShowDetailViewModel {
         return currentSeason
     }
     
+    var currentSeasonTitle: String {
+        return "Season \(currentSeason+1)"
+    }
+    
     func numberOfRowsInSection() -> Int {
         if seasonIndex > episodes.count-1 {
             return 0
@@ -125,8 +129,8 @@ extension ShowDetailViewModel {
 
 
 extension ShowDetailViewModel: SeasonPickerDelegate {
-    func didSelect(seasonID: Int) {
-        print("selected season \(seasonID)")
+    func didSelect(seasonIndex: Int) {
+        fetchEpisodes(seasonIndex: seasonIndex)
     }
     
     

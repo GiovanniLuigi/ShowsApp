@@ -14,6 +14,7 @@
                 <outlet property="episodesTableView" destination="ZFx-vx-eYF" id="UhO-Qh-jvB"/>
                 <outlet property="genresLabel" destination="Q48-5B-OMA" id="lXk-7m-lEC"/>
                 <outlet property="scheduleLabel" destination="0Ny-tx-NIT" id="o5Y-W2-pgu"/>
+                <outlet property="seasonButtonTitleLabel" destination="Z1V-gO-bPA" id="dDt-WO-Q0q"/>
                 <outlet property="seasonButtonView" destination="maN-bO-i2D" id="ZAa-hp-9CX"/>
                 <outlet property="summaryLabel" destination="BBA-Pi-gGK" id="oyE-TC-1Ge"/>
                 <outlet property="tableViewHeightConstraint" destination="eSa-9H-xdm" id="MzO-fk-F6I"/>

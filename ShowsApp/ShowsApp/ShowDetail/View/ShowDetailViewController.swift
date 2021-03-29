@@ -18,6 +18,7 @@ class ShowDetailViewController: UIViewController {
     @IBOutlet weak var summaryLabel: UILabel!
     @IBOutlet weak var episodesTableView: UITableView!
     @IBOutlet weak var seasonButtonView: UIView!
+    @IBOutlet weak var seasonButtonTitleLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,6 +48,11 @@ class ShowDetailViewController: UIViewController {
         self.view.layoutIfNeeded()
         self.tableViewHeightConstraint.constant = self.episodesTableView.contentSize.height + 16
         self.view.layoutIfNeeded()
+    }
+    
+    private func reloadView() {
+        episodesTableView.reloadData()
+        seasonButtonTitleLabel.text = viewModel.currentSeasonTitle
     }
 }
 
@@ -82,7 +88,7 @@ extension ShowDetailViewController: UITableViewDelegate {
 
 extension ShowDetailViewController: ShowDetailViewDelegate {
     func didFetchEpisodesWithSuccess() {
-        episodesTableView.reloadData()
+        reloadView()
     }
     
     func didFetchEpisodesWithError() {
@@ -90,8 +96,8 @@ extension ShowDetailViewController: ShowDetailViewDelegate {
     }
     
     func didFetchSeasonsWithSuccess() {
-        print("setup seasons button")
-        viewModel.fetchEpisodes(seasonIndex: 0)
+        seasonButtonTitleLabel.text = viewModel.currentSeasonTitle
+        viewModel.fetchEpisodes(seasonIndex: viewModel.seasonIndex)
     }
     
     func didFetchSeasonsWithError() {
