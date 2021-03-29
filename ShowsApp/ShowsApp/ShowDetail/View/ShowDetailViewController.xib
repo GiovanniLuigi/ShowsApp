@@ -14,7 +14,7 @@
                 <outlet property="episodesTableView" destination="ZFx-vx-eYF" id="UhO-Qh-jvB"/>
                 <outlet property="genresLabel" destination="Q48-5B-OMA" id="lXk-7m-lEC"/>
                 <outlet property="scheduleLabel" destination="0Ny-tx-NIT" id="o5Y-W2-pgu"/>
-                <outlet property="seasonsButton" destination="rvq-Nd-siw" id="c2v-1J-ekp"/>
+                <outlet property="seasonButtonView" destination="maN-bO-i2D" id="ZAa-hp-9CX"/>
                 <outlet property="summaryLabel" destination="BBA-Pi-gGK" id="oyE-TC-1Ge"/>
                 <outlet property="tableViewHeightConstraint" destination="eSa-9H-xdm" id="MzO-fk-F6I"/>
                 <outlet property="titleLabel" destination="z57-4Z-ne9" id="fSk-ci-Uf5"/>
@@ -30,7 +30,7 @@
                     <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qzv-l0-6Fs">
-                            <rect key="frame" x="0.0" y="0.0" width="414" height="835"/>
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="845"/>
                             <subviews>
                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="IbJ-xH-UxW">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="300"/>
@@ -63,33 +63,55 @@
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rvq-Nd-siw">
-                                    <rect key="frame" x="20" y="521" width="62" height="30"/>
-                                    <state key="normal" title="Season 1"/>
-                                    <connections>
-                                        <action selector="didPressSeasonsButton:" destination="-1" eventType="touchUpInside" id="lOK-63-JhW"/>
-                                    </connections>
-                                </button>
                                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ZFx-vx-eYF">
-                                    <rect key="frame" x="20" y="559" width="374" height="260"/>
+                                    <rect key="frame" x="20" y="569" width="374" height="260"/>
                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="260" id="eSa-9H-xdm"/>
                                     </constraints>
                                 </tableView>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="maN-bO-i2D">
+                                    <rect key="frame" x="20" y="521" width="149.5" height="32"/>
+                                    <subviews>
+                                        <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="c0T-5R-iaE">
+                                            <rect key="frame" x="12" y="4" width="125.5" height="24"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Season 1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z1V-gO-bPA">
+                                                    <rect key="frame" x="0.0" y="0.0" width="68" height="24"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="down-arrow" translatesAutoresizingMaskIntoConstraints="NO" id="rlk-Eb-rQC">
+                                                    <rect key="frame" x="115.5" y="0.0" width="10" height="24"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="10" id="cqg-Q9-tyT"/>
+                                                    </constraints>
+                                                </imageView>
+                                            </subviews>
+                                        </stackView>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <constraints>
+                                        <constraint firstAttribute="bottom" secondItem="c0T-5R-iaE" secondAttribute="bottom" constant="4" id="CiA-Ln-gEk"/>
+                                        <constraint firstItem="c0T-5R-iaE" firstAttribute="leading" secondItem="maN-bO-i2D" secondAttribute="leading" constant="12" id="M17-GY-pTY"/>
+                                        <constraint firstAttribute="height" constant="32" id="OTy-xc-x0s"/>
+                                        <constraint firstItem="c0T-5R-iaE" firstAttribute="top" secondItem="maN-bO-i2D" secondAttribute="top" constant="4" id="jSp-Sy-oiO"/>
+                                        <constraint firstAttribute="trailing" secondItem="c0T-5R-iaE" secondAttribute="trailing" constant="12" id="yhA-k0-o1e"/>
+                                    </constraints>
+                                </view>
                             </subviews>
                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             <constraints>
                                 <constraint firstItem="Q48-5B-OMA" firstAttribute="trailing" secondItem="z57-4Z-ne9" secondAttribute="trailing" constant="-12" id="3Mz-2w-od9"/>
-                                <constraint firstItem="rvq-Nd-siw" firstAttribute="top" secondItem="BBA-Pi-gGK" secondAttribute="bottom" constant="16" id="49x-fb-yFz"/>
                                 <constraint firstItem="IbJ-xH-UxW" firstAttribute="leading" secondItem="qzv-l0-6Fs" secondAttribute="leading" id="8ZF-gB-HuO"/>
                                 <constraint firstItem="BBA-Pi-gGK" firstAttribute="trailing" secondItem="z57-4Z-ne9" secondAttribute="trailing" id="Brg-2h-LWQ"/>
                                 <constraint firstItem="BBA-Pi-gGK" firstAttribute="top" secondItem="0Ny-tx-NIT" secondAttribute="bottom" constant="12" id="Frm-L0-0fO"/>
                                 <constraint firstItem="IbJ-xH-UxW" firstAttribute="top" secondItem="qzv-l0-6Fs" secondAttribute="top" id="LG5-TQ-Knw"/>
-                                <constraint firstItem="rvq-Nd-siw" firstAttribute="leading" secondItem="BBA-Pi-gGK" secondAttribute="leading" id="R9c-Dc-b1G"/>
+                                <constraint firstItem="maN-bO-i2D" firstAttribute="width" secondItem="ZFx-vx-eYF" secondAttribute="width" multiplier="0.4" id="Rkz-KP-XoM"/>
                                 <constraint firstAttribute="trailing" secondItem="IbJ-xH-UxW" secondAttribute="trailing" id="ZJQ-y6-HaK"/>
-                                <constraint firstItem="ZFx-vx-eYF" firstAttribute="top" secondItem="rvq-Nd-siw" secondAttribute="bottom" constant="8" id="ahh-LS-cq6"/>
                                 <constraint firstItem="z57-4Z-ne9" firstAttribute="top" secondItem="IbJ-xH-UxW" secondAttribute="bottom" constant="16" id="bEX-MH-2wn"/>
+                                <constraint firstItem="maN-bO-i2D" firstAttribute="leading" secondItem="BBA-Pi-gGK" secondAttribute="leading" id="bsO-Es-uwc"/>
                                 <constraint firstItem="z57-4Z-ne9" firstAttribute="leading" secondItem="qzv-l0-6Fs" secondAttribute="leading" constant="20" id="cDY-ZZ-e9T"/>
                                 <constraint firstItem="ZFx-vx-eYF" firstAttribute="leading" secondItem="z57-4Z-ne9" secondAttribute="leading" id="cVT-rx-46A"/>
                                 <constraint firstItem="0Ny-tx-NIT" firstAttribute="top" secondItem="Q48-5B-OMA" secondAttribute="bottom" constant="8" id="eTD-Bl-kRA"/>
@@ -97,8 +119,10 @@
                                 <constraint firstAttribute="bottom" secondItem="ZFx-vx-eYF" secondAttribute="bottom" constant="16" id="hqj-cj-kGO"/>
                                 <constraint firstItem="0Ny-tx-NIT" firstAttribute="leading" secondItem="Q48-5B-OMA" secondAttribute="leading" id="q8F-Bs-nH9"/>
                                 <constraint firstItem="Q48-5B-OMA" firstAttribute="leading" secondItem="z57-4Z-ne9" secondAttribute="leading" constant="12" id="qC4-mc-qfV"/>
+                                <constraint firstItem="maN-bO-i2D" firstAttribute="top" secondItem="BBA-Pi-gGK" secondAttribute="bottom" constant="16" id="s0w-9W-QCs"/>
                                 <constraint firstItem="0Ny-tx-NIT" firstAttribute="trailing" secondItem="Q48-5B-OMA" secondAttribute="trailing" id="sSs-Y8-ILT"/>
                                 <constraint firstItem="ZFx-vx-eYF" firstAttribute="trailing" secondItem="z57-4Z-ne9" secondAttribute="trailing" id="tIB-M9-rgG"/>
+                                <constraint firstItem="ZFx-vx-eYF" firstAttribute="top" secondItem="maN-bO-i2D" secondAttribute="bottom" constant="16" id="tri-Sa-ghu"/>
                                 <constraint firstAttribute="trailing" secondItem="z57-4Z-ne9" secondAttribute="trailing" constant="20" id="uis-tZ-yzq"/>
                                 <constraint firstItem="Q48-5B-OMA" firstAttribute="top" secondItem="z57-4Z-ne9" secondAttribute="bottom" constant="8" id="zOt-04-vLH"/>
                             </constraints>
@@ -126,6 +150,7 @@
         </view>
     </objects>
     <resources>
+        <image name="down-arrow" width="30" height="18"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

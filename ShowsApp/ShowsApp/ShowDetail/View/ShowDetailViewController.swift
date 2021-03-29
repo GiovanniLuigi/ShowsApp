@@ -16,8 +16,8 @@ class ShowDetailViewController: UIViewController {
     @IBOutlet weak var genresLabel: UILabel!
     @IBOutlet weak var scheduleLabel: UILabel!
     @IBOutlet weak var summaryLabel: UILabel!
-    @IBOutlet weak var seasonsButton: UIButton!
     @IBOutlet weak var episodesTableView: UITableView!
+    @IBOutlet weak var seasonButtonView: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,6 +26,9 @@ class ShowDetailViewController: UIViewController {
         episodesTableView.register(ShowDetailTableViewCell.nib, forCellReuseIdentifier: ShowDetailTableViewCell.identifier)
         episodesTableView.separatorStyle = .none
         episodesTableView.isScrollEnabled = false
+        
+        seasonButtonView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(didPressSeasonsButton)))
+        seasonButtonView.layer.cornerRadius = 16
         
         titleLabel.text = viewModel.title
         genresLabel.text = viewModel.genres
@@ -36,7 +39,7 @@ class ShowDetailViewController: UIViewController {
         viewModel.fetchSeasons()
     }
     
-    @IBAction func didPressSeasonsButton(_ sender: Any) {
+    @objc func didPressSeasonsButton() {
         print("season")
     }
     
@@ -45,7 +48,6 @@ class ShowDetailViewController: UIViewController {
         self.tableViewHeightConstraint.constant = self.episodesTableView.contentSize.height + 16
         self.view.layoutIfNeeded()
     }
-    
 }
 
 extension ShowDetailViewController: UITableViewDataSource {
