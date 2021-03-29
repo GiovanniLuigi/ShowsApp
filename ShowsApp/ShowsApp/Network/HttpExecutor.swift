@@ -77,7 +77,7 @@ class HttpExecutor: Executor {
             return
         }
         
-        var urlRequest: URLRequest = URLRequest(url: url, timeoutInterval: 60)
+        var urlRequest: URLRequest = URLRequest(url: url, timeoutInterval: 1)
         urlRequest.addValue("application/json", forHTTPHeaderField: "Accept")
         doHttpRequest(urlRequest, modelType: Model.self) { (result) in
             switch result {

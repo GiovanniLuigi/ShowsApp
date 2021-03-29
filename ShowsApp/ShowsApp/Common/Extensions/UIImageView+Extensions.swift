@@ -11,7 +11,7 @@ extension UIImageView {
     
     static func preFetchImage(urlString: String) -> URLSessionDataTask? {
         let imageCache = CacheProvider.shared.imageCache
-
+        
         if let _ = imageCache.object(forKey: urlString as NSString) {
             return nil
         }
@@ -39,9 +39,9 @@ extension UIImageView {
         if let placeholder = placeholder {
             image = placeholder
         }
-
+        
         let imageCache = CacheProvider.shared.imageCache
-
+        
         if let cachedImage = imageCache.object(forKey: urlString as NSString) {
             completion?()
             image = cachedImage
@@ -54,18 +54,25 @@ extension UIImageView {
         
         let task = URLSession.shared.dataTask(with: url) { [weak self] (data, response, error) in
             guard let data = data else {
+                completion?()
                 return
             }
             
-            DispatchQueue.main.async {
-                if let newImage = UIImage(data: data) {
-//                   let compressedImageData = newImage.jpegData(compressionQuality: 0.25),
-//                   let compressedImage = UIImage(data: compressedImageData) {
+            if let _ = error {
+                completion?()
+                return
+            }
+            
+            if let newImage = UIImage(data: data) {
+                DispatchQueue.main.async {
                     completion?()
                     self?.image = newImage
+                }
+                DispatchQueue.global(qos: .background).sync {
                     imageCache.setObject(newImage, forKey: urlString as NSString)
                 }
             }
+            
         }
         task.resume()
         return task

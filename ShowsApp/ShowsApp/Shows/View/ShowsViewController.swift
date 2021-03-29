@@ -11,7 +11,6 @@ import SkeletonView
 class ShowsViewController: UIViewController {
     
     var viewModel: ShowsViewModel!
-    var collectionViewDelegate: ShowsCollectionViewDelegate!
     var collectionViewDataSource: ShowsCollectionViewDataSource!
     var collectionViewPrefetcher: ShowsCollectionViewPrefetcher!
     
@@ -39,17 +38,18 @@ extension ShowsViewController {
     }
     
     private func setupCollectionView() {
-        collectionView.showAnimatedSkeleton()
-        collectionViewDelegate =  ShowsCollectionViewDelegate(viewModel: viewModel)
+        
         collectionViewDataSource = ShowsCollectionViewDataSource(viewModel: viewModel)
         collectionViewPrefetcher = ShowsCollectionViewPrefetcher(viewModel: viewModel)
         
+        collectionView.delegate = self
         collectionView.dataSource = collectionViewDataSource
-        collectionView.delegate = collectionViewDelegate
         collectionView.prefetchDataSource = collectionViewPrefetcher
         collectionView.register(ShowsCollectionViewCell.nib, forCellWithReuseIdentifier: ShowsCollectionViewCell.identifier)
         collectionView.isSkeletonable = true
         collectionView.isPrefetchingEnabled = true
+        
+        collectionView.showAnimatedSkeleton()
     }
 }
 
@@ -62,7 +62,10 @@ extension ShowsViewController: ShowsViewDelegate {
     }
     
     func didFetchShowsWithError() {
-        print(viewModel.errorMessage)
+        let canCancel = viewModel.numberOfItemsInSection() > 0
+        presentErrorMessage(message: viewModel.errorMessage, canCancel: canCancel) { [weak self] in
+            self?.viewModel.fetchNextPage()
+        }
     }
 }
 
@@ -78,7 +81,7 @@ extension ShowsViewController {
     private func animateLoadingIndicator(value: CGFloat, isHidden: Bool, animated: Bool, completion: (()->Void)? = nil) {
         loadingIndicatorHeightConstraint.constant = value
         if animated {
-            UIView.animate(withDuration: 0.5) { [weak self] in
+            UIView.animate(withDuration: 0.1) { [weak self] in
                 self?.activityView.isHidden = isHidden
                 self?.view.layoutIfNeeded()
             } completion: { (_) in
@@ -86,8 +89,8 @@ extension ShowsViewController {
             }
             
         } else {
-            view.layoutIfNeeded()
             activityView.isHidden = isHidden
+            view.layoutIfNeeded()
         }
     }
     
@@ -105,3 +108,47 @@ extension ShowsViewController {
         }
     }
 }
+
+
+extension ShowsViewController: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let width = (collectionView.bounds.width/3.0) - 32
+        let height = width * 1.76
+        
+        return CGSize(width: width, height: height)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return UIEdgeInsets(top: 16, left: 24, bottom: 24, right: 24)
+    }
+    
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 16
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 12
+    }
+}
+
+
+extension ShowsViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        if let cellViewModel = viewModel.cellViewModel(indexPath), let cell = cell as? ShowsCollectionViewCell {
+            cell.configure(viewModel: cellViewModel)
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didEndDisplaying cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        if let cell = cell as? ShowsCollectionViewCell {
+            cell.clear()
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        viewModel.selectCell(at: indexPath)
+    }
+}
+
+

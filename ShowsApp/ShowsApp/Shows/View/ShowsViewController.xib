@@ -30,6 +30,9 @@
                         <size key="footerReferenceSize" width="0.0" height="0.0"/>
                         <inset key="sectionInset" minX="32" minY="24" maxX="32" maxY="0.0"/>
                     </collectionViewFlowLayout>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                    </userDefinedRuntimeAttributes>
                 </collectionView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Nyj-4Q-XGV">
                     <rect key="frame" x="0.0" y="734" width="414" height="128"/>
@@ -61,6 +64,9 @@
                 <constraint firstItem="Nyj-4Q-XGV" firstAttribute="top" secondItem="7dP-4D-w28" secondAttribute="bottom" id="gef-lq-3m6"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="7dP-4D-w28" secondAttribute="trailing" id="leC-e2-bsj"/>
             </constraints>
+            <userDefinedRuntimeAttributes>
+                <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+            </userDefinedRuntimeAttributes>
             <point key="canvasLocation" x="140.57971014492756" y="120.53571428571428"/>
         </view>
     </objects>
