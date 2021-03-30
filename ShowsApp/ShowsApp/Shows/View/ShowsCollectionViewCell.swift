@@ -27,12 +27,12 @@ class ShowsCollectionViewCell: UICollectionViewCell {
     }
     
     func clear() {
+        showAnimatedSkeleton()
         task?.cancel()
         task = nil
         coverImageView.image = nil
         viewModel = nil
         titleLabel.text = String.empty
-        showAnimatedSkeleton()
     }
 }
 

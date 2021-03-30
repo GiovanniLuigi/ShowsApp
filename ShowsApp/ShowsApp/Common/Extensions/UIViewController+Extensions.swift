@@ -21,16 +21,16 @@ extension UIViewController {
         for action in actions {
             alertController.addAction(action)
         }
+        
         present(alertController, animated: true, completion: nil)
     }
     
-    
-    func presentErrorMessage(message: String, title: String = "Error", canCancel: Bool = true, retryAction: (()->Void)? = nil) {
+    func presentErrorMessage(message: String, title: String = "Error", canCancel: Bool = true, cancelTitle: String = "Cancel", retryAction: (()->Void)? = nil) {
         var alertActions: [UIAlertAction] = []
         
         if canCancel {
             alertActions.append(
-                UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+                UIAlertAction(title: cancelTitle, style: .cancel, handler: nil)
             )
         }
         

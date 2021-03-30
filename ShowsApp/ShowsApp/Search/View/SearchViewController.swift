@@ -53,7 +53,9 @@ extension SearchViewController: SearchViewDelegate {
     }
     
     func didQueryWithError() {
-        
+        presentErrorMessage(message: viewModel.errorMessage) { [weak self] in
+            self?.viewModel.query()
+        }
     }
 }
 

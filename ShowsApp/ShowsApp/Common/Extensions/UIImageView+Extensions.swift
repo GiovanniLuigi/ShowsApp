@@ -37,14 +37,19 @@ extension UIImageView {
     @discardableResult
     func setImage(from urlString: String, placeholder: UIImage? = nil, completion: (()->Void)? = nil) -> URLSessionDataTask? {
         if let placeholder = placeholder {
-            image = placeholder
+            DispatchQueue.main.async { [weak self] in
+                self?.image = placeholder
+            }
         }
         
         let imageCache = CacheProvider.shared.imageCache
         
         if let cachedImage = imageCache.object(forKey: urlString as NSString) {
-            completion?()
-            image = cachedImage
+            DispatchQueue.main.async { [weak self] in
+                self?.image = cachedImage
+                completion?()
+            }
+            
             return nil
         }
         
@@ -54,23 +59,26 @@ extension UIImageView {
         
         let task = URLSession.shared.dataTask(with: url) { [weak self] (data, response, error) in
             guard let data = data else {
-                completion?()
+                DispatchQueue.main.async {
+                    completion?()
+                }
                 return
             }
             
             if let _ = error {
-                completion?()
+                DispatchQueue.main.async {
+                    completion?()
+                }
                 return
             }
             
             if let newImage = UIImage(data: data) {
                 DispatchQueue.main.async {
-                    completion?()
                     self?.image = newImage
-                }
-                DispatchQueue.global(qos: .background).sync {
+                    completion?()
                     imageCache.setObject(newImage, forKey: urlString as NSString)
                 }
+                
             }
             
         }
