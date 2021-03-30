@@ -41,9 +41,11 @@ extension ShowsCollectionViewCell {
         if self.viewModel == viewModel {
             return
         }
-        task = coverImageView.setImage(from: viewModel.coverImageURL) { [weak self] in
-            self?.titleLabel.text = viewModel.title
-            self?.hideSkeleton(transition: .crossDissolve(0.5))
+        task = coverImageView.setImage(from: viewModel.coverImageURL) { [weak self] success in
+            if success {
+                self?.titleLabel.text = viewModel.title
+                self?.hideSkeleton(transition: .crossDissolve(0.5))
+            }
         }
     }
 }

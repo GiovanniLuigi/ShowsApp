@@ -35,7 +35,12 @@ extension UIImageView {
     }
     
     @discardableResult
-    func setImage(from urlString: String, placeholder: UIImage? = nil, completion: (()->Void)? = nil) -> URLSessionDataTask? {
+    func setImage(from urlString: String, placeholder: UIImage? = nil, completion: ((_ success: Bool)->Void)? = nil) -> URLSessionDataTask? {
+        guard !urlString.isEmpty, let url = URL(string: urlString) else {
+            completion?(false)
+            return nil
+        }
+        
         if let placeholder = placeholder {
             DispatchQueue.main.async { [weak self] in
                 self?.image = placeholder
@@ -47,27 +52,23 @@ extension UIImageView {
         if let cachedImage = imageCache.object(forKey: urlString as NSString) {
             DispatchQueue.main.async { [weak self] in
                 self?.image = cachedImage
-                completion?()
+                completion?(true)
             }
             
             return nil
         }
-        
-        guard let url = URL(string: urlString) else {
-            return nil
-        }
-        
+
         let task = URLSession.shared.dataTask(with: url) { [weak self] (data, response, error) in
             guard let data = data else {
                 DispatchQueue.main.async {
-                    completion?()
+                    completion?(false)
                 }
                 return
             }
             
             if let _ = error {
                 DispatchQueue.main.async {
-                    completion?()
+                    completion?(false)
                 }
                 return
             }
@@ -75,7 +76,7 @@ extension UIImageView {
             if let newImage = UIImage(data: data) {
                 DispatchQueue.main.async {
                     self?.image = newImage
-                    completion?()
+                    completion?(true)
                     imageCache.setObject(newImage, forKey: urlString as NSString)
                 }
                 
@@ -86,6 +87,10 @@ extension UIImageView {
         return task
     }
     
+    func showPlaceholder() {
+        contentMode = .scaleAspectFit
+        image = UIImage(named: "placeholder")
+    }
 }
 
 

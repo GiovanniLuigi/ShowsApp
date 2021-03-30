@@ -37,7 +37,10 @@ class SearchTableViewCell: UITableViewCell {
 
 extension SearchTableViewCell {
     func configure(viewModel: SearchTableViewCellViewModel) {
-        task = coverImageView.setImage(from: viewModel.coverImageURL) { [weak self] in
+        task = coverImageView.setImage(from: viewModel.coverImageURL) { [weak self] success in
+            if !success {
+                self?.coverImageView.showPlaceholder()
+            }
             self?.title.text = viewModel.title
             self?.genresLabel.text = viewModel.genresString
             self?.hideSkeleton()

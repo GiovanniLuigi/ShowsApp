@@ -21,7 +21,10 @@ class ShowDetailTableViewCell: UITableViewCell {
 
 extension ShowDetailTableViewCell {
     func configure(viewModel: ShowDetailCellViewModel) {
-        let _ = coverImageView.setImage(from: viewModel.coverImageURL) { [weak self] in
+        let _ = coverImageView.setImage(from: viewModel.coverImageURL) { [weak self] success in
+            if !success {
+                self?.coverImageView.showPlaceholder()
+            }
             self?.titleLabel.text = viewModel.episodeTitle
             self?.hideSkeleton()
         }

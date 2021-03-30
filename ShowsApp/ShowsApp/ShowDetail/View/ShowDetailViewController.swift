@@ -36,7 +36,10 @@ class ShowDetailViewController: UIViewController {
         scheduleLabel.text = viewModel.schedule
         summaryLabel.text = viewModel.summary
         coverImageView.showAnimatedSkeleton()
-        coverImageView.setImage(from: viewModel.coverImageURL) { [weak self] in
+        coverImageView.setImage(from: viewModel.coverImageURL) { [weak self] success in
+            if !success {
+                self?.coverImageView.showPlaceholder()
+            }
             self?.coverImageView.hideSkeleton()
         }
         
