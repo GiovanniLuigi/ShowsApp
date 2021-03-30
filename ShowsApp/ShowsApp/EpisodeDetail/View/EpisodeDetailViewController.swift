@@ -22,7 +22,6 @@ class EpisodeDetailViewController: UIViewController {
         super.viewDidLoad()
         
         title = viewModel.title
-        navigationController?.navigationBar.prefersLargeTitles = viewModel.prefersLargeTitles
         
         if !viewModel.hasCoverImage {
             imageHeightConstraint.isActive = false
@@ -32,5 +31,10 @@ class EpisodeDetailViewController: UIViewController {
         episodeNameLabel.text = viewModel.episodeTitle
         summaryLabel.text = viewModel.summary
         detailsLabel.text = viewModel.detailsText
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.navigationBar.prefersLargeTitles = viewModel.prefersLargeTitles
     }
 }

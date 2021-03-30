@@ -16,12 +16,16 @@ class SearchViewController: UIViewController {
         super.viewDidLoad()
         setupView()
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.navigationBar.prefersLargeTitles = viewModel.prefersLargeTitles
+    }
 }
 
 extension SearchViewController {
     private func setupView() {
         title = viewModel.title
-        navigationController?.navigationBar.prefersLargeTitles = true
         
         let searchController = UISearchController(searchResultsController: nil)
         searchController.searchResultsUpdater = self

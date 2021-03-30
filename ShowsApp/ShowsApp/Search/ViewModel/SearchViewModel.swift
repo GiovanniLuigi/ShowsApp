@@ -95,6 +95,10 @@ extension SearchViewModel {
         return "Title"
     }
     
+    var prefersLargeTitles: Bool {
+        return true
+    }
+    
     var emptyTableViewMessage: String {
         return "No search results yet"
     }

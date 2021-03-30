@@ -29,7 +29,6 @@ class ShowDetailViewController: UIViewController {
         episodesTableView.isScrollEnabled = false
         seasonButtonView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(didPressSeasonsButton)))
         seasonButtonView.layer.cornerRadius = 16
-        navigationController?.navigationBar.prefersLargeTitles = viewModel.prefersLargeTitles
         title = viewModel.navTitle
         titleLabel.text = viewModel.title
         genresLabel.text = viewModel.genres
@@ -45,6 +44,11 @@ class ShowDetailViewController: UIViewController {
         
         seasonButtonView.showAnimatedSkeleton()
         viewModel.fetchSeasons()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.navigationBar.prefersLargeTitles = viewModel.prefersLargeTitles
     }
     
     @objc func didPressSeasonsButton() {

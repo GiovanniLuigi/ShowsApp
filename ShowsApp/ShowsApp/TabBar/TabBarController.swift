@@ -12,7 +12,7 @@ class TabBarController: UITabBarController {
     
     let showsNavigationController: UINavigationController
     let searchNavigationController: UINavigationController
-    let profileNavigationController: UINavigationController
+    let settingsNavigationController: UINavigationController
     
     init() {
         showsNavigationController = UINavigationController()
@@ -21,15 +21,15 @@ class TabBarController: UITabBarController {
         searchNavigationController = UINavigationController()
         searchNavigationController.tabBarItem = UITabBarItem(tabBarSystemItem: .search, tag: 1)
         
-        profileNavigationController = UINavigationController()
-        profileNavigationController.tabBarItem = UITabBarItem(tabBarSystemItem: .more, tag: 2)
+        settingsNavigationController = UINavigationController()
+        settingsNavigationController.tabBarItem = UITabBarItem(tabBarSystemItem: .more, tag: 2)
         
         super.init(nibName: nil, bundle: nil)
         
         self.tabBar.tintColor = UIColor(rgb: 0xe58e26)
     
         
-        viewControllers = [showsNavigationController, searchNavigationController, profileNavigationController]
+        viewControllers = [showsNavigationController, searchNavigationController, settingsNavigationController]
     }
     
     required init?(coder: NSCoder) {

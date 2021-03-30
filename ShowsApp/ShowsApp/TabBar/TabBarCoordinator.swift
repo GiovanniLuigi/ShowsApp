@@ -26,10 +26,15 @@ final class TabBarCoordinator: Coordinator {
         let searchNavigationController = tabBarController.searchNavigationController
         let searchCoordinator = SearchCoordinator(navigator: UIKitNavigator(navigationController: searchNavigationController), parent: self)
         
+        let settingsNavigationController = tabBarController.settingsNavigationController
+        let moreCoordinator = MoreCoordinator(navigator: UIKitNavigator(navigationController: settingsNavigationController), parent: self)
+        
         tabBarController.modalPresentationStyle = .overFullScreen
         navigator.push(tabBarController, animated: true)
         
-        searchCoordinator.start()
+        
         showsCoordinator.start()
+        searchCoordinator.start()
+        moreCoordinator.start()
     }
 }
