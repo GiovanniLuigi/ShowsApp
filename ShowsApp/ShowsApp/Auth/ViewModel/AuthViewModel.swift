@@ -9,6 +9,7 @@ import Foundation
 
 protocol AuthViewDelegate {
     func didAuthenticateWithError()
+    func didAuthenticateWithSuccess()
 }
 
 class AuthViewModel {
@@ -29,6 +30,11 @@ class AuthViewModel {
     func didStop() {
         coordinator.delegate.didFinishWithError()
         coordinator.didStop()
+    }
+    
+    func stopWithSuccess() {
+        coordinator.delegate.didFinishWithSuccess()
+        coordinator.stop()
     }
     
     func didInputPin(_ pin: String) {
@@ -72,8 +78,7 @@ class AuthViewModel {
     }
     
     private func finishWithSuccess() {
-        coordinator.delegate.didFinishWithSuccess()
-        coordinator.stop()
+        viewDelegate.didAuthenticateWithSuccess()
     }
         
     private func displayError() {
@@ -88,5 +93,9 @@ extension AuthViewModel {
     
     var prefersLargeTitles: Bool {
         return false
+    }
+    
+    var successMessage: String {
+        return "Success"
     }
 }

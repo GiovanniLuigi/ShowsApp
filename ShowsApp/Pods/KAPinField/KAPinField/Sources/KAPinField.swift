@@ -247,7 +247,7 @@ public class KAPinField : UITextField {
                 
             }) { _ in
                 
-                DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.75) {
                     self.isAnimating = false
                     completion?()
                 }
@@ -402,9 +402,9 @@ public class KAPinField : UITextField {
             v.layer.cornerRadius = self.appearance.backCornerRadius
         }
         
-        if (UIPasteboard.general.string == self.invisibleText && isRightToLeft) {
-            self.invisibleField.text = String(self.invisibleText.reversed())
-        }
+//        if (UIPasteboard.general.string == self.invisibleText && isRightToLeft) {
+//            self.invisibleField.text = String(self.invisibleText.reversed())
+//        }
         
         self.sanitizeText()
         

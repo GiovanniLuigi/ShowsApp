@@ -53,4 +53,10 @@ extension AuthViewController: AuthViewDelegate {
         pinField.text = String.empty
         pinField.animateFailure()
     }
+    
+    func didAuthenticateWithSuccess() {
+        pinField.animateSuccess(with: viewModel.successMessage) { [weak self] in
+            self?.viewModel.stopWithSuccess()
+        }
+    }
 }

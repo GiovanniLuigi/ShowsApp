@@ -30,6 +30,10 @@ final class AuthProvider {
     }
     
     func authEnabled() -> Bool {
+        if !checkAndMarkFirstOpen() {
+            removePin()
+            return false
+        }
         return keychain.hasValue(forKey: pinKey)
     }
     
@@ -39,5 +43,14 @@ final class AuthProvider {
     
     func isSessionValid() -> Bool {
         return (authEnabled() && hasValidSession) || !authEnabled()
+    }
+    
+    func checkAndMarkFirstOpen() -> Bool {
+        if let hasOpened = UserDefaults.standard.value(forKey: "hasOpened") as? Bool {
+            return hasOpened
+        } else {
+            UserDefaults.standard.setValue(true, forKey: "hasOpened")
+            return false
+        }
     }
 }
