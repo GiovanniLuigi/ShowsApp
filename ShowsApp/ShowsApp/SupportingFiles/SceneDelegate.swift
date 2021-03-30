@@ -26,6 +26,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window.rootViewController = navigationController
         window.makeKeyAndVisible()
         
+        if #available(iOS 13.0, *) {
+            window.overrideUserInterfaceStyle = .dark
+        }
 //        setupFonts()
     }
     
