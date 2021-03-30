@@ -30,7 +30,7 @@ final class TabBarCoordinator: Coordinator {
         let moreCoordinator = MoreCoordinator(navigator: UIKitNavigator(navigationController: settingsNavigationController), parent: self)
         
         tabBarController.modalPresentationStyle = .overFullScreen
-        navigator.push(tabBarController, animated: true)
+        navigator.set([tabBarController], animated: false)
         
         
         showsCoordinator.start()

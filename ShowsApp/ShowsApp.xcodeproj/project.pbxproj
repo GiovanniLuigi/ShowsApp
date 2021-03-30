@@ -77,6 +77,16 @@
 		11EED0332613561F00510B50 /* MoreViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 11EED0312613561F00510B50 /* MoreViewController.xib */; };
 		11EED0372613564800510B50 /* MoreCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11EED0362613564800510B50 /* MoreCoordinator.swift */; };
 		11EED03B261357B800510B50 /* MoreViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11EED03A261357B800510B50 /* MoreViewModel.swift */; };
+		11EED04026135A0E00510B50 /* MoreTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11EED03E26135A0E00510B50 /* MoreTableViewCell.swift */; };
+		11EED04126135A0E00510B50 /* MoreTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 11EED03F26135A0E00510B50 /* MoreTableViewCell.xib */; };
+		11EED04526135C4E00510B50 /* MoreTableViewCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11EED04426135C4E00510B50 /* MoreTableViewCellViewModel.swift */; };
+		11EED0492613653C00510B50 /* AuthProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11EED0482613653C00510B50 /* AuthProvider.swift */; };
+		11EED05926136A4700510B50 /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11EED05726136A4700510B50 /* AuthViewController.swift */; };
+		11EED05A26136A4700510B50 /* AuthViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 11EED05826136A4700510B50 /* AuthViewController.xib */; };
+		11EED05E26136A7700510B50 /* AuthCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11EED05D26136A7700510B50 /* AuthCoordinator.swift */; };
+		11EED06226136CE100510B50 /* MoreService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11EED06126136CE100510B50 /* MoreService.swift */; };
+		11EED06626136F6C00510B50 /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11EED06526136F6C00510B50 /* AuthViewModel.swift */; };
+		11EED06B26136F9C00510B50 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11EED06A26136F9C00510B50 /* AuthService.swift */; };
 		A57AB09C7AC0C6A3582C1782 /* Pods_ShowsApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A34AE9674C2FE2974B585DF1 /* Pods_ShowsApp.framework */; };
 /* End PBXBuildFile section */
 
@@ -165,6 +175,16 @@
 		11EED0312613561F00510B50 /* MoreViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MoreViewController.xib; sourceTree = "<group>"; };
 		11EED0362613564800510B50 /* MoreCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreCoordinator.swift; sourceTree = "<group>"; };
 		11EED03A261357B800510B50 /* MoreViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreViewModel.swift; sourceTree = "<group>"; };
+		11EED03E26135A0E00510B50 /* MoreTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreTableViewCell.swift; sourceTree = "<group>"; };
+		11EED03F26135A0E00510B50 /* MoreTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MoreTableViewCell.xib; sourceTree = "<group>"; };
+		11EED04426135C4E00510B50 /* MoreTableViewCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreTableViewCellViewModel.swift; sourceTree = "<group>"; };
+		11EED0482613653C00510B50 /* AuthProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthProvider.swift; sourceTree = "<group>"; };
+		11EED05726136A4700510B50 /* AuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewController.swift; sourceTree = "<group>"; };
+		11EED05826136A4700510B50 /* AuthViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AuthViewController.xib; sourceTree = "<group>"; };
+		11EED05D26136A7700510B50 /* AuthCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthCoordinator.swift; sourceTree = "<group>"; };
+		11EED06126136CE100510B50 /* MoreService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreService.swift; sourceTree = "<group>"; };
+		11EED06526136F6C00510B50 /* AuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
+		11EED06A26136F9C00510B50 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 		1846B7547470D60705363992 /* Pods-ShowsApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShowsApp.release.xcconfig"; path = "Target Support Files/Pods-ShowsApp/Pods-ShowsApp.release.xcconfig"; sourceTree = "<group>"; };
 		A34AE9674C2FE2974B585DF1 /* Pods_ShowsApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ShowsApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C46BCEAAB7E2232735E88CA7 /* Pods-ShowsApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShowsApp.debug.xcconfig"; path = "Target Support Files/Pods-ShowsApp/Pods-ShowsApp.debug.xcconfig"; sourceTree = "<group>"; };
@@ -251,6 +271,7 @@
 		116A88AD260F760F0062FAD7 /* ShowsApp */ = {
 			isa = PBXGroup;
 			children = (
+				11EED05326136A0000510B50 /* Auth */,
 				11EED0012612C64600510B50 /* More */,
 				116FF31826123A86005ED874 /* EpisodeDetail */,
 				117D32622611235200B6B9F0 /* ShowDetail */,
@@ -280,6 +301,7 @@
 		116A88C6260F76A00062FAD7 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				11EED0482613653C00510B50 /* AuthProvider.swift */,
 				11147BE0261046AE0011CA4D /* CacheProvider.swift */,
 				116A88CC260F773D0062FAD7 /* Navigator.swift */,
 				116A88D3260F7A830062FAD7 /* Storyboarded.swift */,
@@ -520,6 +542,8 @@
 			children = (
 				11EED0302613561F00510B50 /* MoreViewController.swift */,
 				11EED0312613561F00510B50 /* MoreViewController.xib */,
+				11EED03E26135A0E00510B50 /* MoreTableViewCell.swift */,
+				11EED03F26135A0E00510B50 /* MoreTableViewCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -528,6 +552,7 @@
 			isa = PBXGroup;
 			children = (
 				11EED03A261357B800510B50 /* MoreViewModel.swift */,
+				11EED04426135C4E00510B50 /* MoreTableViewCellViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -535,6 +560,7 @@
 		11EED0062612C67000510B50 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				11EED06126136CE100510B50 /* MoreService.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -565,6 +591,50 @@
 				11EED02226134E1C00510B50 /* ShowsViewModelTests.swift */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		11EED05326136A0000510B50 /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				11EED06926136F9500510B50 /* Model */,
+				11EED05626136A2B00510B50 /* ViewModel */,
+				11EED05526136A2600510B50 /* View */,
+				11EED05426136A1900510B50 /* Coordinator */,
+			);
+			path = Auth;
+			sourceTree = "<group>";
+		};
+		11EED05426136A1900510B50 /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				11EED05D26136A7700510B50 /* AuthCoordinator.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		11EED05526136A2600510B50 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				11EED05726136A4700510B50 /* AuthViewController.swift */,
+				11EED05826136A4700510B50 /* AuthViewController.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		11EED05626136A2B00510B50 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				11EED06526136F6C00510B50 /* AuthViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		11EED06926136F9500510B50 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				11EED06A26136F9C00510B50 /* AuthService.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		1853ADB057B1405F78049CA6 /* Frameworks */ = {
@@ -674,8 +744,10 @@
 				116A88E9260F7F790062FAD7 /* ShowsViewController.xib in Resources */,
 				116FF31F26123ABC005ED874 /* EpisodeDetailViewController.xib in Resources */,
 				116A88BB260F76100062FAD7 /* LaunchScreen.storyboard in Resources */,
+				11EED04126135A0E00510B50 /* MoreTableViewCell.xib in Resources */,
 				11E9810B260FDFC600CE876B /* ShowsCollectionViewCell.xib in Resources */,
 				116FF2FD26113BC7005ED874 /* ShowDetailTableViewCell.xib in Resources */,
+				11EED05A26136A4700510B50 /* AuthViewController.xib in Resources */,
 				117D32502610EB8A00B6B9F0 /* SearchTableViewCell.xib in Resources */,
 				11E980F9260F88A300CE876B /* SearchViewController.xib in Resources */,
 				116A88B8260F76100062FAD7 /* Assets.xcassets in Resources */,
@@ -740,10 +812,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				116FF2FC26113BC7005ED874 /* ShowDetailTableViewCell.swift in Sources */,
+				11EED06B26136F9C00510B50 /* AuthService.swift in Sources */,
+				11EED04026135A0E00510B50 /* MoreTableViewCell.swift in Sources */,
 				11EED0322613561F00510B50 /* MoreViewController.swift in Sources */,
 				117D32642611236200B6B9F0 /* ShowDetailCoordinator.swift in Sources */,
 				11DE00032610C5E9000AFB07 /* SearchService.swift in Sources */,
 				11E98126260FE28300CE876B /* UICollectionView+Extensions.swift in Sources */,
+				11EED05926136A4700510B50 /* AuthViewController.swift in Sources */,
 				116A88DC260F7B960062FAD7 /* UIView+Extensions.swift in Sources */,
 				116A88E8260F7F790062FAD7 /* ShowsViewController.swift in Sources */,
 				11E980F3260F884D00CE876B /* SearchCoordinator.swift in Sources */,
@@ -772,11 +847,14 @@
 				11EECFF826128D4300510B50 /* ShowsCollectionViewPrefetcher.swift in Sources */,
 				11E980F8260F88A300CE876B /* SearchViewController.swift in Sources */,
 				11E98103260FDB9200CE876B /* ShowsViewModel.swift in Sources */,
+				11EED05E26136A7700510B50 /* AuthCoordinator.swift in Sources */,
+				11EED04526135C4E00510B50 /* MoreTableViewCellViewModel.swift in Sources */,
 				116A88D1260F79840062FAD7 /* AppCoordinator.swift in Sources */,
 				117D324B2610CBC700B6B9F0 /* SearchQueryModel.swift in Sources */,
 				116A88DF260F7BDA0062FAD7 /* UIViewController+Extensions.swift in Sources */,
 				116FF315261208FC005ED874 /* PickerSeasonModel.swift in Sources */,
 				11DEFFFC2610C538000AFB07 /* SearchViewModel.swift in Sources */,
+				11EED06626136F6C00510B50 /* AuthViewModel.swift in Sources */,
 				116A88B1260F760F0062FAD7 /* SceneDelegate.swift in Sources */,
 				11E98100260F98C300CE876B /* TabBarController.swift in Sources */,
 				11E9810A260FDFC600CE876B /* ShowsCollectionViewCell.swift in Sources */,
@@ -788,8 +866,10 @@
 				11EED0372613564800510B50 /* MoreCoordinator.swift in Sources */,
 				116FF31E26123ABC005ED874 /* EpisodeDetailViewController.swift in Sources */,
 				116A88C9260F76C80062FAD7 /* Coordinator.swift in Sources */,
+				11EED0492613653C00510B50 /* AuthProvider.swift in Sources */,
 				117D3271261123D200B6B9F0 /* ShowDetailViewModel.swift in Sources */,
 				116FF32626123B03005ED874 /* EpisodeDetailCoordinator.swift in Sources */,
+				11EED06226136CE100510B50 /* MoreService.swift in Sources */,
 				11E9817D260FFC5900CE876B /* UIFont+Extensions.swift in Sources */,
 				11EECFFF2612B6E000510B50 /* UIColor+Extensions.swift in Sources */,
 				116A88D4260F7A830062FAD7 /* Storyboarded.swift in Sources */,

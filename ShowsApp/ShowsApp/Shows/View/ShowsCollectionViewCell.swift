@@ -41,6 +41,7 @@ extension ShowsCollectionViewCell {
         if self.viewModel == viewModel {
             return
         }
+        self.viewModel = viewModel
         task = coverImageView.setImage(from: viewModel.coverImageURL) { [weak self] success in
             if success {
                 self?.titleLabel.text = viewModel.title

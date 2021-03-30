@@ -20,7 +20,19 @@ class MoreCoordinator: Coordinator {
     
     func start() {
         let moreViewController = MoreViewController.instantiate()
-        moreViewController.viewModel = MoreViewModel()
+        moreViewController.viewModel = MoreViewModel(service: MoreService(authProvider: AuthProvider.shared), coordinator: self)
         navigator.push(moreViewController, animated: true)
+    }
+    
+    func startPinCreation(delegate: AuthDelegate) {
+        let authCoordinator = AuthCoordinator(navigator: navigator, parent: self, type: .ceation, delegate: delegate)
+        childCoordinators.append(authCoordinator)
+        authCoordinator.start()
+    }
+    
+    func startPinRemoval(delegate: AuthDelegate) {
+        let authCoordinator = AuthCoordinator(navigator: navigator, parent: self, type: .removal, delegate: delegate)
+        childCoordinators.append(authCoordinator)
+        authCoordinator.start()
     }
 }

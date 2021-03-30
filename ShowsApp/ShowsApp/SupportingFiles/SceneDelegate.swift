@@ -20,7 +20,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         navigationController.setNavigationBarHidden(true, animated: false)
         let navigator = UIKitNavigator(navigationController: navigationController)
         
-        appCoordinator = AppCoordinator(navigator: navigator, parent: nil)
+        appCoordinator = AppCoordinator(navigator: navigator, parent: nil, authProvider: AuthProvider.shared)
         appCoordinator?.start()
         
         window.rootViewController = navigationController
@@ -29,7 +29,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         if #available(iOS 13.0, *) {
             window.overrideUserInterfaceStyle = .dark
         }
-        
 //        setupFonts()
     }
     
