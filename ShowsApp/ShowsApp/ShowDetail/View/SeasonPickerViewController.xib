@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SeasonPickerViewController" customModule="ShowsApp" customModuleProvider="target">
+            <connections>
+                <outlet property="doneButton" destination="smX-kA-hD6" id="R1w-DB-lzE"/>
+                <outlet property="pickerView" destination="mig-j8-CpW" id="9yv-Fb-5DJ"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <pickerView contentMode="scaleToFill" verticalHuggingPriority="249" translatesAutoresizingMaskIntoConstraints="NO" id="mig-j8-CpW">
+                    <rect key="frame" x="32" y="195" width="350" height="516"/>
+                </pickerView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="smX-kA-hD6">
+                    <rect key="frame" x="181.5" y="759" width="51" height="39"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                    <state key="normal" title="Done"/>
+                    <connections>
+                        <action selector="didTapDone:" destination="-1" eventType="touchUpInside" id="6dd-ea-FEM"/>
+                    </connections>
+                </button>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="mig-j8-CpW" firstAttribute="centerY" secondItem="fnl-2z-Ty3" secondAttribute="centerY" id="Eii-ts-ITc"/>
+                <constraint firstItem="smX-kA-hD6" firstAttribute="centerX" secondItem="mig-j8-CpW" secondAttribute="centerX" id="MKI-u6-GF1"/>
+                <constraint firstItem="smX-kA-hD6" firstAttribute="top" secondItem="mig-j8-CpW" secondAttribute="bottom" constant="48" id="TDK-J9-h5m"/>
+                <constraint firstItem="mig-j8-CpW" firstAttribute="top" relation="greaterThanOrEqual" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="24" id="ZHw-bJ-iP7"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="smX-kA-hD6" secondAttribute="bottom" constant="64" id="fKI-gc-nO6"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="mig-j8-CpW" secondAttribute="trailing" constant="32" id="jHK-Cz-rLO"/>
+                <constraint firstItem="mig-j8-CpW" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="32" id="zxM-ds-xyj"/>
+            </constraints>
+            <point key="canvasLocation" x="124.6376811594203" y="87.723214285714278"/>
+        </view>
+    </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

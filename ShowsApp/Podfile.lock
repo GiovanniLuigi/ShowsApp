@@ -1,0 +1,24 @@
+PODS:
+  - KAPinField (5.0.1)
+  - SkeletonView (1.13.0)
+  - SwiftKeychainWrapper (4.0.1)
+
+DEPENDENCIES:
+  - KAPinField
+  - SkeletonView
+  - SwiftKeychainWrapper
+
+SPEC REPOS:
+  trunk:
+    - KAPinField
+    - SkeletonView
+    - SwiftKeychainWrapper
+
+SPEC CHECKSUMS:
+  KAPinField: 24d85205115c1bb6aef8ff809944f41ac8c2785f
+  SkeletonView: 2b14cb767a7da384d17d5d7e1db0d55a6cf9566a
+  SwiftKeychainWrapper: 807ba1d63c33a7d0613288512399cd1eda1e470c
+
+PODFILE CHECKSUM: 9e009a00c94b0c8756c4a91ac546080967d0259c
+
+COCOAPODS: 1.9.3

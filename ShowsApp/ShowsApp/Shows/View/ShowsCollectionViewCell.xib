@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="ShowsCollectionViewCell" customModule="ShowsApp" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="100" height="176"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="100" height="176"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="PQp-Zc-wMw">
+                        <rect key="frame" x="0.0" y="0.0" width="100" height="141"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                            <userDefinedRuntimeAttribute type="number" keyPath="skeletonCornerRadius">
+                                <real key="value" value="8"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bCD-1k-67U">
+                        <rect key="frame" x="0.0" y="149" width="100" height="14.5"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                        </userDefinedRuntimeAttributes>
+                    </label>
+                </subviews>
+            </view>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <constraints>
+                <constraint firstItem="PQp-Zc-wMw" firstAttribute="height" secondItem="gTV-IL-0wX" secondAttribute="height" multiplier="0.8" id="0bs-ns-Jmj"/>
+                <constraint firstAttribute="trailing" secondItem="PQp-Zc-wMw" secondAttribute="trailing" id="Nt0-bH-dPS"/>
+                <constraint firstItem="bCD-1k-67U" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="WHq-rQ-gMI"/>
+                <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="bCD-1k-67U" secondAttribute="bottom" id="cZ0-FQ-dFc"/>
+                <constraint firstItem="bCD-1k-67U" firstAttribute="top" secondItem="PQp-Zc-wMw" secondAttribute="bottom" constant="8" id="frE-Wt-Dr2"/>
+                <constraint firstItem="PQp-Zc-wMw" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="wBC-Rs-6Pn"/>
+                <constraint firstAttribute="trailing" secondItem="bCD-1k-67U" secondAttribute="trailing" id="xDA-eT-WIg"/>
+                <constraint firstItem="PQp-Zc-wMw" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="yQ4-Kk-hhy"/>
+            </constraints>
+            <size key="customSize" width="249" height="50"/>
+            <userDefinedRuntimeAttributes>
+                <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+            </userDefinedRuntimeAttributes>
+            <connections>
+                <outlet property="coverImageView" destination="PQp-Zc-wMw" id="5FZ-W5-YTf"/>
+                <outlet property="titleLabel" destination="bCD-1k-67U" id="MBs-Ef-keF"/>
+            </connections>
+            <point key="canvasLocation" x="-233.33333333333334" y="-2.0089285714285712"/>
+        </collectionViewCell>
+    </objects>
+</document>

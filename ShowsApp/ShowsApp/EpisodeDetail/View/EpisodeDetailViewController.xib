@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="EpisodeDetailViewController" customModule="ShowsApp" customModuleProvider="target">
+            <connections>
+                <outlet property="coverImageView" destination="2AV-Os-pbz" id="bZ6-kj-ra7"/>
+                <outlet property="detailsLabel" destination="wqV-x9-Dax" id="hqo-Qe-m8U"/>
+                <outlet property="episodeNameLabel" destination="dQx-mu-UOJ" id="dRQ-46-10K"/>
+                <outlet property="imageHeightConstraint" destination="CDB-kr-iPF" id="aHM-bo-3gh"/>
+                <outlet property="summaryLabel" destination="RH4-BY-uPl" id="Gkp-d7-VvN"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="2AV-Os-pbz">
+                    <rect key="frame" x="0.0" y="44" width="414" height="269"/>
+                </imageView>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="LVp-lt-EOR">
+                    <rect key="frame" x="20" y="321" width="374" height="160"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Episode name" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dQx-mu-UOJ">
+                            <rect key="frame" x="0.0" y="0.0" width="374" height="33.5"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="28"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Season • Episode" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wqV-x9-Dax">
+                            <rect key="frame" x="0.0" y="41.5" width="374" height="17"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <color key="textColor" systemColor="systemGray2Color"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RH4-BY-uPl">
+                            <rect key="frame" x="0.0" y="66.5" width="374" height="93.5"/>
+                            <string key="text">Under the Dome is the story of a small town that is suddenly and inexplicably sealed off from the rest of the world by an enormous transparent dome. The town's inhabitants must deal with surviving the post-apocalyptic conditions while searching for answers about the dome, where it came from and if and when it will go away</string>
+                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                </stackView>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="LVp-lt-EOR" firstAttribute="top" secondItem="2AV-Os-pbz" secondAttribute="bottom" constant="8" id="7us-Xo-egG"/>
+                <constraint firstItem="2AV-Os-pbz" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="9iZ-28-3q9"/>
+                <constraint firstItem="2AV-Os-pbz" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.3" id="CDB-kr-iPF"/>
+                <constraint firstItem="2AV-Os-pbz" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="eiQ-7b-ctJ"/>
+                <constraint firstItem="2AV-Os-pbz" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="et4-sS-rxy"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="LVp-lt-EOR" secondAttribute="trailing" constant="20" id="mVN-fU-hEq"/>
+                <constraint firstItem="LVp-lt-EOR" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="o5l-xl-vkR"/>
+            </constraints>
+            <point key="canvasLocation" x="-196" y="78"/>
+        </view>
+    </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGray2Color">
+            <color red="0.68235294117647061" green="0.68235294117647061" blue="0.69803921568627447" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>
