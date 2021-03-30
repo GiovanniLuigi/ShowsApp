@@ -2,7 +2,7 @@
 
 
 # ShowsApp
-Check tv series
+Keep track of your favorite shows
 
 # The challange
 
