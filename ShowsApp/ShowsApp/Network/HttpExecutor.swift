@@ -19,25 +19,25 @@ enum HttpMethod: String {
     }
 }
 
+enum NetworkError: Error, LocalizedError {
+    case parsingError
+    case genericError
+    
+    var errorDescription: String? {
+        switch self {
+        case .parsingError:
+            return "Invalid data. We are working to solve this problem. Please try again later."
+        case .genericError:
+            return "An network error ocurred. Try again later."
+        }
+    }
+}
+
 class HttpExecutor: Executor {
     
     static let shared: HttpExecutor = HttpExecutor()
     
     private init() {}
-    
-    private enum NetworkError: Error, LocalizedError {
-        case parsingError
-        case genericError
-        
-        var errorDescription: String? {
-            switch self {
-            case .parsingError:
-                return "Invalid data. We are working to solve this problem. Please try again later."
-            case .genericError:
-                return "An network error ocurred. Try again later."
-            }
-        }
-    }
     
     private func doHttpRequest<Model: Decodable>(_ request: URLRequest, modelType: Model.Type, completion: @escaping (Result<Model, Error>) -> Void) {
         URLSession.shared.dataTask(with: request) { (data, response, error) in
