@@ -1,4 +1,8 @@
+
+
+
 # ShowsApp
+Check tv series
 
 # The challange
 
@@ -25,7 +29,7 @@ Three public available libraries were used to speed up development:
 
 # The result
 
-
+https://user-images.githubusercontent.com/15925863/113040711-7da08000-916f-11eb-8161-daec1dbf591d.MP4
 
 # To run 
 
