@@ -101,7 +101,10 @@ extension ShowDetailViewController: ShowDetailViewDelegate {
     }
     
     func didFetchEpisodesWithError() {
-        print("Did fetch espisodes error")
+        presentErrorMessage(message: viewModel.errorMessage) { [weak self] in
+            guard let seasonIndex = self?.viewModel.seasonIndex else { return }
+            self?.viewModel.fetchEpisodes(seasonIndex: seasonIndex)
+        }
     }
     
     func didFetchSeasonsWithSuccess() {
@@ -111,6 +114,8 @@ extension ShowDetailViewController: ShowDetailViewDelegate {
     }
     
     func didFetchSeasonsWithError() {
-        print("Did fetch season with error")
+        presentErrorMessage(message: viewModel.errorMessage) { [weak self] in
+            self?.viewModel.fetchSeasons()
+        }
     }
 }

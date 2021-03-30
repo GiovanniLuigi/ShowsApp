@@ -140,6 +140,10 @@ extension ShowDetailViewModel {
         return false
     }
     
+    var errorMessage: String {
+        return error?.localizedDescription ?? "An error ocurred"
+    }
+    
     func numberOfRowsInSection() -> Int {
         if seasonIndex > episodes.count-1 {
             return 0
