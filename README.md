@@ -41,5 +41,4 @@ This app was built with (requeriments):
   * cocoapods 1.9.3
 
 To run simply open the built project (ShowsApp.xcworkspace) with xcode and run or 
-Run pod install in the project root folder and then open ShowsApp.xcworkspace or 
-Select one of the distribution .ipa located at ShowsAppIPA folder, install it in your device and run 
+Run pod install in the project root folder and then open ShowsApp.xcworkspace 
