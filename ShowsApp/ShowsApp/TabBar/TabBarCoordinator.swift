@@ -7,12 +7,7 @@
 
 import Foundation
 
-
-protocol TabBarCoordinatorProtocol: Coordinator {
-    
-}
-
-final class TabBarCoordinator: TabBarCoordinatorProtocol {
+final class TabBarCoordinator: Coordinator {
     var childCoordinators: [Coordinator] = []
     private(set) var parent: Coordinator?
     private(set) var navigator: Navigator

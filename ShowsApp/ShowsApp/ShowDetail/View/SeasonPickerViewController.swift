@@ -20,7 +20,7 @@ class SeasonPickerViewController: UIViewController {
         
         pickerView.selectRow(viewModel.initialRow, inComponent: 0, animated: false)
     }
-
+    
     @IBAction func didTapDone(_ sender: Any) {
         viewModel.shouldFinish()
     }

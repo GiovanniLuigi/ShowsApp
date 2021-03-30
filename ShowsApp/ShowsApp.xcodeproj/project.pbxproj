@@ -214,6 +214,7 @@
 		116A88AD260F760F0062FAD7 /* ShowsApp */ = {
 			isa = PBXGroup;
 			children = (
+				11EED0012612C64600510B50 /* More */,
 				116FF31826123A86005ED874 /* EpisodeDetail */,
 				117D32622611235200B6B9F0 /* ShowDetail */,
 				11E980FB260F969300CE876B /* TabBar */,
@@ -456,6 +457,45 @@
 				11E98183261004EE00CE876B /* Roboto-Regular.ttf */,
 			);
 			path = Fonts;
+			sourceTree = "<group>";
+		};
+		11EED0012612C64600510B50 /* More */ = {
+			isa = PBXGroup;
+			children = (
+				11EED0062612C67000510B50 /* Model */,
+				11EED0052612C66B00510B50 /* ViewModel */,
+				11EED0042612C66700510B50 /* View */,
+				11EED0032612C66100510B50 /* Coordinator */,
+			);
+			path = More;
+			sourceTree = "<group>";
+		};
+		11EED0032612C66100510B50 /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		11EED0042612C66700510B50 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		11EED0052612C66B00510B50 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		11EED0062612C67000510B50 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		1853ADB057B1405F78049CA6 /* Frameworks */ = {

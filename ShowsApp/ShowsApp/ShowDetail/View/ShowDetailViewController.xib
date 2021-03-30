@@ -31,7 +31,7 @@
                     <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qzv-l0-6Fs">
-                            <rect key="frame" x="0.0" y="0.0" width="414" height="845"/>
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="833"/>
                             <subviews>
                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="IbJ-xH-UxW">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="300"/>
@@ -43,32 +43,32 @@
                                     </userDefinedRuntimeAttributes>
                                 </imageView>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Invernal Soldier" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z57-4Z-ne9">
-                                    <rect key="frame" x="20" y="316" width="374" height="33.5"/>
+                                    <rect key="frame" x="20" y="308" width="374" height="33.5"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="28"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="• Action • Science Fiction • Friendship  " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q48-5B-OMA">
-                                    <rect key="frame" x="32" y="357.5" width="350" height="17"/>
+                                    <rect key="frame" x="20" y="349.5" width="362" height="17"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                     <color key="textColor" systemColor="systemGrayColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="• Thursday • Sunday • 22h" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Ny-tx-NIT">
-                                    <rect key="frame" x="32" y="382.5" width="350" height="17"/>
+                                    <rect key="frame" x="20" y="374.5" width="362" height="17"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                     <color key="textColor" systemColor="systemGrayColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BBA-Pi-gGK">
-                                    <rect key="frame" x="20" y="411.5" width="374" height="93.5"/>
+                                    <rect key="frame" x="20" y="399.5" width="374" height="93.5"/>
                                     <string key="text">Under the Dome is the story of a small town that is suddenly and inexplicably sealed off from the rest of the world by an enormous transparent dome. The town's inhabitants must deal with surviving the post-apocalyptic conditions while searching for answers about the dome, where it came from and if and when it will go away</string>
                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ZFx-vx-eYF">
-                                    <rect key="frame" x="20" y="569" width="374" height="260"/>
+                                    <rect key="frame" x="20" y="557" width="374" height="260"/>
                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="260" id="eSa-9H-xdm"/>
@@ -78,7 +78,7 @@
                                     </userDefinedRuntimeAttributes>
                                 </tableView>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="maN-bO-i2D">
-                                    <rect key="frame" x="20" y="521" width="149.5" height="32"/>
+                                    <rect key="frame" x="20" y="509" width="149.5" height="32"/>
                                     <subviews>
                                         <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="c0T-5R-iaE">
                                             <rect key="frame" x="12" y="4" width="125.5" height="24"/>
@@ -109,7 +109,7 @@
                                             </userDefinedRuntimeAttributes>
                                         </stackView>
                                     </subviews>
-                                    <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
                                         <constraint firstAttribute="bottom" secondItem="c0T-5R-iaE" secondAttribute="bottom" constant="4" id="CiA-Ln-gEk"/>
                                         <constraint firstItem="c0T-5R-iaE" firstAttribute="leading" secondItem="maN-bO-i2D" secondAttribute="leading" constant="12" id="M17-GY-pTY"/>
@@ -131,11 +131,11 @@
                                 <constraint firstItem="Q48-5B-OMA" firstAttribute="trailing" secondItem="z57-4Z-ne9" secondAttribute="trailing" constant="-12" id="3Mz-2w-od9"/>
                                 <constraint firstItem="IbJ-xH-UxW" firstAttribute="leading" secondItem="qzv-l0-6Fs" secondAttribute="leading" id="8ZF-gB-HuO"/>
                                 <constraint firstItem="BBA-Pi-gGK" firstAttribute="trailing" secondItem="z57-4Z-ne9" secondAttribute="trailing" id="Brg-2h-LWQ"/>
-                                <constraint firstItem="BBA-Pi-gGK" firstAttribute="top" secondItem="0Ny-tx-NIT" secondAttribute="bottom" constant="12" id="Frm-L0-0fO"/>
+                                <constraint firstItem="BBA-Pi-gGK" firstAttribute="top" secondItem="0Ny-tx-NIT" secondAttribute="bottom" constant="8" id="Frm-L0-0fO"/>
                                 <constraint firstItem="IbJ-xH-UxW" firstAttribute="top" secondItem="qzv-l0-6Fs" secondAttribute="top" id="LG5-TQ-Knw"/>
                                 <constraint firstItem="maN-bO-i2D" firstAttribute="width" secondItem="ZFx-vx-eYF" secondAttribute="width" multiplier="0.4" id="Rkz-KP-XoM"/>
                                 <constraint firstAttribute="trailing" secondItem="IbJ-xH-UxW" secondAttribute="trailing" id="ZJQ-y6-HaK"/>
-                                <constraint firstItem="z57-4Z-ne9" firstAttribute="top" secondItem="IbJ-xH-UxW" secondAttribute="bottom" constant="16" id="bEX-MH-2wn"/>
+                                <constraint firstItem="z57-4Z-ne9" firstAttribute="top" secondItem="IbJ-xH-UxW" secondAttribute="bottom" constant="8" id="bEX-MH-2wn"/>
                                 <constraint firstItem="maN-bO-i2D" firstAttribute="leading" secondItem="BBA-Pi-gGK" secondAttribute="leading" id="bsO-Es-uwc"/>
                                 <constraint firstItem="z57-4Z-ne9" firstAttribute="leading" secondItem="qzv-l0-6Fs" secondAttribute="leading" constant="20" id="cDY-ZZ-e9T"/>
                                 <constraint firstItem="ZFx-vx-eYF" firstAttribute="leading" secondItem="z57-4Z-ne9" secondAttribute="leading" id="cVT-rx-46A"/>
@@ -143,7 +143,7 @@
                                 <constraint firstItem="BBA-Pi-gGK" firstAttribute="leading" secondItem="z57-4Z-ne9" secondAttribute="leading" id="eyq-FF-alZ"/>
                                 <constraint firstAttribute="bottom" secondItem="ZFx-vx-eYF" secondAttribute="bottom" constant="16" id="hqj-cj-kGO"/>
                                 <constraint firstItem="0Ny-tx-NIT" firstAttribute="leading" secondItem="Q48-5B-OMA" secondAttribute="leading" id="q8F-Bs-nH9"/>
-                                <constraint firstItem="Q48-5B-OMA" firstAttribute="leading" secondItem="z57-4Z-ne9" secondAttribute="leading" constant="12" id="qC4-mc-qfV"/>
+                                <constraint firstItem="Q48-5B-OMA" firstAttribute="leading" secondItem="z57-4Z-ne9" secondAttribute="leading" id="qC4-mc-qfV"/>
                                 <constraint firstItem="maN-bO-i2D" firstAttribute="top" secondItem="BBA-Pi-gGK" secondAttribute="bottom" constant="16" id="s0w-9W-QCs"/>
                                 <constraint firstItem="0Ny-tx-NIT" firstAttribute="trailing" secondItem="Q48-5B-OMA" secondAttribute="trailing" id="sSs-Y8-ILT"/>
                                 <constraint firstItem="ZFx-vx-eYF" firstAttribute="trailing" secondItem="z57-4Z-ne9" secondAttribute="trailing" id="tIB-M9-rgG"/>
