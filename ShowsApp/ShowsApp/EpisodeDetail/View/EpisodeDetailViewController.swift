@@ -26,8 +26,13 @@ class EpisodeDetailViewController: UIViewController {
         if !viewModel.hasCoverImage {
             imageHeightConstraint.isActive = false
             view.layoutIfNeeded()
+        } else {
+            coverImageView.showAnimatedSkeleton()
+            coverImageView.setImage(from: viewModel.coverImageURL) { [weak self] _ in
+                self?.coverImageView.hideSkeleton()
+            }
         }
-        coverImageView.setImage(from: viewModel.coverImageURL)
+        
         episodeNameLabel.text = viewModel.episodeTitle
         summaryLabel.text = viewModel.summary
         detailsLabel.text = viewModel.detailsText
