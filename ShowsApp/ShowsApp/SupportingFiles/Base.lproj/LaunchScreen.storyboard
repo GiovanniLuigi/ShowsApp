@@ -16,10 +16,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="play-button" translatesAutoresizingMaskIntoConstraints="NO" id="oND-b3-t43">
-                                <rect key="frame" x="124" y="409" width="166" height="88"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="popcorn" translatesAutoresizingMaskIntoConstraints="NO" id="oND-b3-t43">
+                                <rect key="frame" x="124" y="370" width="166" height="166"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="oND-b3-t43" secondAttribute="height" multiplier="15:8" id="5la-a8-Lwy"/>
+                                    <constraint firstAttribute="width" secondItem="oND-b3-t43" secondAttribute="height" multiplier="1:1" id="5la-a8-Lwy"/>
                                 </constraints>
                             </imageView>
                         </subviews>
@@ -38,7 +38,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="play-button" width="453" height="453"/>
+        <image name="popcorn" width="456" height="512"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

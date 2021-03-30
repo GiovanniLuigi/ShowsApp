@@ -23,7 +23,7 @@ class EpisodeDetailCoordinator: EpisodeDetailCoordinatorProtocol {
     
     func start() {
         let episodeDetailViewController = EpisodeDetailViewController.instantiate()
-        let viewModel = EpisodeDetailViewModel(coordinator: self, viewDelegate: episodeDetailViewController, episodeModel: episodeModel)
+        let viewModel = EpisodeDetailViewModel(coordinator: self, episodeModel: episodeModel)
         episodeDetailViewController.viewModel = viewModel
         navigator.push(episodeDetailViewController, animated: true)
     }

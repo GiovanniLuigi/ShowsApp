@@ -34,7 +34,3 @@ class EpisodeDetailViewController: UIViewController {
         detailsLabel.text = viewModel.detailsText
     }
 }
-
-extension EpisodeDetailViewController: EpisodeDetailViewDelegate {
-    
-}

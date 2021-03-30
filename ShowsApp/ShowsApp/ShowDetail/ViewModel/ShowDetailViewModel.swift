@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol ShowDetailViewDelegate {
+protocol ShowDetailViewDelegate: class {
     func didFetchSeasonsWithSuccess()
     func didFetchSeasonsWithError()
     func didUpdateCurrentSeason()
@@ -20,7 +20,7 @@ protocol ShowDetailViewDelegate {
 class ShowDetailViewModel {
     private let coordinator: ShowDetailCoordinatorProtocol
     private let service: ShowDetailService
-    private let viewDelegate: ShowDetailViewDelegate
+    private weak var viewDelegate: ShowDetailViewDelegate?
     private let show: ShowModel
     
     private var seasons: [SeasonModel] = []
@@ -29,7 +29,7 @@ class ShowDetailViewModel {
     private var currentSeason: Int = 0
     var isLoading: Bool = true
     
-    init(coordinator: ShowDetailCoordinatorProtocol, service: ShowDetailService, viewDelegate: ShowDetailViewDelegate, show: ShowModel) {
+    init(coordinator: ShowDetailCoordinatorProtocol, service: ShowDetailService, viewDelegate: ShowDetailViewDelegate?, show: ShowModel) {
         self.coordinator = coordinator
         self.service = service
         self.viewDelegate = viewDelegate
@@ -48,10 +48,10 @@ class ShowDetailViewModel {
                 model.forEach { _ in
                     self?.episodes.append([])
                 }
-                self?.viewDelegate.didFetchSeasonsWithSuccess()
+                self?.viewDelegate?.didFetchSeasonsWithSuccess()
             case .failure(let error):
                 self?.error = error
-                self?.viewDelegate.didFetchSeasonsWithError()
+                self?.viewDelegate!.didFetchSeasonsWithError()
             }
         }
     }
@@ -61,20 +61,20 @@ class ShowDetailViewModel {
               seasonIndex >= 0,
               let seasonID = seasons[seasonIndex].id else {
             error = nil
-            viewDelegate.didFetchEpisodesWithError()
+            viewDelegate?.didFetchEpisodesWithError()
             return
         }
 
         service.fetchEpisodes(seasonID: seasonID) { [weak self] (result) in
             self?.currentSeason = seasonIndex
-            self?.viewDelegate.didUpdateCurrentSeason()
+            self?.viewDelegate?.didUpdateCurrentSeason()
             switch result {
             case .success(let model):
                 self?.episodes[seasonIndex] = model
-                self?.viewDelegate.didFetchEpisodesWithSuccess()
+                self?.viewDelegate?.didFetchEpisodesWithSuccess()
             case .failure(let error):
                 self?.error = error
-                self?.viewDelegate.didFetchEpisodesWithError()
+                self?.viewDelegate?.didFetchEpisodesWithError()
             }
             self?.isLoading = false
         }
@@ -94,6 +94,10 @@ class ShowDetailViewModel {
             summary: episode.summary ?? String.empty,
             coverImageURL: episode.image?.original ?? "")
         coordinator.startEpisodeDetail(episodeModel: detailModel)
+    }
+    
+    func stop() {
+        coordinator.didStop()
     }
     
 }
@@ -162,8 +166,8 @@ extension ShowDetailViewModel {
 extension ShowDetailViewModel: SeasonPickerDelegate {
     func didSelect(seasonIndex: Int) {
         currentSeason = seasonIndex
-        viewDelegate.didStartToFetchEpisodes()
-        viewDelegate.didUpdateCurrentSeason()
+        viewDelegate?.didStartToFetchEpisodes()
+        viewDelegate?.didUpdateCurrentSeason()
         fetchEpisodes(seasonIndex: seasonIndex)
     }
 }

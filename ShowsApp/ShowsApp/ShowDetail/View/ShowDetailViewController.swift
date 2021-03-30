@@ -8,7 +8,7 @@
 import UIKit
 
 class ShowDetailViewController: UIViewController {
-
+    
     var viewModel: ShowDetailViewModel!
     @IBOutlet weak var tableViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var coverImageView: UIImageView!
@@ -58,6 +58,13 @@ class ShowDetailViewController: UIViewController {
         episodesTableView.reloadData()
         seasonButtonTitleLabel.text = viewModel.currentSeasonTitle
         shouldReloadTableVieSize()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        if self.isMovingFromParent {
+            viewModel.stop()
+        }
     }
 }
 

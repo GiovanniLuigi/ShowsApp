@@ -15,12 +15,15 @@ class TabBarController: UITabBarController {
     
     init() {
         showsNavigationController = UINavigationController()
-        showsNavigationController.tabBarItem = UITabBarItem(tabBarSystemItem: .topRated, tag: 0)
+        showsNavigationController.tabBarItem = UITabBarItem(title: "Shows", image: UIImage(named: "shows-icon"), tag: 0)
         
         searchNavigationController = UINavigationController()
         searchNavigationController.tabBarItem = UITabBarItem(tabBarSystemItem: .search, tag: 1)
         
         super.init(nibName: nil, bundle: nil)
+        
+        self.tabBar.tintColor = UIColor(rgb: 0xe58e26)
+    
         
         viewControllers = [showsNavigationController, searchNavigationController]
     }
